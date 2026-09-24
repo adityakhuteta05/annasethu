@@ -9,9 +9,7 @@ import {
   Truck, 
   ShieldCheck, 
   ArrowRight,
-  Sparkles,
-  CheckCircle2,
-  Lock
+  Sparkles
 } from 'lucide-react';
 import { createClient } from '../../lib/supabase/client';
 
@@ -90,7 +88,7 @@ export default function LoginPage() {
         {/* Prompt Banner */}
         <div className="text-center">
           <span className="text-xs font-bold tracking-widest uppercase text-[#5c6068] dark:text-[#a0a5ad] px-4 py-1.5 rounded-full bg-[#f7f1e3] dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239]">
-            HOW ARE YOU PARTICIPATING IN ANNASETU?
+            HOW ARE YOU PARTICIPATING IN THE NETWORK?
           </span>
         </div>
 
@@ -98,7 +96,10 @@ export default function LoginPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           {/* CARD 1: FOOD DONOR */}
-          <div className="bg-white dark:bg-[#1c2024] rounded-3xl border-2 border-[#e5dec9] dark:border-[#2d3239] hover:border-[#1f4d36] dark:hover:border-[#4f9d3a] shadow-sm hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between group">
+          <Link
+            href="/login/donor"
+            className="bg-white dark:bg-[#1c2024] rounded-3xl border-2 border-[#e5dec9] dark:border-[#2d3239] hover:border-[#1f4d36] dark:hover:border-[#4f9d3a] shadow-sm hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between group block"
+          >
             <div className="space-y-4">
               <div className="w-14 h-14 rounded-2xl bg-[#1f4d36]/10 dark:bg-[#1f4d36]/20 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
                 🍽️
@@ -125,26 +126,19 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="pt-6 space-y-2.5">
-              <Link
-                href="/login/donor"
-                className="w-full py-3.5 rounded-2xl bg-[#1f4d36] hover:bg-[#163827] text-[#f7f1e3] font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all group-hover:translate-x-0.5"
-              >
+            <div className="pt-6">
+              <div className="w-full py-3.5 rounded-2xl bg-[#1f4d36] hover:bg-[#163827] text-[#f7f1e3] font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all group-hover:translate-x-0.5">
                 <span>CONTINUE AS DONOR</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <button
-                type="button"
-                onClick={() => handleDirectDemoLogin('donor')}
-                className="w-full py-2.5 rounded-xl border border-[#1f4d36]/30 dark:border-[#4f9d3a]/30 bg-[#1f4d36]/5 dark:bg-[#1f4d36]/20 text-[#1f4d36] dark:text-[#4f9d3a] font-bold text-[11px] flex items-center justify-center gap-1.5 hover:bg-[#1f4d36]/15 transition"
-              >
-                <span>⚡ 1-Click Demo Login</span>
-              </button>
+              </div>
             </div>
-          </div>
+          </Link>
 
           {/* CARD 2: NGO / RECEIVER */}
-          <div className="bg-white dark:bg-[#1c2024] rounded-3xl border-2 border-[#e5dec9] dark:border-[#2d3239] hover:border-[#4f9d3a] dark:hover:border-[#4f9d3a] shadow-sm hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between group">
+          <Link
+            href="/login/receiver"
+            className="bg-white dark:bg-[#1c2024] rounded-3xl border-2 border-[#e5dec9] dark:border-[#2d3239] hover:border-[#4f9d3a] dark:hover:border-[#4f9d3a] shadow-sm hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between group block"
+          >
             <div className="space-y-4">
               <div className="w-14 h-14 rounded-2xl bg-[#4f9d3a]/15 dark:bg-[#4f9d3a]/25 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
                 🏠
@@ -171,26 +165,19 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="pt-6 space-y-2.5">
-              <Link
-                href="/login/receiver"
-                className="w-full py-3.5 rounded-2xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all group-hover:translate-x-0.5"
-              >
+            <div className="pt-6">
+              <div className="w-full py-3.5 rounded-2xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all group-hover:translate-x-0.5">
                 <span>CONTINUE AS NGO</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <button
-                type="button"
-                onClick={() => handleDirectDemoLogin('receiver')}
-                className="w-full py-2.5 rounded-xl border border-[#2d6a4f]/30 dark:border-[#4f9d3a]/30 bg-[#2d6a4f]/5 dark:bg-[#2d6a4f]/20 text-[#2d6a4f] dark:text-[#4f9d3a] font-bold text-[11px] flex items-center justify-center gap-1.5 hover:bg-[#2d6a4f]/15 transition"
-              >
-                <span>⚡ 1-Click Demo Login</span>
-              </button>
+              </div>
             </div>
-          </div>
+          </Link>
 
           {/* CARD 3: DELIVERY PARTNER */}
-          <div className="bg-white dark:bg-[#1c2024] rounded-3xl border-2 border-[#e5dec9] dark:border-[#2d3239] hover:border-[#e0662b] dark:hover:border-[#e0662b] shadow-sm hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between group">
+          <Link
+            href="/login/driver"
+            className="bg-white dark:bg-[#1c2024] rounded-3xl border-2 border-[#e5dec9] dark:border-[#2d3239] hover:border-[#e0662b] dark:hover:border-[#e0662b] shadow-sm hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between group block"
+          >
             <div className="space-y-4">
               <div className="w-14 h-14 rounded-2xl bg-[#e0662b]/15 dark:bg-[#e0662b]/25 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
                 🚚
@@ -217,44 +204,51 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="pt-6 space-y-2.5">
-              <Link
-                href="/login/driver"
-                className="w-full py-3.5 rounded-2xl bg-[#e0662b] hover:bg-[#c2511d] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all group-hover:translate-x-0.5"
-              >
+            <div className="pt-6">
+              <div className="w-full py-3.5 rounded-2xl bg-[#e0662b] hover:bg-[#c2511d] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all group-hover:translate-x-0.5">
                 <span>CONTINUE AS DRIVER</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <button
-                type="button"
-                onClick={() => handleDirectDemoLogin('driver')}
-                className="w-full py-2.5 rounded-xl border border-[#e0662b]/30 bg-[#e0662b]/5 dark:bg-[#e0662b]/20 text-[#e0662b] dark:text-orange-400 font-bold text-[11px] flex items-center justify-center gap-1.5 hover:bg-[#e0662b]/15 transition"
-              >
-                <span>⚡ 1-Click Demo Login</span>
-              </button>
+              </div>
             </div>
-          </div>
+          </Link>
 
         </div>
 
-        {/* Security & Access Notice */}
+        {/* Instant Demo Access Controls for Evaluators & Reviewers */}
         <div className="p-4 rounded-2xl bg-[#f7f1e3]/70 dark:bg-[#14171a] border border-[#e5dec9] dark:border-[#2d3239] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 text-[#5c6068] dark:text-[#a0a5ad]">
             <Sparkles className="w-4 h-4 text-amber-500 shrink-0" />
-            <span><strong>Role-Governed Access:</strong> User permissions, database row-level security and routing are enforced server-side.</span>
+            <span><strong>Instant Reviewer Testing:</strong> 1-Click login with pre-seeded verified accounts:</span>
           </div>
-          <Link
-            href="/forgot-password"
-            className="text-[11px] font-bold text-[#1f4d36] dark:text-[#4f9d3a] hover:underline shrink-0"
-          >
-            Forgot your account credentials? &rarr;
-          </Link>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={() => handleDirectDemoLogin('donor')}
+              className="px-2.5 py-1 rounded-lg bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] text-[11px] font-bold text-[#1f4d36] hover:bg-[#1f4d36]/10 transition-colors"
+            >
+              🍽️ Demo Donor
+            </button>
+            <button
+              type="button"
+              onClick={() => handleDirectDemoLogin('receiver')}
+              className="px-2.5 py-1 rounded-lg bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] text-[11px] font-bold text-[#2d6a4f] hover:bg-[#4f9d3a]/10 transition-colors"
+            >
+              🏠 Demo NGO
+            </button>
+            <button
+              type="button"
+              onClick={() => handleDirectDemoLogin('driver')}
+              className="px-2.5 py-1 rounded-lg bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] text-[11px] font-bold text-[#e0662b] hover:bg-[#e0662b]/10 transition-colors"
+            >
+              🚚 Demo Driver
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Footer */}
       <footer className="max-w-5xl w-full mx-auto py-4 text-center text-xs text-[#5c6068] dark:text-[#a0a5ad] border-t border-[#e5dec9] dark:border-[#2d3239]">
-        <span>AnnaSetu &copy; 2026 · Need-First Food Rescue Network · Server-Side Authoritative Verification</span>
+        <span>Surplus Food · Shared With Purpose · Real Impact · Server-Side Authoritative Verification</span>
       </footer>
     </main>
   );
