@@ -113,6 +113,48 @@ npm run test
 
 ---
 
+## 🔐 Auth Setup
+
+Follow these steps to configure role-based authentication and database security for AnnaSetu:
+
+### 1. Create Supabase Project
+1. Log in to [Supabase](https://supabase.com) and click **New project**.
+2. Select your Organization, name your project (e.g. `annasetu-production`), set a strong database password, and choose a region close to your users (e.g. `ap-south-1` Mumbai).
+3. Under **Authentication ➔ Providers ➔ Email**, ensure **Email provider** is **Enabled**. Confirm that **Enable Email Confirmations** is configured according to your environment (disabled for rapid local testing, enabled for production).
+
+### 2. Run Database Migrations
+In the Supabase Dashboard, navigate to the **SQL Editor** and run the migration scripts located in `supabase/migrations/`:
+1. Execute [`supabase/migrations/0001_auth_profiles.sql`](file:///c:/Users/hp/Desktop/Amity%20hack/supabase/migrations/0001_auth_profiles.sql):
+   - Creates `app_role` (`DONOR`, `NGO`, `DRIVER`, `ADMIN`) and `verification_status` enums.
+   - Creates `profiles`, `donor_details`, `ngo_details`, `driver_details`, and `audit_logs` tables.
+   - Sets CHECK constraints for phone (`^[6-9]\d{9}$`), GSTIN (`^\d{2}[A-Z]{5}\d{4}[A-Z][A-Z\d]Z[A-Z\d]$`), and FSSAI (`^\d{14}$`).
+   - Configures PostgreSQL Row Level Security (RLS) policies and immutability triggers protecting `role` and `verification_status`.
+   - Binds the `handle_new_user_registration()` trigger to `auth.users` with strict ADMIN whitelist blocking.
+2. Execute [`supabase/migrations/0002_fix_auth_registration_trigger.sql`](file:///c:/Users/hp/Desktop/Amity%20hack/supabase/migrations/0002_fix_auth_registration_trigger.sql):
+   - Grants permissions on `public` schema to `supabase_auth_admin` and `service_role`.
+   - Configures resilient trigger error-handling and explicit INSERT RLS policies.
+
+### 3. Set Environment Variables
+Copy the environment templates and insert your project credentials:
+```bash
+# Workspace Root (.env for FastAPI backend)
+cp .env.example .env
+
+# Web Frontend (apps/web/.env.local for Next.js)
+cp apps/web/.env.example apps/web/.env.local
+```
+
+Populate the following variables:
+- `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase Project URL (`https://<project-ref>.supabase.co`) from **Project Settings ➔ API**.
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase Anonymous Public Key from **Project Settings ➔ API**.
+- `SUPABASE_SERVICE_ROLE_KEY`: Your Supabase Service Role Secret (backend only) from **Project Settings ➔ API**.
+- `SUPABASE_JWT_SECRET`: Your JWT Secret from **Project Settings ➔ API ➔ JWT Settings**.
+
+> [!WARNING]
+> **Security Guardrail**: Only `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are public and exposed to the browser. Never commit or expose `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_JWT_SECRET`, or `GROQ_API_KEY` in frontend bundles.
+
+---
+
 ## 🔑 ANNASETU — API Keys, External Services & Secret Management
 
 AnnaSetu is built on a **resilient adapter architecture**: the platform functions seamlessly out of the box in **zero-dependency demo mode** without any external paid keys, while remaining fully decoupled and production-ready for real integrations.

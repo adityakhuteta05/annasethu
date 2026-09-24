@@ -39,6 +39,7 @@ export async function updateSession(request: NextRequest) {
   const isProtectedRoute = 
     path.startsWith('/donor') || 
     path.startsWith('/receiver') || 
+    path.startsWith('/ngo') || 
     path.startsWith('/driver') || 
     path.startsWith('/admin') ||
     path.startsWith('/verification');
@@ -107,7 +108,7 @@ export async function updateSession(request: NextRequest) {
       return NextResponse.redirect(url);
     }
 
-    if (path.startsWith('/receiver') && normalizedRole !== 'NGO' && normalizedRole !== 'RECEIVER') {
+    if ((path.startsWith('/receiver') || path.startsWith('/ngo')) && normalizedRole !== 'NGO' && normalizedRole !== 'RECEIVER') {
       const url = request.nextUrl.clone();
       url.pathname = roleRoutes[normalizedRole] || '/login';
       return NextResponse.redirect(url);
