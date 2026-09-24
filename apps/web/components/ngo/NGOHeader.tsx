@@ -135,6 +135,16 @@ export function NGOHeader({
             )}
           </Link>
 
+          {/* Directly Visible Log Out Button */}
+          <Link
+            href="/logout"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-rose-300/60 dark:border-rose-900/60 bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-xs font-bold transition shadow-xs"
+            title="Sign out of NGO Dashboard"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+            <span>Log Out</span>
+          </Link>
+
           {/* Profile Dropdown */}
           <div className="relative">
             <button

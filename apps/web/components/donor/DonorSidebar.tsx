@@ -14,6 +14,8 @@ import {
   Bell,
   Building,
   HelpCircle,
+  LogOut,
+  ArrowLeft,
 } from 'lucide-react';
 
 export function DonorSidebar() {
@@ -122,6 +124,25 @@ export function DonorSidebar() {
           Surplus declared here is reserved atomically. Food thermal buffers are monitored by the matching engine.
         </p>
       </div>
+
+      {/* Switch Role & Sign Out */}
+      <div className="pt-3 border-t border-[#e5dec9] dark:border-[#2d3239] space-y-1">
+        <a
+          href="/login"
+          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#1f4d36] dark:hover:text-[#f7f1e3] hover:bg-white/60 dark:hover:bg-[#1c2024]/60 transition"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Switch Operational Role</span>
+        </a>
+        <a
+          href="/logout"
+          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition"
+        >
+          <LogOut className="w-3.5 h-3.5" />
+          <span>Sign Out</span>
+        </a>
+      </div>
     </aside>
   );
 }
+

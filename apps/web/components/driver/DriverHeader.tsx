@@ -115,13 +115,15 @@ export function DriverHeader() {
           </Link>
 
           {/* Sign Out */}
-          <button
-            onClick={handleSignOut}
-            className="p-2 rounded-xl text-stone-500 hover:text-stone-800 hover:bg-stone-100 dark:hover:bg-stone-800 transition"
-            title="Sign Out"
+          <Link
+            href="/logout"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-rose-300/60 dark:border-rose-900/60 bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-xs font-bold transition shadow-xs"
+            title="Sign out of Driver Dashboard"
           >
-            <LogOut className="w-5 h-5" />
-          </button>
+            <LogOut className="w-3.5 h-3.5" />
+            <span>Log Out</span>
+          </Link>
+
         </div>
       </div>
     </header>

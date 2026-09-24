@@ -117,6 +117,24 @@ function LoginContent() {
     setErrorMessage(null);
   };
 
+  const handleDirectDemoLogin = async (role: RoleKey) => {
+    setActiveRole(role);
+    setEmail(roleDefinitions[role].demoEmail);
+    setPassword('Rescue@AnnaSetu2026!');
+    setLoading(true);
+    setSuccessMessage(`Authorizing verified ${roleDefinitions[role].headlineRole} session...`);
+    try {
+      await supabase.auth.signInWithPassword({
+        email: roleDefinitions[role].demoEmail,
+        password: 'Rescue@AnnaSetu2026!',
+      });
+    } catch {}
+    setTimeout(() => {
+      router.push(roleDefinitions[role].verifiedRoute);
+    }, 400);
+  };
+
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
@@ -313,6 +331,13 @@ function LoginContent() {
                     <span>CONTINUE AS DONOR</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDirectDemoLogin('donor')}
+                    className="w-full py-2.5 rounded-xl border border-[#1f4d36]/30 dark:border-[#4f9d3a]/30 bg-[#1f4d36]/5 dark:bg-[#1f4d36]/20 text-[#1f4d36] dark:text-[#4f9d3a] font-bold text-[11px] flex items-center justify-center gap-1.5 hover:bg-[#1f4d36]/15 transition"
+                  >
+                    <span>⚡ 1-Click Demo Login</span>
+                  </button>
                   <Link
                     href="/register/donor"
                     className="block text-center text-[11px] font-semibold text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#1f4d36] py-1"
@@ -350,6 +375,13 @@ function LoginContent() {
                   >
                     <span>CONTINUE AS NGO</span>
                     <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDirectDemoLogin('ngo')}
+                    className="w-full py-2.5 rounded-xl border border-[#2d6a4f]/30 dark:border-[#4f9d3a]/30 bg-[#2d6a4f]/5 dark:bg-[#2d6a4f]/20 text-[#2d6a4f] dark:text-[#4f9d3a] font-bold text-[11px] flex items-center justify-center gap-1.5 hover:bg-[#2d6a4f]/15 transition"
+                  >
+                    <span>⚡ 1-Click Demo Login</span>
                   </button>
                   <Link
                     href="/register/ngo"
@@ -389,6 +421,13 @@ function LoginContent() {
                     <span>CONTINUE AS DRIVER</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDirectDemoLogin('driver')}
+                    className="w-full py-2.5 rounded-xl border border-[#e0662b]/30 bg-[#e0662b]/5 dark:bg-[#e0662b]/20 text-[#e0662b] dark:text-orange-400 font-bold text-[11px] flex items-center justify-center gap-1.5 hover:bg-[#e0662b]/15 transition"
+                  >
+                    <span>⚡ 1-Click Demo Login</span>
+                  </button>
                   <Link
                     href="/register/driver"
                     className="block text-center text-[11px] font-semibold text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#e0662b] py-1"
@@ -397,6 +436,7 @@ function LoginContent() {
                   </Link>
                 </div>
               </div>
+
 
             </div>
 
