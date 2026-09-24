@@ -5,12 +5,19 @@ Coordinates matching, reservation, delivery marketplace, trust chain,
 finance ledger, impact metrics, government verification, and assistive AI.
 """
 
+import os
 import uuid
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
-from fastapi import FastAPI, HTTPException, status, Query
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+from fastapi import FastAPI, HTTPException, status, Query, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
+
+from apps.api.auth import get_current_user, require_role, require_verified, rate_limit_auth
 
 from apps.api.matching.models import (
     UserRole,
@@ -47,11 +54,16 @@ from apps.api.impact.calculator import calculate_impact_for_rescue, ImpactRecord
 from apps.api.gov.gov_verification import GovVerificationAdapter
 from apps.api.ai.groq_adapter import GroqAIAdapter
 from apps.api.config.config_service import config_service
+from apps.api.auth import get_current_user, require_role, require_verified, rate_limit_auth
+
 
 app = FastAPI(
     title="ANNASETU API",
     description="A verified, need-driven surplus-food rescue and delivery marketplace",
     version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json",
 )
 
 # CORS enabled for web app integration
@@ -62,6 +74,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+from apps.api.v1_router import v1_router
+from apps.api.config.env_validator import validate_startup_environment
+
+app.include_router(v1_router)
+
+
+@app.on_event("startup")
+def on_startup():
+    validate_startup_environment()
+
 
 
 # Core Domain Service Singletons
@@ -537,6 +560,30 @@ def update_configuration(updates: Dict[str, Any]):
 
 
 # Users & Authentication Simulation
+@app.get("/api/auth/me")
+def get_auth_profile(user: Dict[str, Any] = Depends(get_current_user)):
+    """Returns the current authenticated user's profile and verification status."""
+    return user
+
+
+@app.post("/api/transactions/execute-rescue")
+def execute_rescue_transaction(
+    payload: Dict[str, Any],
+    user: Dict[str, Any] = Depends(require_verified)
+):
+    """
+    Guarded transaction endpoint:
+    Unverified users receive 403 with code 'NOT_VERIFIED'.
+    Verified users are authorized.
+    """
+    return {
+        "status": "AUTHORIZED",
+        "action": payload.get("action", "RESCUE_FOOD"),
+        "user_id": user.get("id"),
+        "verification_status": user.get("verification_status")
+    }
+
+
 @app.get("/api/users")
 def list_users(role: Optional[str] = None):
     users = list(users_db.values())
@@ -545,10 +592,23 @@ def list_users(role: Optional[str] = None):
     return users
 
 
-@app.post("/api/users/register")
+@app.post("/api/users/register", dependencies=[Depends(rate_limit_auth)])
 def register_user(payload: Dict[str, Any]):
-    user_id = f"usr-{uuid.uuid4().hex[:8]}"
     role = payload.get("role", "DONOR").upper()
+    
+    # Strict Whitelist: Only DONOR, NGO, DRIVER allowed. Reject ADMIN!
+    if role == "ADMIN":
+        raise HTTPException(
+            status_code=400,
+            detail="Self-registration as ADMIN is strictly prohibited."
+        )
+    if role not in ["DONOR", "NGO", "DRIVER"]:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid role: {role}. Permitted self-registration roles: DONOR, NGO, DRIVER."
+        )
+
+    user_id = f"usr-{uuid.uuid4().hex[:8]}"
     user_data = {
         "id": user_id,
         "name": payload.get("name", "New Participant"),
@@ -556,6 +616,7 @@ def register_user(payload: Dict[str, Any]):
         "email": payload.get("email", f"{user_id}@annasetu.org"),
         "phone": payload.get("phone", "+91-99999-00000"),
         "verification_status": VerificationStatus.DOCUMENTS_SUBMITTED.value,
+        "is_active": True,
         "location": payload.get("location", {
             "address": "Connaught Place, New Delhi",
             "latitude": 28.6304,
@@ -878,6 +939,24 @@ class ReserveRequest(BaseModel):
     donation_id: str
     need_id: str
     requested_quantity_kg: float
+
+
+@app.post("/api/transactions/execute-rescue")
+def execute_transaction_checkpoint(
+    payload: Dict[str, Any],
+    user: Dict[str, Any] = Depends(require_verified)
+):
+    """
+    Authoritative transaction checkpoint.
+    Unverified users receive 403 with code 'NOT_VERIFIED'.
+    """
+    return {
+        "status": "AUTHORIZED",
+        "user_id": user["id"],
+        "role": user["role"],
+        "verification_status": user["verification_status"],
+        "message": "User is verified and authorized to execute rescue operations."
+    }
 
 
 @app.post("/api/matching/reserve")

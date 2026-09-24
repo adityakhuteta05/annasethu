@@ -104,6 +104,107 @@ npm run dev
 python -m pytest apps/api/tests/ -v
 ```
 
+### 4. Run Frontend Unit & Integration Tests (Zod, RLS Rules)
+```bash
+# From apps/web directory
+cd apps/web
+npm run test
+```
+
+---
+
+## 🔑 ANNASETU — API Keys, External Services & Secret Management
+
+AnnaSetu is built on a **resilient adapter architecture**: the platform functions seamlessly out of the box in **zero-dependency demo mode** without any external paid keys, while remaining fully decoupled and production-ready for real integrations.
+
+### 1. Required API Keys
+| Environment Variable | Category | Purpose | Scope |
+|---|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | Public Client | Supabase Project REST & Auth API URL | Frontend & Backend |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public Client | Supabase Anonymous Key (guarded by PostgreSQL RLS) | Frontend & Backend |
+| `SUPABASE_JWT_SECRET` | Highly Sensitive Secret | Cryptographic offline decoding and role verification | Backend Only |
+
+### 2. Where to Obtain Each Credential
+- **Supabase Keys (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_JWT_SECRET`, `SUPABASE_SERVICE_ROLE_KEY`)**:
+  - Sign up at [supabase.com](https://supabase.com) and create a project in `ap-south-1` (Mumbai).
+  - Copy keys from **Project Settings ➔ API** and **Project Settings ➔ API ➔ JWT Settings**.
+- **Groq Cloud API Key (`GROQ_API_KEY`)**:
+  - Sign up at [console.groq.com](https://console.groq.com/) and create a free API key under **API Keys**.
+- **Map Provider Key (`MAPS_API_KEY`)**:
+  - Obtain from [Google Cloud Console](https://console.cloud.google.com/) (Maps JavaScript & Directions API) or [Mapbox](https://account.mapbox.com/).
+- **Razorpay Gateway Keys (`RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`)**:
+  - Sign up at [dashboard.razorpay.com](https://dashboard.razorpay.com/) and generate Test API keys under **Settings ➔ API Keys**.
+- **Transactional Notifications (`EMAIL_PROVIDER_API_KEY`, `SMS_API_KEY`)**:
+  - Email: [resend.com](https://resend.com) or [sendgrid.com](https://sendgrid.com).
+  - SMS: [msg91.com](https://msg91.com) (DLT approved) or [twilio.com](https://twilio.com).
+
+### 3. Which Keys are Optional?
+All third-party integrations outside of Supabase Auth are **100% OPTIONAL**:
+- `GROQ_API_KEY` (AI Vision, Copilot, and Score Explanations) ➔ Optional
+- `MAPS_API_KEY` (Turn-by-turn routing and Geocoding) ➔ Optional
+- `RAZORPAY_KEY_ID` & `RAZORPAY_KEY_SECRET` (Payment gateway) ➔ Optional
+- `EMAIL_PROVIDER_API_KEY` & `SMS_API_KEY` (External notifications) ➔ Optional
+- `GST_API_KEY`, `FSSAI_API_KEY`, `NGO_VERIFICATION_API_KEY` ➔ Optional
+
+### 4. Where Each Key Must Be Stored
+- **Public Client Variables (`NEXT_PUBLIC_*`)**:
+  - Stored in `apps/web/.env.local` for Next.js development.
+  - Set as build-time environment variables in Vercel.
+- **Private Backend Secrets (`GROQ_API_KEY`, `MAPS_API_KEY`, `RAZORPAY_*`, `SUPABASE_SERVICE_ROLE_KEY`)**:
+  - Stored in root `.env` for FastAPI development.
+  - Stored in container secret vaults (Render / Fly.io / AWS Secrets Manager) in production.
+  - **CRITICAL**: Never place private secrets in frontend bundles, browser `localStorage`, or git repositories.
+
+### 5. How to Configure Local Development
+```bash
+# 1. Copy environment templates
+cp .env.example .env
+cp apps/web/.env.example apps/web/.env.local
+
+# 2. Launch FastAPI Backend (reads root .env automatically)
+python -m uvicorn apps.api.main:app --host 0.0.0.0 --port 8000 --reload
+
+# 3. Launch Next.js Web Frontend (reads apps/web/.env.local)
+cd apps/web && npm run dev
+```
+
+### 6. How to Configure Production
+1. In Supabase Cloud, run database migrations [`supabase/migrations/0001_auth_profiles.sql`](file:///c:/Users/hp/Desktop/Amity%20hack/supabase/migrations/0001_auth_profiles.sql).
+2. On your backend host (Render/Fly.io), configure the variables listed in [`.env.production`](file:///c:/Users/hp/Desktop/Amity%20hack/.env.production).
+3. On Vercel (Next.js), configure `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_APP_URL`, and `NEXT_PUBLIC_API_URL`.
+4. Detailed step-by-step instructions available in [`DEPLOYMENT.md`](file:///c:/Users/hp/Desktop/Amity%20hack/DEPLOYMENT.md).
+
+### 7. How Fallback Mode Works (Zero-Downtime Resilience)
+If an optional external API is unconfigured, times out, or exceeds rate limits:
+- **Groq AI Failure** ➔ Food listings seamlessly use donor-declared structured fields; package integrity falls back to tamper seal ID matching; copilot and score explanations provide deterministic rule-based guidance.
+- **Maps API Failure** ➔ Routing engine switches immediately to stored coordinates + Haversine distance formula + 22 km/h urban speed ETA calculation (supporting up to 3 intermediate stops).
+- **Payment Gateway Failure** ➔ System runs on seeded NGO demo wallets with append-only ledger entries and an explicit 12% platform fee split.
+- **Notification Failure** ➔ In-app notification queue guarantees 100% delivery.
+- **Government Registry Failure** ➔ Profiles transition to `MANUAL_LOOKUP_REQUIRED` with direct links to official FoSCoS/GST/DARPAN/Parivahan portals.
+
+### 8. How to Test Without Optional APIs
+You can run the entire platform, complete 13-step rescue lifecycle, and test suites with zero external keys:
+```bash
+# 1. Run all backend tests (Passes 100% on deterministic fallbacks)
+python -m pytest apps/api/tests/ -v
+
+# 2. Run frontend unit and integration tests
+cd apps/web && npm run test
+
+# 3. View live Service Health in the browser
+# Visit http://localhost:3000/admin/service-health
+```
+
+---
+
+## 📌 Architecture Assumptions
+
+1. **Admin Account Provisioning**: System administrator accounts cannot be self-registered through the web interface or auth triggers. They are created exclusively via backend administrative operations or direct service-role seeding.
+2. **Document Verification Phasing**: On initial registration, accounts receive `verification_status = 'REGISTERED'` and are routed to `/verification`. Full document upload and government registry verification (FSSAI FoSCoS, GSTIN, NGO-DARPAN, Parivahan) are executed in the next onboarding phase.
+3. **Transaction Gating**: Unverified accounts are permitted to browse public marketplace data, but any rescue-transaction endpoint returns `HTTP 403 Forbidden` with error code `NOT_VERIFIED`.
+4. **Password Reset Enumeration Defense**: The `/forgot-password` endpoint always returns a generic success message ("Recovery Instructions Sent") regardless of whether the email address is registered, preventing malicious account enumeration.
+
+
 ---
 
 ## 🧪 Definition of Done Scenario (PRD Part V)

@@ -1,40 +1,36 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
         annasetu: {
-          cream: '#FDFBF7',
-          'cream-alt': '#F5F0E8',
-          'cream-border': '#E8E1D5',
-          forest: '#143D2B',
-          'forest-dark': '#0D291D',
-          'forest-light': '#1E523A',
-          green: '#2D6A4F',
-          'green-light': '#40916C',
-          'green-mint': '#E8F5E9',
-          charcoal: '#1A1C1E',
-          muted: '#5F6368',
-          urgency: '#D9480F',
-          'urgency-bg': '#FFF4E6',
-          gold: '#D4AF37',
-          'gold-bg': '#FEF9E7',
-        }
+          cream: '#f7f1e3',
+          forest: '#1f4d36',
+          'forest-hover': '#163827',
+          green: '#4f9d3a',
+          'green-light': '#eaf5e8',
+          charcoal: '#23262b',
+          'charcoal-muted': '#5c6068',
+          urgency: '#e0662b',
+          'urgency-light': '#fdf0ea',
+          border: '#e5dec9',
+          'dark-bg': '#14171a',
+          'dark-surface': '#1c2024',
+          'dark-border': '#2d3239',
+        },
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['Lora', 'Merriweather', 'serif'],
+        heading: ['var(--font-fraunces)', 'Fraunces', 'serif'],
+        sans: ['var(--font-dm-sans)', 'DM Sans', 'sans-serif'],
       },
-      boxShadow: {
-        'subtle': '0 2px 10px rgba(20, 61, 43, 0.05)',
-        'card': '0 4px 20px -2px rgba(20, 61, 43, 0.08)',
-        'elevated': '0 12px 32px -4px rgba(20, 61, 43, 0.12)',
-      }
     },
   },
   plugins: [],
-}
+};

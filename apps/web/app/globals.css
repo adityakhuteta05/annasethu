@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-cream: #f7f1e3;
+    --text-charcoal: #23262b;
+    --brand-forest: #1f4d36;
+    --brand-green: #4f9d3a;
+    --brand-orange: #e0662b;
+  }
+
+  body {
+    background-color: #f7f1e3;
+    color: #23262b;
+    font-family: var(--font-dm-sans), 'DM Sans', -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: var(--font-fraunces), 'Fraunces', serif;
+  }
+}
+
+/* Reduced motion accessibility support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High-contrast focus rings for keyboard navigation accessibility */
+*:focus-visible {
+  outline: 2px solid #1f4d36;
+  outline-offset: 2px;
+}
+
+.dark *:focus-visible {
+  outline: 2px solid #4f9d3a;
+  outline-offset: 2px;
+}

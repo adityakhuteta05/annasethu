@@ -1,6 +1,6 @@
 /**
  * ANNASETU Shared TypeScript Contracts & Domain Models
- * Generated and synchronized with FastAPI backend schema.
+ * Synchronized across Next.js App Router (apps/web) and FastAPI backend (apps/api).
  */
 
 export type UserRole = 'DONOR' | 'NGO' | 'DRIVER' | 'ADMIN';
@@ -75,10 +75,24 @@ export type IntegrityVerdict =
   | 'POSSIBLE_PACKAGE_DISCREPANCY'
   | 'AI_UNAVAILABLE_MANUAL_REVIEW';
 
+export type ServiceStatus = 'AVAILABLE' | 'DEGRADED' | 'UNAVAILABLE' | 'DISABLED';
+
+export type SecretClassification = 'PUBLIC' | 'PRIVATE' | 'HIGHLY_SENSITIVE';
+
+export interface ServiceHealthSnapshot {
+  name: string;
+  status: ServiceStatus;
+  latency_ms: number;
+  failure_count: number;
+  fallback_mode: string;
+  last_check: string;
+  details: string;
+}
+
 export interface Location {
   address: string;
-  latitude: float;
-  longitude: float;
+  latitude: number;
+  longitude: number;
   city?: string;
   contact_phone?: string;
   contact_person?: string;
