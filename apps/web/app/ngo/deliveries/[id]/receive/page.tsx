@@ -96,10 +96,10 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
           <Truck className="w-3.5 h-3.5" />
           <span>Driver Arrived at Receiving Dock</span>
         </div>
-        <h1 className="text-2xl font-heading font-black text-[#1f4d36] dark:text-[#f7f1e3]">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           YOU HAVE RECEIVED A DELIVERY REQUEST
         </h1>
-        <p className="text-xs text-[#5c6068]">
+        <p className="text-xs text-slate-500">
           Driver <strong>{deliveryData.driverName}</strong> has arrived with <strong>{deliveryData.quantityKg} kg</strong> surplus food.
         </p>
       </div>
@@ -107,7 +107,7 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
       {verificationSuccess && (
         <div className="p-5 rounded-2xl bg-emerald-100 dark:bg-emerald-950 border border-emerald-400 text-emerald-950 dark:text-emerald-100 text-center space-y-2 animate-in zoom-in-95">
           <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
-          <h2 className="text-lg font-heading font-bold">
+          <h2 className="text-lg font-bold tracking-tight">
             ✅ FOOD RECEIVED & VERIFIED
           </h2>
           <p className="text-xs">
@@ -124,24 +124,24 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
       )}
 
       {/* Main Receiving Checklist Card */}
-      <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-md p-6 sm:p-8 space-y-6">
+      <div className="bg-white rounded-3xl border border-slate-200 border-slate-200 shadow-md p-6 sm:p-8 space-y-6">
         
         {/* Delivery Summary */}
-        <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-[#fdfbf7] dark:bg-[#14171a] border border-[#e5dec9] text-xs">
+        <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-white border border-slate-200 text-xs">
           <div>
-            <span className="text-[10px] text-[#5c6068] block">Donation Lot</span>
-            <strong className="text-[#1f4d36] dark:text-[#f7f1e3]">{deliveryData.quantityKg} kg Vegetarian Meals</strong>
+            <span className="text-[10px] text-slate-500 block">Donation Lot</span>
+            <strong className="text-slate-900 dark:text-white">{deliveryData.quantityKg} kg Vegetarian Meals</strong>
           </div>
           <div>
-            <span className="text-[10px] text-[#5c6068] block">Donor</span>
-            <strong className="text-[#1f4d36] dark:text-[#f7f1e3]">{deliveryData.donorName}</strong>
+            <span className="text-[10px] text-slate-500 block">Donor</span>
+            <strong className="text-slate-900 dark:text-white">{deliveryData.donorName}</strong>
           </div>
           <div>
-            <span className="text-[10px] text-[#5c6068] block">Driver</span>
+            <span className="text-[10px] text-slate-500 block">Driver</span>
             <strong>{deliveryData.driverName} ({deliveryData.vehicle})</strong>
           </div>
           <div>
-            <span className="text-[10px] text-[#5c6068] block">GPS Geofence Status</span>
+            <span className="text-[10px] text-slate-500 block">GPS Geofence Status</span>
             <strong className="text-emerald-600">✓ Within Dock ({deliveryData.gpsProximityMeters}m proximity)</strong>
           </div>
         </div>
@@ -149,7 +149,7 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
         {/* Evidence Photo & Tamper Seal Check */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+            <span className="text-xs font-bold text-slate-900 dark:text-white">
               Pickup Proof & Tamper Seal Check
             </span>
             <span className="text-xs font-mono font-bold text-[#2d6a4f] bg-[#2d6a4f]/10 px-2.5 py-0.5 rounded-md">
@@ -157,17 +157,17 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
             </span>
           </div>
 
-          <div className="p-3 rounded-2xl bg-gray-50 dark:bg-zinc-800/40 border border-[#e5dec9] flex items-center gap-4">
+          <div className="p-3 rounded-2xl bg-gray-50 dark:bg-zinc-800/40 border border-slate-200 flex items-center gap-4">
             <img
               src={deliveryData.pickupPhotoUrl}
               alt="Pickup Seal Evidence"
-              className="w-20 h-20 rounded-xl object-cover border border-[#e5dec9]"
+              className="w-20 h-20 rounded-xl object-cover border border-slate-200"
             />
             <div className="text-xs space-y-1">
-              <div className="font-bold text-[#23262b] dark:text-[#f7f1e3]">
+              <div className="font-bold text-slate-900 dark:text-white">
                 Origin Packaging Inspection
               </div>
-              <p className="text-[11px] text-[#5c6068]">
+              <p className="text-[11px] text-slate-500">
                 Photo logged at donor dock. Verify physical seal matches tag #{deliveryData.sealId}.
               </p>
             </div>
@@ -175,12 +175,12 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
         </div>
 
         {/* Physical Safety Checks */}
-        <div className="space-y-3 pt-2 border-t border-[#e5dec9]/60">
-          <span className="text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] block">
+        <div className="space-y-3 pt-2 border-t border-slate-200/60">
+          <span className="text-xs font-bold text-slate-900 dark:text-white block">
             Physical Intake Checkpoints:
           </span>
 
-          <label className="flex items-start gap-2.5 p-3 rounded-xl border border-[#e5dec9] hover:bg-[#fdfbf7] cursor-pointer text-xs">
+          <label className="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:bg-white cursor-pointer text-xs">
             <input
               type="checkbox"
               checked={sealCheckPassed}
@@ -188,12 +188,12 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
               className="mt-0.5 rounded text-[#2d6a4f] focus:ring-[#2d6a4f]"
             />
             <div>
-              <strong className="block text-[#1f4d36] dark:text-[#f7f1e3]">Package Seal is Intact and Untampered</strong>
-              <span className="text-[10px] text-[#5c6068]">Number matches #{deliveryData.sealId}</span>
+              <strong className="block text-slate-900 dark:text-white">Package Seal is Intact and Untampered</strong>
+              <span className="text-[10px] text-slate-500">Number matches #{deliveryData.sealId}</span>
             </div>
           </label>
 
-          <label className="flex items-start gap-2.5 p-3 rounded-xl border border-[#e5dec9] hover:bg-[#fdfbf7] cursor-pointer text-xs">
+          <label className="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:bg-white cursor-pointer text-xs">
             <input
               type="checkbox"
               checked={temperatureCheckPassed}
@@ -201,12 +201,12 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
               className="mt-0.5 rounded text-[#2d6a4f] focus:ring-[#2d6a4f]"
             />
             <div>
-              <strong className="block text-[#1f4d36] dark:text-[#f7f1e3]">Temperature Chain Preserved</strong>
-              <span className="text-[10px] text-[#5c6068]">Thermal warmers / insulated cool box verified upon opening</span>
+              <strong className="block text-slate-900 dark:text-white">Temperature Chain Preserved</strong>
+              <span className="text-[10px] text-slate-500">Thermal warmers / insulated cool box verified upon opening</span>
             </div>
           </label>
 
-          <label className="flex items-start gap-2.5 p-3 rounded-xl border border-[#e5dec9] hover:bg-[#fdfbf7] cursor-pointer text-xs">
+          <label className="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:bg-white cursor-pointer text-xs">
             <input
               type="checkbox"
               checked={sensoryCheckPassed}
@@ -214,8 +214,8 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
               className="mt-0.5 rounded text-[#2d6a4f] focus:ring-[#2d6a4f]"
             />
             <div>
-              <strong className="block text-[#1f4d36] dark:text-[#f7f1e3]">Sensory & Visual Check Passed</strong>
-              <span className="text-[10px] text-[#5c6068]">Normal aroma, appearance, and edible condition</span>
+              <strong className="block text-slate-900 dark:text-white">Sensory & Visual Check Passed</strong>
+              <span className="text-[10px] text-slate-500">Normal aroma, appearance, and edible condition</span>
             </div>
           </label>
         </div>
@@ -225,10 +225,10 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
           <span className="text-[10px] font-bold uppercase tracking-wider text-[#2d6a4f] block">
             RECEIVER AUTHORIZED OTP (GIVE TO DRIVER)
           </span>
-          <div className="text-3xl sm:text-4xl font-mono font-black text-[#1f4d36] dark:text-[#f7f1e3] tracking-widest">
+          <div className="text-3xl sm:text-4xl font-mono font-black text-slate-900 dark:text-white tracking-widest">
             {receivingOtp}
           </div>
-          <p className="text-[11px] text-[#5c6068]">
+          <p className="text-[11px] text-slate-500">
             Share this short-lived 4-digit code with driver <strong>{deliveryData.driverName}</strong> only after visual check.
           </p>
         </div>
@@ -237,7 +237,7 @@ export default function ReceiveFoodVerificationPage({ params }: PageProps) {
         <button
           onClick={handleVerifyDelivery}
           disabled={verifying || verificationSuccess}
-          className="w-full py-3.5 rounded-2xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all disabled:opacity-50"
+          className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all disabled:opacity-50"
         >
           {verifying ? (
             <span>Authorizing Verification on Ledger...</span>

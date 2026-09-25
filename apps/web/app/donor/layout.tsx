@@ -10,7 +10,7 @@ export default function DonorLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#fbf9f4] dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3]">
+    <div className="min-h-screen bg-slate-50 text-slate-900 antialiased">
       <DonorHeader />
       <div className="flex">
         <DonorSidebar />

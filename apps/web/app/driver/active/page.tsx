@@ -308,7 +308,7 @@ export default function DriverActiveRescuePage() {
       )}
 
       {/* 2. Visual Route Telemetry & Progress (PRD SECTION 38 & 41) */}
-      <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 p-6 shadow-xs space-y-4">
+      <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs space-y-4">
         <h2 className="text-xs font-bold uppercase tracking-wider text-stone-500 flex items-center gap-2">
           <MapPin className="w-4 h-4 text-orange-600" />
           Rescue Custody Chain & Route
@@ -348,7 +348,7 @@ export default function DriverActiveRescuePage() {
             className={`p-4 rounded-2xl border transition ${
               mission.status === 'DELIVERED'
                 ? 'bg-emerald-50/50 border-emerald-300'
-                : 'bg-stone-50 dark:bg-stone-800/40 border-stone-200 dark:border-stone-800'
+                : 'bg-stone-50 dark:bg-stone-800/40 border-slate-200'
             }`}
           >
             <div className="flex items-center justify-between mb-1">
@@ -375,7 +375,7 @@ export default function DriverActiveRescuePage() {
 
       {/* STAGE A: ARRIVING AT PICKUP */}
       {mission.status === 'ARRIVING_PICKUP' && (
-        <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 p-6 shadow-xs space-y-4">
+        <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs space-y-4">
           <div className="flex items-center gap-2 text-stone-900 dark:text-white font-bold text-base">
             <MapPin className="w-5 h-5 text-orange-600" />
             Step 1: Arrive at Donor Bay & GPS Check
@@ -398,7 +398,7 @@ export default function DriverActiveRescuePage() {
       {mission.status === 'ARRIVED_AT_PICKUP' && (
         <form
           onSubmit={handleVerifyPickup}
-          className="bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 p-6 shadow-xs space-y-5"
+          className="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs space-y-5"
         >
           <div className="flex items-center justify-between border-b border-stone-100 dark:border-stone-800 pb-3">
             <div className="flex items-center gap-2 text-stone-900 dark:text-white font-bold text-base">
@@ -473,7 +473,7 @@ export default function DriverActiveRescuePage() {
 
       {/* STAGE C: IN TRANSIT TO RECEIVER */}
       {mission.status === 'IN_TRANSIT' && (
-        <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 p-6 shadow-xs space-y-4">
+        <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs space-y-4">
           <div className="flex items-center justify-between border-b border-stone-100 dark:border-stone-800 pb-3">
             <div className="flex items-center gap-2 text-stone-900 dark:text-white font-bold text-base">
               <Truck className="w-5 h-5 text-orange-600 animate-bounce" />
@@ -502,7 +502,7 @@ export default function DriverActiveRescuePage() {
       {mission.status === 'AT_STOP' && (
         <form
           onSubmit={handleCompleteDelivery}
-          className="bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 p-6 shadow-xs space-y-5"
+          className="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs space-y-5"
         >
           <div className="flex items-center justify-between border-b border-stone-100 dark:border-stone-800 pb-3">
             <div className="flex items-center gap-2 text-stone-900 dark:text-white font-bold text-base">
@@ -563,7 +563,7 @@ export default function DriverActiveRescuePage() {
             </div>
 
             {/* AI Integrity Comparison Box (PRD SECTION 44) */}
-            <div className="p-4 rounded-2xl border border-stone-200 dark:border-stone-800 bg-stone-50/50 dark:bg-stone-800/30 space-y-2">
+            <div className="p-4 rounded-2xl border border-slate-200 bg-stone-50/50 dark:bg-stone-800/30 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-stone-900 dark:text-white flex items-center gap-1.5 text-xs">
                   <Sparkles className="w-4 h-4 text-orange-600" />
@@ -600,7 +600,7 @@ export default function DriverActiveRescuePage() {
       {/* 4. MISSION COMPLETED SUCCESS MODAL */}
       {completedSuccess && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#1c2024] rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-stone-200 dark:border-stone-800 text-center space-y-5 animate-in fade-in zoom-in duration-200">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 text-center space-y-5 animate-in fade-in zoom-in duration-200">
             <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center font-black">
               <CheckCircle2 className="w-8 h-8" />
             </div>

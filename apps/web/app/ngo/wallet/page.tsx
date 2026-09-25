@@ -80,23 +80,23 @@ export default function NGOWalletPage() {
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 border-slate-200 pb-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2d6a4f]/10 text-[#2d6a4f] text-xs font-bold mb-1">
             <Wallet className="w-3.5 h-3.5" />
             <span>Financial Authority: FastAPI Ledger</span>
           </div>
-          <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             NGO Logistics Wallet
           </h1>
-          <p className="text-xs text-[#5c6068]">
+          <p className="text-xs text-slate-500">
             Surplus food is free. Logistics fares are reserved on match and settled upon verified OTP delivery.
           </p>
         </div>
 
         <button
           onClick={() => setTopupModal(true)}
-          className="px-4 py-2.5 rounded-xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] font-bold text-xs flex items-center gap-1.5 shadow-xs"
+          className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs"
         >
           <PlusCircle className="w-4 h-4" />
           <span>+ Add Funds / Top Up</span>
@@ -113,35 +113,35 @@ export default function NGOWalletPage() {
       {/* Wallet Balances Card (PRD Section 24) */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         
-        <div className="p-6 rounded-3xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-2">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] block">
+        <div className="p-6 rounded-3xl bg-white border border-slate-200 border-slate-200 shadow-xs space-y-2">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">
             AVAILABLE BALANCE
           </span>
-          <div className="text-3xl font-heading font-black text-[#2d6a4f] dark:text-[#4f9d3a]">
+          <div className="text-3xl font-bold tracking-tight text-[#2d6a4f] dark:text-[#4f9d3a]">
             ₹{wallet.availableBalance.toLocaleString()}
           </div>
-          <span className="text-[11px] text-[#5c6068] block">
+          <span className="text-[11px] text-slate-500 block">
             Ready for instant food lot reservations
           </span>
         </div>
 
-        <div className="p-6 rounded-3xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-2">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] block">
+        <div className="p-6 rounded-3xl bg-white border border-slate-200 border-slate-200 shadow-xs space-y-2">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">
             RESERVED (ON HOLD)
           </span>
-          <div className="text-3xl font-heading font-black text-amber-600">
+          <div className="text-3xl font-bold tracking-tight text-amber-600">
             ₹{wallet.reservedBalance.toLocaleString()}
           </div>
-          <span className="text-[11px] text-[#5c6068] block">
+          <span className="text-[11px] text-slate-500 block">
             Active in-transit delivery commitments
           </span>
         </div>
 
-        <div className="p-6 rounded-3xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-2">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] block">
+        <div className="p-6 rounded-3xl bg-white border border-slate-200 border-slate-200 shadow-xs space-y-2">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">
             TOTAL ASSET BALANCE
           </span>
-          <div className="text-3xl font-heading font-black text-[#1f4d36] dark:text-[#f7f1e3]">
+          <div className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             ₹{wallet.totalBalance.toLocaleString()}
           </div>
           <span className="text-[11px] text-emerald-600 font-semibold block">
@@ -152,7 +152,7 @@ export default function NGOWalletPage() {
       </div>
 
       {/* Transaction Lifecycle Rule Banner */}
-      <div className="p-4 rounded-2xl bg-[#fdfbf7] dark:bg-[#14171a] border border-[#e5dec9] dark:border-[#2d3239] text-xs text-[#5c6068] flex items-center justify-between gap-4">
+      <div className="p-4 rounded-2xl bg-white border border-slate-200 border-slate-200 text-xs text-slate-500 flex items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-[#2d6a4f] shrink-0" />
           <span>
@@ -165,19 +165,19 @@ export default function NGOWalletPage() {
       </div>
 
       {/* Transaction Ledger Table */}
-      <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs overflow-hidden">
-        <div className="p-5 border-b border-[#e5dec9] dark:border-[#2d3239] flex items-center justify-between">
-          <h2 className="text-sm font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+      <div className="bg-white rounded-3xl border border-slate-200 border-slate-200 shadow-xs overflow-hidden">
+        <div className="p-5 border-b border-slate-200 border-slate-200 flex items-center justify-between">
+          <h2 className="text-sm font-bold tracking-tight text-slate-900 dark:text-white">
             Append-Only Wallet Ledger (PRD Section 24)
           </h2>
-          <span className="text-[11px] text-[#5c6068]">
+          <span className="text-[11px] text-slate-500">
             Showing all recent debits, holds and top-ups
           </span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#f7f1e3]/60 dark:bg-[#14171a] text-[#5c6068] uppercase text-[10px] font-bold tracking-wider">
+            <thead className="bg-slate-50 bg-white text-slate-500 uppercase text-[10px] font-bold tracking-wider">
               <tr>
                 <th className="py-3 px-4">Transaction ID</th>
                 <th className="py-3 px-4">Date / Time</th>
@@ -189,20 +189,20 @@ export default function NGOWalletPage() {
             </thead>
             <tbody className="divide-y divide-[#e5dec9]/60">
               {wallet.transactions.map((tx) => (
-                <tr key={tx.id} className="hover:bg-[#fdfbf7] transition-colors">
-                  <td className="py-3 px-4 font-mono font-bold text-[#1f4d36]">
+                <tr key={tx.id} className="hover:bg-white transition-colors">
+                  <td className="py-3 px-4 font-mono font-bold text-slate-900">
                     {tx.id}
                   </td>
-                  <td className="py-3 px-4 text-[#5c6068]">
+                  <td className="py-3 px-4 text-slate-500">
                     {tx.date}
                   </td>
-                  <td className="py-3 px-4 font-semibold text-[#23262b] dark:text-[#f7f1e3]">
+                  <td className="py-3 px-4 font-semibold text-slate-900 dark:text-white">
                     {tx.type}
                   </td>
-                  <td className="py-3 px-4 text-[#5c6068]">
+                  <td className="py-3 px-4 text-slate-500">
                     {tx.description}
                   </td>
-                  <td className={`py-3 px-4 font-bold ${tx.amount > 0 ? 'text-emerald-700' : 'text-[#23262b]'}`}>
+                  <td className={`py-3 px-4 font-bold ${tx.amount > 0 ? 'text-emerald-700' : 'text-slate-900'}`}>
                     {tx.amount > 0 ? `+₹${tx.amount.toLocaleString()}` : `-₹${Math.abs(tx.amount).toLocaleString()}`}
                   </td>
                   <td className="py-3 px-4 text-right">
@@ -224,21 +224,21 @@ export default function NGOWalletPage() {
       {/* Topup Modal */}
       {topupModal && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="max-w-md w-full bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] shadow-2xl p-6 space-y-4">
-            <h3 className="text-base font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <div className="max-w-md w-full bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 space-y-4">
+            <h3 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
               Recharge Logistics Wallet
             </h3>
-            <p className="text-xs text-[#5c6068]">
+            <p className="text-xs text-slate-500">
               Add funds for transport fares. (Institutional demo recharge simulated via test gateway).
             </p>
 
             <form onSubmit={handleTopup} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-[#1f4d36] mb-1">
+                <label className="block text-xs font-bold text-slate-900 mb-1">
                   Recharge Amount (INR)
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3.5 top-2.5 text-xs font-bold text-[#5c6068]">₹</span>
+                  <span className="absolute left-3.5 top-2.5 text-xs font-bold text-slate-500">₹</span>
                   <input
                     type="number"
                     value={topupAmount}
@@ -246,7 +246,7 @@ export default function NGOWalletPage() {
                     min={500}
                     step={100}
                     required
-                    className="w-full pl-8 pr-4 py-2 rounded-xl border border-[#e5dec9] text-xs font-bold"
+                    className="w-full pl-8 pr-4 py-2 rounded-xl border border-slate-200 text-xs font-bold"
                   />
                 </div>
               </div>
@@ -257,7 +257,7 @@ export default function NGOWalletPage() {
                     key={amt}
                     type="button"
                     onClick={() => setTopupAmount(String(amt))}
-                    className="flex-1 py-1.5 rounded-lg border border-[#e5dec9] text-xs font-semibold hover:bg-gray-50"
+                    className="flex-1 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold hover:bg-gray-50"
                   >
                     +₹{amt}
                   </button>
@@ -268,13 +268,13 @@ export default function NGOWalletPage() {
                 <button
                   type="button"
                   onClick={() => setTopupModal(false)}
-                  className="px-4 py-2 rounded-xl border border-[#e5dec9] text-xs font-bold text-[#5c6068]"
+                  className="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-500"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-[#2d6a4f] text-[#f7f1e3] text-xs font-bold hover:bg-[#1b4332]"
+                  className="px-5 py-2 rounded-xl bg-[#2d6a4f] text-white text-xs font-bold hover:bg-emerald-700"
                 >
                   Confirm Deposit
                 </button>

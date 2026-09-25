@@ -55,7 +55,7 @@ export default function DonorNotificationsPage() {
       case 'ACHIEVEMENT':
         return <Award className="w-4 h-4 text-amber-500" />;
       default:
-        return <Bell className="w-4 h-4 text-[#1f4d36]" />;
+        return <Bell className="w-4 h-4 text-slate-900" />;
     }
   };
 
@@ -65,12 +65,12 @@ export default function DonorNotificationsPage() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-16">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 border-slate-200 pb-4">
         <div>
-          <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             Notification & Dispatch Log
           </h1>
-          <p className="text-xs text-[#5c6068]">
+          <p className="text-xs text-slate-500">
             Real-time logistical milestones, driver arrivals, and mission deadline warnings
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function DonorNotificationsPage() {
           onClick={() =>
             setNotifications((prev) => prev.map((n) => ({ ...n, is_read: true })))
           }
-          className="text-xs font-bold text-[#1f4d36] dark:text-[#4f9d3a] hover:underline"
+          className="text-xs font-bold text-slate-900 dark:text-[#4f9d3a] hover:underline"
         >
           Mark all as read
         </button>
@@ -93,8 +93,8 @@ export default function DonorNotificationsPage() {
             onClick={() => setFilterCategory(c)}
             className={`px-3 py-1.5 rounded-xl transition-all ${
               filterCategory === c
-                ? 'bg-[#1f4d36] text-white font-bold'
-                : 'bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] text-[#5c6068]'
+                ? 'bg-emerald-600 text-white font-bold'
+                : 'bg-white border border-slate-200 border-slate-200 text-slate-500'
             }`}
           >
             {c}
@@ -109,8 +109,8 @@ export default function DonorNotificationsPage() {
             key={item.id}
             className={`p-5 rounded-2xl border transition-all flex items-start justify-between gap-4 ${
               item.is_read
-                ? 'bg-white/80 dark:bg-[#1c2024]/60 border-[#e5dec9] dark:border-[#2d3239] opacity-80'
-                : 'bg-white dark:bg-[#1c2024] border-[#1f4d36] dark:border-emerald-700 shadow-xs'
+                ? 'bg-white/80 bg-white/60 border-slate-200 border-slate-200 opacity-80'
+                : 'bg-white border-[#1f4d36] dark:border-emerald-700 shadow-xs'
             }`}
           >
             <div className="flex items-start gap-3">
@@ -120,17 +120,17 @@ export default function DonorNotificationsPage() {
 
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-xs text-[#23262b] dark:text-[#f7f1e3]">
+                  <span className="font-bold text-xs text-slate-900 dark:text-white">
                     {item.title}
                   </span>
                   {!item.is_read && (
                     <span className="w-2 h-2 rounded-full bg-[#e0662b]" />
                   )}
                 </div>
-                <p className="text-xs text-[#5c6068] leading-relaxed">
+                <p className="text-xs text-slate-500 leading-relaxed">
                   {item.message}
                 </p>
-                <span className="text-[10px] text-[#5c6068] block">
+                <span className="text-[10px] text-slate-500 block">
                   {new Date(item.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </span>
               </div>
@@ -140,7 +140,7 @@ export default function DonorNotificationsPage() {
               {item.action_url && (
                 <a
                   href={item.action_url}
-                  className="px-3 py-1 rounded-lg border border-[#1f4d36] text-[#1f4d36] dark:text-[#4f9d3a] hover:bg-[#1f4d36] hover:text-white text-xs font-semibold flex items-center gap-1"
+                  className="px-3 py-1 rounded-lg border border-[#1f4d36] text-slate-900 dark:text-[#4f9d3a] hover:bg-emerald-600 hover:text-white text-xs font-semibold flex items-center gap-1"
                 >
                   <span>Open</span>
                   <ArrowRight className="w-3 h-3" />
@@ -149,7 +149,7 @@ export default function DonorNotificationsPage() {
               {!item.is_read && (
                 <button
                   onClick={() => markAsRead(item.id)}
-                  className="p-1 rounded-lg text-[#5c6068] hover:text-[#23262b]"
+                  className="p-1 rounded-lg text-slate-500 hover:text-slate-900"
                   title="Mark as read"
                 >
                   <Check className="w-4 h-4" />

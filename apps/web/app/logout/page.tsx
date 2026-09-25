@@ -33,18 +33,18 @@ export default function LogoutPage() {
   }, [supabase]);
 
   return (
-    <main className="min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-8 bg-[#fdfbf7] dark:bg-[#121417] text-[#23262b] dark:text-[#f7f1e3]">
+    <main className="min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-8 bg-white dark:bg-[#121417] text-slate-900 dark:text-white">
       {/* Top Header */}
       <header className="max-w-5xl w-full mx-auto flex items-center justify-between py-4">
         <Link href="/login" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-2xl bg-[#1f4d36] text-[#f7f1e3] flex items-center justify-center font-heading text-2xl font-bold shadow-md group-hover:scale-105 transition-transform">
+          <div className="w-11 h-11 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-semibold tracking-tight text-2xl font-bold shadow-md group-hover:scale-105 transition-transform">
             अ
           </div>
           <div>
-            <span className="font-heading font-bold text-2xl tracking-tight text-[#1f4d36] dark:text-[#f7f1e3]">
+            <span className="font-bold tracking-tight text-2xl tracking-tight text-slate-900 dark:text-white">
               ANNASETU
             </span>
-            <span className="text-[11px] font-sans font-semibold text-[#5c6068] dark:text-[#a0a5ad] block -mt-1 tracking-wide">
+            <span className="text-[11px] font-sans font-semibold text-slate-500 dark:text-slate-400 block -mt-1 tracking-wide">
               Surplus Food · Shared With Purpose · Real Impact
             </span>
           </div>
@@ -53,7 +53,7 @@ export default function LogoutPage() {
 
       {/* Center Signout Confirmation Card */}
       <div className="max-w-2xl w-full mx-auto my-auto py-8 space-y-8 animate-in fade-in zoom-in-95 duration-200">
-        <div className="bg-white dark:bg-[#1c2024] rounded-3xl border-2 border-[#e5dec9] dark:border-[#2d3239] p-8 sm:p-10 shadow-xl text-center space-y-6">
+        <div className="bg-white rounded-3xl border-2 border-slate-200 border-slate-200 p-8 sm:p-10 shadow-xl text-center space-y-6">
           <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 mx-auto flex items-center justify-center font-black">
             <CheckCircle2 className="w-8 h-8" />
           </div>
@@ -63,10 +63,10 @@ export default function LogoutPage() {
               <ShieldCheck className="w-3.5 h-3.5" />
               Session Terminated Securely
             </span>
-            <h1 className="text-2xl sm:text-3xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
               Signed Out Successfully
             </h1>
-            <p className="text-xs sm:text-sm text-[#5c6068] dark:text-[#a0a5ad] max-w-md mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
               Your active dashboard session has ended. To resume rescue operations, choose an operational role below:
             </p>
           </div>
@@ -76,18 +76,18 @@ export default function LogoutPage() {
             {/* Donor */}
             <Link
               href="/login?role=donor"
-              className="p-4 rounded-2xl border border-[#e5dec9] dark:border-[#2d3239] bg-[#fbf9f4] dark:bg-[#14171a] hover:border-[#1f4d36] dark:hover:border-emerald-600 hover:shadow-md transition group flex flex-col justify-between"
+              className="p-4 rounded-2xl border border-slate-200 border-slate-200 bg-slate-50 bg-white hover:border-[#1f4d36] dark:hover:border-emerald-600 hover:shadow-md transition group flex flex-col justify-between"
             >
               <div>
                 <span className="text-2xl block mb-2">🍽️</span>
-                <span className="font-heading font-bold text-sm text-[#1f4d36] dark:text-[#f7f1e3] block group-hover:text-emerald-600">
+                <span className="font-bold tracking-tight text-sm text-slate-900 dark:text-white block group-hover:text-emerald-600">
                   Donor
                 </span>
-                <span className="text-[11px] text-[#5c6068] dark:text-[#a0a5ad] mt-1 block">
+                <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">
                   Hotels & Banquets
                 </span>
               </div>
-              <span className="text-[10px] font-bold text-[#1f4d36] dark:text-emerald-400 mt-4 flex items-center gap-1">
+              <span className="text-[10px] font-bold text-slate-900 dark:text-emerald-400 mt-4 flex items-center gap-1">
                 Log in &rarr;
               </span>
             </Link>
@@ -95,14 +95,14 @@ export default function LogoutPage() {
             {/* NGO */}
             <Link
               href="/login?role=ngo"
-              className="p-4 rounded-2xl border border-[#e5dec9] dark:border-[#2d3239] bg-[#fbf9f4] dark:bg-[#14171a] hover:border-[#2d6a4f] dark:hover:border-emerald-600 hover:shadow-md transition group flex flex-col justify-between"
+              className="p-4 rounded-2xl border border-slate-200 border-slate-200 bg-slate-50 bg-white hover:border-[#2d6a4f] dark:hover:border-emerald-600 hover:shadow-md transition group flex flex-col justify-between"
             >
               <div>
                 <span className="text-2xl block mb-2">🏠</span>
-                <span className="font-heading font-bold text-sm text-[#1f4d36] dark:text-[#f7f1e3] block group-hover:text-emerald-600">
+                <span className="font-bold tracking-tight text-sm text-slate-900 dark:text-white block group-hover:text-emerald-600">
                   NGO / Receiver
                 </span>
-                <span className="text-[11px] text-[#5c6068] dark:text-[#a0a5ad] mt-1 block">
+                <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">
                   Shelters & Trusts
                 </span>
               </div>
@@ -114,14 +114,14 @@ export default function LogoutPage() {
             {/* Driver */}
             <Link
               href="/login?role=driver"
-              className="p-4 rounded-2xl border border-[#e5dec9] dark:border-[#2d3239] bg-[#fbf9f4] dark:bg-[#14171a] hover:border-[#e0662b] dark:hover:border-orange-500 hover:shadow-md transition group flex flex-col justify-between"
+              className="p-4 rounded-2xl border border-slate-200 border-slate-200 bg-slate-50 bg-white hover:border-[#e0662b] dark:hover:border-orange-500 hover:shadow-md transition group flex flex-col justify-between"
             >
               <div>
                 <span className="text-2xl block mb-2">🚚</span>
-                <span className="font-heading font-bold text-sm text-[#1f4d36] dark:text-[#f7f1e3] block group-hover:text-orange-500">
+                <span className="font-bold tracking-tight text-sm text-slate-900 dark:text-white block group-hover:text-orange-500">
                   Delivery Partner
                 </span>
-                <span className="text-[11px] text-[#5c6068] dark:text-[#a0a5ad] mt-1 block">
+                <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">
                   Transit & Dispatch
                 </span>
               </div>
@@ -131,10 +131,10 @@ export default function LogoutPage() {
             </Link>
           </div>
 
-          <div className="pt-4 border-t border-[#e5dec9] dark:border-[#2d3239]">
+          <div className="pt-4 border-t border-slate-200 border-slate-200">
             <Link
               href="/login"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#1f4d36] hover:bg-[#163827] text-[#f7f1e3] font-bold text-xs shadow-md transition"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition"
             >
               <span>Return to Unified Login Portal</span>
               <ArrowRight className="w-4 h-4" />
@@ -143,7 +143,7 @@ export default function LogoutPage() {
         </div>
       </div>
 
-      <footer className="max-w-5xl w-full mx-auto py-4 text-center text-xs text-[#5c6068] dark:text-[#a0a5ad]">
+      <footer className="max-w-5xl w-full mx-auto py-4 text-center text-xs text-slate-500 dark:text-slate-400">
         AnnaSetu Platform · Unified Role Security System
       </footer>
     </main>

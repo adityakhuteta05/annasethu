@@ -1,12 +1,6 @@
 import type { Metadata } from 'next';
-import { Fraunces, DM_Sans } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
 import './globals.css';
-
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-fraunces',
-  display: 'swap',
-});
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -15,9 +9,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'ANNASETU — Surplus Food. Shared With Purpose. Real Impact.',
+  title: 'AnnaSetu — Surplus Food Rescue Network',
   description:
-    'A verified, need-driven surplus-food rescue and delivery marketplace connecting verified food donors with verified NGO needs.',
+    'A verified community platform connecting restaurants, hotels, and food donors with verified NGOs and volunteer delivery partners to fight hunger and food waste.',
 };
 
 export default function RootLayout({
@@ -26,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${dmSans.variable}`}>
-      <body className="min-h-screen bg-[#f7f1e3] text-[#23262b] dark:bg-[#14171a] dark:text-[#f7f1e3] transition-colors selection:bg-[#1f4d36] selection:text-white">
+    <html lang="en" className={dmSans.variable}>
+      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased selection:bg-emerald-600 selection:text-white">
         {children}
       </body>
     </html>

@@ -141,20 +141,20 @@ export default function PostSurplusFoodPage() {
       <div className="space-y-1">
         <a
           href="/donor/dashboard"
-          className="text-xs font-semibold text-[#5c6068] hover:text-[#1f4d36] flex items-center gap-1 inline-flex"
+          className="text-xs font-semibold text-slate-500 hover:text-slate-900 flex items-center gap-1 inline-flex"
         >
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Dashboard
         </a>
-        <h1 className="text-2xl sm:text-3xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
           Post Surplus Food
         </h1>
-        <p className="text-xs text-[#5c6068]">
+        <p className="text-xs text-slate-500">
           Declare edible food for algorithmic matching with nearby verified hunger-relief centers. Complete in under 60 seconds.
         </p>
       </div>
 
       {/* 6-Step Visual Progress Bar */}
-      <div className="flex items-center justify-between gap-1 p-2 bg-white dark:bg-[#1c2024] rounded-2xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs">
+      <div className="flex items-center justify-between gap-1 p-2 bg-white rounded-2xl border border-slate-200 border-slate-200 shadow-xs">
         {[
           { step: 1, label: 'Food' },
           { step: 2, label: 'Timing' },
@@ -167,10 +167,10 @@ export default function PostSurplusFoodPage() {
             key={s.step}
             className={`flex-1 text-center py-2 px-1 rounded-xl text-xs font-semibold transition-all ${
               currentStep === s.step
-                ? 'bg-[#1f4d36] text-[#f7f1e3] shadow-xs font-bold'
+                ? 'bg-emerald-600 text-white shadow-xs font-bold'
                 : currentStep > s.step
                 ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300'
-                : 'text-[#5c6068] opacity-60'
+                : 'text-slate-500 opacity-60'
             }`}
           >
             <span className="hidden sm:inline">Step {s.step}: </span>
@@ -188,40 +188,40 @@ export default function PostSurplusFoodPage() {
       )}
 
       {/* Step Container Card */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-6">
+      <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 border-slate-200 shadow-xs space-y-6">
         
         {/* STEP 1: FOOD DETAILS */}
         {currentStep === 1 && (
           <div className="space-y-5">
             <div className="border-b border-gray-100 dark:border-gray-800 pb-3">
-              <h2 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                 Step 1 — Food & Quantity
               </h2>
-              <span className="text-xs text-[#5c6068]">Identify category and net weight</span>
+              <span className="text-xs text-slate-500">Identify category and net weight</span>
             </div>
 
             <div>
-              <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+              <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                 Food Title / Description *
               </label>
               <input
                 type="text"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-[#1f4d36]"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 placeholder="e.g. Surplus Dal Makhani & Jeera Rice"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+                <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                   Food Category *
                 </label>
                 <select
                   value={formData.food_category}
                   onChange={(e) => setFormData({ ...formData, food_category: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-[#1f4d36]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 >
                   <option value="Prepared Meal">Prepared Meal (Cooked Banquet/Restaurant)</option>
                   <option value="Rice">Grains, Rice & Pulao</option>
@@ -233,7 +233,7 @@ export default function PostSurplusFoodPage() {
               </div>
 
               <div>
-                <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+                <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                   Dietary Classification *
                 </label>
                 <div className="grid grid-cols-2 gap-2 pt-0.5">
@@ -243,7 +243,7 @@ export default function PostSurplusFoodPage() {
                     className={`py-2 px-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 ${
                       formData.dietary_type === 'VEG'
                         ? 'border-emerald-600 bg-emerald-50 text-emerald-800'
-                        : 'border-[#e5dec9] text-[#5c6068]'
+                        : 'border-slate-200 text-slate-500'
                     }`}
                   >
                     <span className="w-2 h-2 rounded-full bg-emerald-600" />
@@ -255,7 +255,7 @@ export default function PostSurplusFoodPage() {
                     className={`py-2 px-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 ${
                       formData.dietary_type === 'NON_VEG'
                         ? 'border-red-600 bg-red-50 text-red-800'
-                        : 'border-[#e5dec9] text-[#5c6068]'
+                        : 'border-slate-200 text-slate-500'
                     }`}
                   >
                     <span className="w-2 h-2 rounded-full bg-red-600" />
@@ -268,7 +268,7 @@ export default function PostSurplusFoodPage() {
             {/* Quantity and Minimum Rule */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-end">
               <div className="sm:col-span-2">
-                <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+                <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                   Estimated Quantity * (Minimum 5 kg)
                 </label>
                 <div className="flex gap-2">
@@ -278,12 +278,12 @@ export default function PostSurplusFoodPage() {
                     step="0.5"
                     value={formData.quantity}
                     onChange={(e) => setFormData({ ...formData, quantity: Number(e.target.value) })}
-                    className="flex-1 px-4 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#1f4d36]"
+                    className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                   <select
                     value={formData.unit}
                     onChange={(e) => setFormData({ ...formData, unit: e.target.value })}
-                    className="w-28 px-3 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm font-semibold"
+                    className="w-28 px-3 py-2.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm font-semibold"
                   >
                     <option value="kg">kg</option>
                     <option value="grams">grams</option>
@@ -295,7 +295,7 @@ export default function PostSurplusFoodPage() {
               </div>
 
               <div className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-xs">
-                <span className="text-[11px] text-[#5c6068] block">Normalized Weight:</span>
+                <span className="text-[11px] text-slate-500 block">Normalized Weight:</span>
                 <span className={`font-mono font-bold text-sm ${isQuantityValid ? 'text-emerald-700' : 'text-rose-600'}`}>
                   {normalizedKg.toFixed(1)} kg {isQuantityValid ? '✓ Valid' : '✗ Under 5 kg'}
                 </span>
@@ -315,21 +315,21 @@ export default function PostSurplusFoodPage() {
         {currentStep === 2 && (
           <div className="space-y-5">
             <div className="border-b border-gray-100 dark:border-gray-800 pb-3">
-              <h2 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                 Step 2 — Timings & Rescue Window
               </h2>
-              <span className="text-xs text-[#5c6068]">Food preparation age and safe consumption deadline</span>
+              <span className="text-xs text-slate-500">Food preparation age and safe consumption deadline</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+                <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                   When was this prepared?
                 </label>
                 <select
                   value={formData.prepared_hours_ago}
                   onChange={(e) => setFormData({ ...formData, prepared_hours_ago: Number(e.target.value) })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm"
                 >
                   <option value={0.5}>30 minutes ago (Fresh out of service)</option>
                   <option value={1.0}>1 hour ago (Standard lunch/dinner buffer)</option>
@@ -339,13 +339,13 @@ export default function PostSurplusFoodPage() {
               </div>
 
               <div>
-                <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+                <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                   Safe Operational Deadline
                 </label>
                 <select
                   value={formData.expiry_hours_from_now}
                   onChange={(e) => setFormData({ ...formData, expiry_hours_from_now: Number(e.target.value) })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm"
                 >
                   <option value={2.0}>In 2 hours (High urgency)</option>
                   <option value={3.5}>In 3.5 hours</option>
@@ -360,10 +360,10 @@ export default function PostSurplusFoodPage() {
               <span className="text-xs font-bold text-emerald-900 dark:text-emerald-200 uppercase tracking-wider block">
                 Calculated Rescue Window:
               </span>
-              <div className="text-2xl font-mono font-bold text-[#1f4d36] dark:text-[#4f9d3a]">
+              <div className="text-2xl font-mono font-bold text-slate-900 dark:text-[#4f9d3a]">
                 {String(Math.floor(formData.expiry_hours_from_now)).padStart(2, '0')}:00:00 Remaining
               </div>
-              <p className="text-xs text-[#5c6068] dark:text-emerald-300/80">
+              <p className="text-xs text-slate-500 dark:text-emerald-300/80">
                 AnnaSetu algorithms will reserve a 45-minute safety buffer for transit and quality inspection prior to handoff.
               </p>
             </div>
@@ -374,21 +374,21 @@ export default function PostSurplusFoodPage() {
         {currentStep === 3 && (
           <div className="space-y-5">
             <div className="border-b border-gray-100 dark:border-gray-800 pb-3">
-              <h2 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                 Step 3 — Storage & Packaging
               </h2>
-              <span className="text-xs text-[#5c6068]">Food safety preservation parameters</span>
+              <span className="text-xs text-slate-500">Food safety preservation parameters</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+                <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                   Storage Condition *
                 </label>
                 <select
                   value={formData.storage_condition}
                   onChange={(e) => setFormData({ ...formData, storage_condition: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm"
                 >
                   <option value="Thermal hot-case (>65°C)">Thermal hot-case (&gt;65°C maintained)</option>
                   <option value="Refrigerated (<5°C)">Refrigerated (&lt;5°C chill)</option>
@@ -398,13 +398,13 @@ export default function PostSurplusFoodPage() {
               </div>
 
               <div>
-                <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+                <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                   Packaging Type *
                 </label>
                 <select
                   value={formData.packaging_type}
                   onChange={(e) => setFormData({ ...formData, packaging_type: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm"
                 >
                   <option value="Food-grade sealed containers">Food-grade sealed stainless / thermal carriers</option>
                   <option value="Individual tamper-sealed CPET trays">Individual tamper-sealed CPET trays</option>
@@ -415,27 +415,27 @@ export default function PostSurplusFoodPage() {
             </div>
 
             <div>
-              <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+              <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                 Known Allergens (Optional)
               </label>
               <input
                 type="text"
                 value={formData.allergens}
                 onChange={(e) => setFormData({ ...formData, allergens: e.target.value })}
-                className="w-full px-4 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm"
+                className="w-full px-4 py-2 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm"
                 placeholder="e.g. Peanuts, Gluten, Dairy"
               />
             </div>
 
             <div>
-              <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+              <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                 Special Handling Instructions
               </label>
               <input
                 type="text"
                 value={formData.special_handling}
                 onChange={(e) => setFormData({ ...formData, special_handling: e.target.value })}
-                className="w-full px-4 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm"
+                className="w-full px-4 py-2 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm"
                 placeholder="e.g. Keep upright, do not stack more than 2 boxes"
               />
             </div>
@@ -446,14 +446,14 @@ export default function PostSurplusFoodPage() {
         {currentStep === 4 && (
           <div className="space-y-5">
             <div className="border-b border-gray-100 dark:border-gray-800 pb-3">
-              <h2 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                 Step 4 — Food Image & Visual Verification
               </h2>
-              <span className="text-xs text-[#5c6068]">Assists receiving shelters in meal distribution planning</span>
+              <span className="text-xs text-slate-500">Assists receiving shelters in meal distribution planning</span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-5 items-center">
-              <div className="w-full sm:w-48 h-36 rounded-2xl overflow-hidden border-2 border-dashed border-[#e5dec9] dark:border-[#2d3239] bg-gray-50 dark:bg-gray-800 flex items-center justify-center relative">
+              <div className="w-full sm:w-48 h-36 rounded-2xl overflow-hidden border-2 border-dashed border-slate-200 border-slate-200 bg-gray-50 dark:bg-gray-800 flex items-center justify-center relative">
                 {formData.image_url ? (
                   <img
                     src={formData.image_url}
@@ -461,7 +461,7 @@ export default function PostSurplusFoodPage() {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="text-center p-3 text-xs text-[#5c6068]">
+                  <div className="text-center p-3 text-xs text-slate-500">
                     <Camera className="w-6 h-6 mx-auto mb-1 text-gray-400" />
                     <span>Upload photo</span>
                   </div>
@@ -474,13 +474,13 @@ export default function PostSurplusFoodPage() {
                   type="text"
                   value={formData.image_url}
                   onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-xs"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-xs"
                   placeholder="Image URL or camera upload"
                 />
                 <button
                   type="button"
                   onClick={triggerAiInspection}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#1f4d36] text-[#1f4d36] dark:text-[#4f9d3a] hover:bg-[#1f4d36] hover:text-white font-semibold transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#1f4d36] text-slate-900 dark:text-[#4f9d3a] hover:bg-emerald-600 hover:text-white font-semibold transition-colors"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>{aiAnalyzing ? 'Analyzing via Groq...' : 'Re-run AI Food Inspection'}</span>
@@ -494,7 +494,7 @@ export default function PostSurplusFoodPage() {
                 <Sparkles className="w-4 h-4 text-amber-600" />
                 <span>ADVISORY AI SUGGESTION</span>
               </div>
-              <p className="text-xs text-[#5c6068] dark:text-amber-300/90 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-amber-300/90 leading-relaxed">
                 "{aiSuggestion}"
               </p>
               <div className="flex items-center gap-2 pt-1">
@@ -512,12 +512,12 @@ export default function PostSurplusFoodPage() {
                 <button
                   type="button"
                   onClick={() => setAiAccepted(false)}
-                  className="px-3 py-1 rounded-lg text-xs font-semibold text-[#5c6068] hover:text-[#23262b]"
+                  className="px-3 py-1 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-900"
                 >
                   Keep My Input (Sovereign Truth)
                 </button>
               </div>
-              <span className="text-[10px] text-[#5c6068] block">
+              <span className="text-[10px] text-slate-500 block">
                 Rule: AnnaSetu AI operates in advisory mode only. Donor structured input is authoritative.
               </span>
             </div>
@@ -528,39 +528,39 @@ export default function PostSurplusFoodPage() {
         {currentStep === 5 && (
           <div className="space-y-5">
             <div className="border-b border-gray-100 dark:border-gray-800 pb-3">
-              <h2 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                 Step 5 — Pickup Coordinates & Access
               </h2>
-              <span className="text-xs text-[#5c6068]">Driver dock routing and security gate clearance</span>
+              <span className="text-xs text-slate-500">Driver dock routing and security gate clearance</span>
             </div>
 
             <div>
-              <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+              <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                 Pickup Address *
               </label>
               <input
                 type="text"
                 value={formData.pickup_address}
                 onChange={(e) => setFormData({ ...formData, pickup_address: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-sm"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-sm"
               />
             </div>
 
             <div>
-              <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+              <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
                 Specific Dock / Kitchen Instructions
               </label>
               <textarea
                 rows={2}
                 value={formData.pickup_instructions}
                 onChange={(e) => setFormData({ ...formData, pickup_instructions: e.target.value })}
-                className="w-full px-4 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-xs"
+                className="w-full px-4 py-2 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-xs"
                 placeholder="Gate code, bay number, duty chef phone"
               />
             </div>
 
             <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/40 border border-gray-200 dark:border-gray-800 flex items-center justify-between text-xs">
-              <div className="flex items-center gap-2 text-[#5c6068]">
+              <div className="flex items-center gap-2 text-slate-500">
                 <MapPin className="w-4 h-4 text-emerald-600" />
                 <span>Geofence GPS Lock: {formData.latitude}, {formData.longitude} (Delhi NCR)</span>
               </div>
@@ -573,33 +573,33 @@ export default function PostSurplusFoodPage() {
         {currentStep === 6 && (
           <div className="space-y-5">
             <div className="border-b border-gray-100 dark:border-gray-800 pb-3">
-              <h2 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                 Step 6 — Final Review & Dispatch
               </h2>
-              <span className="text-xs text-[#5c6068]">Confirm food parameters before algorithmic matching</span>
+              <span className="text-xs text-slate-500">Confirm food parameters before algorithmic matching</span>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#f7f1e3]/60 dark:bg-gray-800/40 border border-[#e5dec9] dark:border-gray-800 space-y-3 text-xs">
+            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-gray-800/40 border border-slate-200 dark:border-gray-800 space-y-3 text-xs">
               <div className="flex justify-between py-1 border-b border-gray-200 dark:border-gray-700">
-                <span className="text-[#5c6068]">Food:</span>
-                <span className="font-bold text-[#23262b] dark:text-[#f7f1e3]">{normalizedKg} kg {formData.title}</span>
+                <span className="text-slate-500">Food:</span>
+                <span className="font-bold text-slate-900 dark:text-white">{normalizedKg} kg {formData.title}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-gray-200 dark:border-gray-700">
-                <span className="text-[#5c6068]">Category / Diet:</span>
-                <span className="font-semibold text-[#1f4d36] dark:text-[#4f9d3a]">
+                <span className="text-slate-500">Category / Diet:</span>
+                <span className="font-semibold text-slate-900 dark:text-[#4f9d3a]">
                   {formData.food_category} ({formData.dietary_type})
                 </span>
               </div>
               <div className="flex justify-between py-1 border-b border-gray-200 dark:border-gray-700">
-                <span className="text-[#5c6068]">Storage & Seal:</span>
+                <span className="text-slate-500">Storage & Seal:</span>
                 <span className="font-semibold">{formData.storage_condition} · {formData.packaging_type}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-gray-200 dark:border-gray-700">
-                <span className="text-[#5c6068]">Pickup Location:</span>
+                <span className="text-slate-500">Pickup Location:</span>
                 <span className="font-semibold text-right max-w-xs">{formData.pickup_address}</span>
               </div>
               <div className="flex justify-between py-1">
-                <span className="text-[#5c6068]">Estimated Rescue Window:</span>
+                <span className="text-slate-500">Estimated Rescue Window:</span>
                 <span className="font-mono font-bold text-[#e0662b]">{formData.expiry_hours_from_now} hours</span>
               </div>
             </div>
@@ -622,7 +622,7 @@ export default function PostSurplusFoodPage() {
             <button
               type="button"
               onClick={handlePrev}
-              className="px-5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-semibold text-[#5c6068] hover:bg-gray-50 flex items-center gap-1"
+              className="px-5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-semibold text-slate-500 hover:bg-gray-50 flex items-center gap-1"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back
             </button>
@@ -632,7 +632,7 @@ export default function PostSurplusFoodPage() {
             <button
               type="button"
               onClick={handleNext}
-              className="px-6 py-2.5 rounded-xl bg-[#1f4d36] text-[#f7f1e3] text-xs font-bold hover:bg-[#163827] flex items-center gap-1.5 shadow-xs"
+              className="px-6 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 flex items-center gap-1.5 shadow-xs"
             >
               <span>Next Step</span>
               <ArrowRight className="w-3.5 h-3.5" />

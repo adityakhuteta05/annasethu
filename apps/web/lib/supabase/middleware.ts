@@ -44,17 +44,25 @@ export async function updateSession(request: NextRequest) {
     path.startsWith('/admin') ||
     path.startsWith('/verification');
 
+  function redirectWithCookies(url: URL) {
+    const res = NextResponse.redirect(url);
+    supabaseResponse.cookies.getAll().forEach((cookie) => {
+      res.cookies.set(cookie.name, cookie.value, cookie);
+    });
+    return res;
+  }
+
   // If unauthenticated user tries to access protected route -> redirect to /login
   if (!user && isProtectedRoute) {
     const url = request.nextUrl.clone();
     url.pathname = '/login';
     url.searchParams.set('redirectTo', path);
-    return NextResponse.redirect(url);
+    return redirectWithCookies(url);
   }
 
   // If authenticated user
   if (user) {
-    // Read authoritative role from profiles table, NOT from client-editable user_metadata
+    // Read authoritative role from user_metadata first, fallback to profiles table
     let role = user.user_metadata?.role;
     let isActive = true;
 
@@ -66,11 +74,11 @@ export async function updateSession(request: NextRequest) {
         .single();
 
       if (profile) {
-        role = profile.role;
-        isActive = profile.is_active;
+        role = profile.role || role;
+        isActive = profile.is_active ?? true;
       }
     } catch {
-      // Fallback if query fails
+      // Fallback to metadata if DB lookup fails
     }
 
     // Check account active status: deactivated accounts rejected
@@ -78,11 +86,11 @@ export async function updateSession(request: NextRequest) {
       const url = request.nextUrl.clone();
       url.pathname = '/login';
       url.searchParams.set('error', 'Account is deactivated. Please contact support.');
-      return NextResponse.redirect(url);
+      return redirectWithCookies(url);
     }
 
     // Normalized role string
-    const normalizedRole = (role || '').toUpperCase();
+    const normalizedRole = (role || 'DONOR').toUpperCase();
 
     // Map role to default destination
     const roleRoutes: Record<string, string> = {
@@ -98,32 +106,32 @@ export async function updateSession(request: NextRequest) {
       const dest = roleRoutes[normalizedRole] || '/donor/dashboard';
       const url = request.nextUrl.clone();
       url.pathname = dest;
-      return NextResponse.redirect(url);
+      return redirectWithCookies(url);
     }
 
     // Cross-role protection
     if (path.startsWith('/donor') && normalizedRole !== 'DONOR') {
       const url = request.nextUrl.clone();
       url.pathname = roleRoutes[normalizedRole] || '/login';
-      return NextResponse.redirect(url);
+      return redirectWithCookies(url);
     }
 
     if ((path.startsWith('/receiver') || path.startsWith('/ngo')) && normalizedRole !== 'NGO' && normalizedRole !== 'RECEIVER') {
       const url = request.nextUrl.clone();
       url.pathname = roleRoutes[normalizedRole] || '/login';
-      return NextResponse.redirect(url);
+      return redirectWithCookies(url);
     }
 
     if (path.startsWith('/driver') && normalizedRole !== 'DRIVER') {
       const url = request.nextUrl.clone();
       url.pathname = roleRoutes[normalizedRole] || '/login';
-      return NextResponse.redirect(url);
+      return redirectWithCookies(url);
     }
 
     if (path.startsWith('/admin') && normalizedRole !== 'ADMIN') {
       const url = request.nextUrl.clone();
       url.pathname = roleRoutes[normalizedRole] || '/login';
-      return NextResponse.redirect(url);
+      return redirectWithCookies(url);
     }
   }
 

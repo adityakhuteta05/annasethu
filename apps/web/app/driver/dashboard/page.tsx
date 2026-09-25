@@ -218,7 +218,7 @@ export default function DriverDashboardPage() {
         </div>
       ) : (
         /* Standby Hero if no active mission */
-        <div className="bg-white dark:bg-[#1c2024] rounded-3xl p-6 sm:p-8 border border-stone-200 dark:border-stone-800 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1">
             <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
               ● Ready for Next Mission
@@ -252,7 +252,7 @@ export default function DriverDashboardPage() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {/* Today's Deliveries */}
-          <div className="bg-white dark:bg-[#1c2024] p-5 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-xs">
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
             <div className="flex items-center justify-between text-stone-500">
               <span className="text-xs font-bold uppercase tracking-wider">Deliveries</span>
               <Package className="w-4 h-4 text-orange-600" />
@@ -269,7 +269,7 @@ export default function DriverDashboardPage() {
           </div>
 
           {/* Today's Earnings */}
-          <div className="bg-white dark:bg-[#1c2024] p-5 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-xs">
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
             <div className="flex items-center justify-between text-stone-500">
               <span className="text-xs font-bold uppercase tracking-wider">Earnings</span>
               <IndianRupee className="w-4 h-4 text-emerald-600" />
@@ -283,7 +283,7 @@ export default function DriverDashboardPage() {
           </div>
 
           {/* Food Transported Today */}
-          <div className="bg-white dark:bg-[#1c2024] p-5 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-xs">
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
             <div className="flex items-center justify-between text-stone-500">
               <span className="text-xs font-bold uppercase tracking-wider">Food Rescued</span>
               <Truck className="w-4 h-4 text-blue-600" />
@@ -298,7 +298,7 @@ export default function DriverDashboardPage() {
           </div>
 
           {/* Duty Status */}
-          <div className="bg-white dark:bg-[#1c2024] p-5 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-xs">
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
             <div className="flex items-center justify-between text-stone-500">
               <span className="text-xs font-bold uppercase tracking-wider">Duty Status</span>
               <ShieldCheck className="w-4 h-4 text-purple-600" />
@@ -314,7 +314,7 @@ export default function DriverDashboardPage() {
       </div>
 
       {/* 3. MONTHLY LIFETIME STATS (PRD SECTION 33) */}
-      <div className="bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs">
+      <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
         <h3 className="text-sm font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-4">
           This Month&apos;s Impact & Summary
         </h3>
@@ -350,7 +350,7 @@ export default function DriverDashboardPage() {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         <Link
           href="/driver/jobs"
-          className="p-4 rounded-2xl bg-white dark:bg-[#1c2024] border border-stone-200 dark:border-stone-800 hover:border-orange-500 transition shadow-xs flex items-center justify-between group"
+          className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-orange-500 transition shadow-xs flex items-center justify-between group"
         >
           <div>
             <span className="text-xs font-bold text-stone-900 dark:text-white block group-hover:text-orange-600">
@@ -363,7 +363,7 @@ export default function DriverDashboardPage() {
 
         <Link
           href="/driver/earnings"
-          className="p-4 rounded-2xl bg-white dark:bg-[#1c2024] border border-stone-200 dark:border-stone-800 hover:border-orange-500 transition shadow-xs flex items-center justify-between group"
+          className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-orange-500 transition shadow-xs flex items-center justify-between group"
         >
           <div>
             <span className="text-xs font-bold text-stone-900 dark:text-white block group-hover:text-orange-600">
@@ -376,7 +376,7 @@ export default function DriverDashboardPage() {
 
         <Link
           href="/driver/achievements"
-          className="p-4 rounded-2xl bg-white dark:bg-[#1c2024] border border-stone-200 dark:border-stone-800 hover:border-orange-500 transition shadow-xs flex items-center justify-between group col-span-2 sm:col-span-1"
+          className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-orange-500 transition shadow-xs flex items-center justify-between group col-span-2 sm:col-span-1"
         >
           <div>
             <span className="text-xs font-bold text-stone-900 dark:text-white block group-hover:text-orange-600">

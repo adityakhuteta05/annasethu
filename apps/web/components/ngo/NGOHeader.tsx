@@ -57,38 +57,38 @@ export function NGOHeader({
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-[#f7f1e3]/95 dark:bg-[#14171a]/95 backdrop-blur-md border-b border-[#e5dec9] dark:border-[#2d3239] transition-colors">
+    <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         
         {/* Left: Brand & NGO Name */}
         <div className="flex items-center gap-3 min-w-0">
           <Link
-            href="/ngo/dashboard"
+            href="/receiver/dashboard"
             className="flex items-center gap-2.5 group focus-visible:outline-none"
           >
-            <div className="w-10 h-10 rounded-xl bg-[#2d6a4f] text-[#f7f1e3] flex items-center justify-center font-heading font-black text-xl shadow-xs group-hover:bg-[#1b4332] transition-all">
+            <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xl shadow-xs group-hover:bg-emerald-700 transition-all">
               अ
             </div>
             <div className="hidden sm:block">
-              <span className="font-heading font-bold text-base tracking-tight text-[#1f4d36] dark:text-[#f7f1e3] block leading-tight">
+              <span className="font-bold text-base tracking-tight text-slate-900 block leading-tight">
                 AnnaSetu
               </span>
-              <span className="text-[10px] tracking-wider uppercase text-[#2d6a4f] font-semibold">
+              <span className="text-[11px] tracking-wide uppercase text-slate-500 font-semibold">
                 NGO / Receiver Console
               </span>
             </div>
           </Link>
 
-          <div className="h-6 w-px bg-[#e5dec9] dark:bg-[#2d3239] mx-1 hidden md:block" />
+          <div className="h-6 w-px bg-slate-200 mx-2 hidden md:block" />
 
           {/* Current Establishment */}
           <div className="min-w-0 hidden md:block">
-            <span className="text-xs font-semibold text-[#23262b] dark:text-[#f7f1e3] truncate block max-w-[200px] lg:max-w-xs">
+            <span className="text-xs font-semibold text-slate-900 truncate block max-w-[200px] lg:max-w-xs">
               {resolvedName}
             </span>
             <Link
               href="/ngo/verification"
-              className="inline-flex items-center gap-1 text-[11px] text-[#2d6a4f] hover:underline font-semibold focus-visible:outline-none"
+              className="inline-flex items-center gap-1 text-[11px] text-emerald-600 hover:text-emerald-700 font-medium focus-visible:outline-none"
             >
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               <span>Verified Organization (80G & DARPAN Active)</span>
@@ -101,33 +101,34 @@ export function NGOHeader({
           {/* Create Need Quick Button */}
           <Link
             href="/ngo/needs/create"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] text-xs font-bold shadow-xs transition-colors"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium shadow-xs transition-colors"
           >
-            <PlusCircle className="w-4 h-4 text-emerald-300" />
+            <PlusCircle className="w-4 h-4 text-emerald-100" />
             <span>+ Create Food Need</span>
           </Link>
 
           {/* Available Food Marketplace Link */}
           <Link
             href="/ngo/available-food"
-            className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-[#2d6a4f] text-[#2d6a4f] text-xs font-bold hover:bg-[#2d6a4f]/10 transition-colors"
+            className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 text-slate-700 text-xs font-medium hover:bg-slate-50 hover:text-slate-900 transition-colors"
           >
-            <span>View Available Food</span>
+            <span>Available Surplus Food</span>
           </Link>
 
           {/* Wallet Balance Badge */}
           <Link
             href="/ngo/wallet"
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] text-xs font-bold text-[#1f4d36] hover:bg-[#f7f1e3] transition-colors"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
           >
-            <Wallet className="w-3.5 h-3.5 text-[#2d6a4f]" />
+            <Wallet className="w-3.5 h-3.5 text-emerald-600" />
             <span>₹4,630</span>
           </Link>
 
           {/* Notifications */}
           <Link
             href="/ngo/notifications"
-            className="relative p-2 rounded-xl text-[#5c6068] hover:text-[#1f4d36] hover:bg-white dark:hover:bg-[#1c2024] border border-transparent hover:border-[#e5dec9] transition-all"
+            className="relative p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200 transition-all"
+            title="Notifications"
           >
             <Bell className="w-4 h-4" />
             {unreadNotifications > 0 && (
@@ -138,7 +139,7 @@ export function NGOHeader({
           {/* Directly Visible Log Out Button */}
           <Link
             href="/logout"
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-rose-300/60 dark:border-rose-900/60 bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-xs font-bold transition shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100 text-xs font-semibold transition"
             title="Sign out of NGO Dashboard"
           >
             <LogOut className="w-3.5 h-3.5" />
@@ -149,59 +150,62 @@ export function NGOHeader({
           <div className="relative">
             <button
               onClick={() => setProfileOpen(!profileOpen)}
-              className="flex items-center gap-2 p-1.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] hover:bg-white dark:hover:bg-[#1c2024] transition-colors"
+              className="flex items-center gap-2 p-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition-colors focus-visible:outline-none"
             >
-              <div className="w-7 h-7 rounded-lg bg-[#2d6a4f]/15 text-[#2d6a4f] flex items-center justify-center font-bold text-xs">
-                🤝
+              <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-xs">
+                <HeartHandshake className="w-4 h-4" />
               </div>
             </button>
 
             {profileOpen && (
-              <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xl p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
-                <div className="px-3 py-2 border-b border-[#e5dec9] dark:border-[#2d3239] mb-1">
-                  <div className="text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] truncate">
-                    {resolvedName}
+              <>
+                <div
+                  className="fixed inset-0 z-40"
+                  onClick={() => setProfileOpen(false)}
+                />
+                <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-white border border-slate-200 shadow-xl py-2 z-50 text-xs">
+                  <div className="px-4 py-2 border-b border-slate-100">
+                    <span className="font-bold text-slate-900 block truncate">
+                      {resolvedName}
+                    </span>
+                    <span className="text-slate-500 text-[11px]">Verified NGO Account</span>
                   </div>
-                  <div className="text-[11px] text-[#5c6068]">Role: NGO / Receiver</div>
+
+                  <Link
+                    href="/ngo/profile"
+                    className="flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  >
+                    <User className="w-4 h-4 text-slate-400" />
+                    <span>Organization Profile</span>
+                  </Link>
+
+                  <Link
+                    href="/ngo/capacity"
+                    className="flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  >
+                    <Settings className="w-4 h-4 text-slate-400" />
+                    <span>Capacity Settings</span>
+                  </Link>
+
+                  <Link
+                    href="/ngo/support"
+                    className="flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  >
+                    <HelpCircle className="w-4 h-4 text-slate-400" />
+                    <span>Support & Desk</span>
+                  </Link>
+
+                  <div className="border-t border-slate-100 mt-1 pt-1">
+                    <button
+                      onClick={handleSignOut}
+                      className="w-full text-left flex items-center gap-2 px-4 py-2 text-rose-600 hover:bg-rose-50 font-semibold"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>Sign Out</span>
+                    </button>
+                  </div>
                 </div>
-
-                <Link
-                  href="/ngo/profile"
-                  onClick={() => setProfileOpen(false)}
-                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-[#23262b] dark:text-[#f7f1e3] hover:bg-[#f7f1e3] dark:hover:bg-zinc-800 transition-colors"
-                >
-                  <User className="w-3.5 h-3.5 text-[#5c6068]" />
-                  <span>Organization Profile</span>
-                </Link>
-
-                <Link
-                  href="/ngo/capacity"
-                  onClick={() => setProfileOpen(false)}
-                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-[#23262b] dark:text-[#f7f1e3] hover:bg-[#f7f1e3] dark:hover:bg-zinc-800 transition-colors"
-                >
-                  <Settings className="w-3.5 h-3.5 text-[#5c6068]" />
-                  <span>Capacity Controls</span>
-                </Link>
-
-                <Link
-                  href="/ngo/verification"
-                  onClick={() => setProfileOpen(false)}
-                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-[#23262b] dark:text-[#f7f1e3] hover:bg-[#f7f1e3] dark:hover:bg-zinc-800 transition-colors"
-                >
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Verification Status</span>
-                </Link>
-
-                <div className="h-px bg-[#e5dec9] dark:bg-[#2d3239] my-1" />
-
-                <button
-                  onClick={handleSignOut}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors text-left"
-                >
-                  <LogOut className="w-3.5 h-3.5" />
-                  <span>Sign Out</span>
-                </button>
-              </div>
+              </>
             )}
           </div>
         </div>

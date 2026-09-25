@@ -97,23 +97,23 @@ export default function NGOReportsPage() {
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 border-slate-200 pb-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2d6a4f]/10 text-[#2d6a4f] text-xs font-bold mb-1">
             <FileText className="w-3.5 h-3.5" />
             <span>Auditable Governance Statements</span>
           </div>
-          <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             NGO Compliance & Operations Reports
           </h1>
-          <p className="text-xs text-[#5c6068]">
+          <p className="text-xs text-slate-500">
             Downloadable reports for government audits, trustee reviews, and CSR partner verification.
           </p>
         </div>
 
         <Link
           href="/ngo/dashboard"
-          className="text-xs font-bold text-[#5c6068] hover:text-[#2d6a4f]"
+          className="text-xs font-bold text-slate-500 hover:text-[#2d6a4f]"
         >
           &larr; Operations Dashboard
         </Link>
@@ -124,29 +124,29 @@ export default function NGOReportsPage() {
         {reports.map((rep) => (
           <div
             key={rep.id}
-            className="p-6 rounded-3xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#2d6a4f] transition-all"
+            className="p-6 rounded-3xl bg-white border border-slate-200 border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#2d6a4f] transition-all"
           >
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <span className="font-mono font-bold text-xs text-[#2d6a4f]">
                   {rep.id}
                 </span>
-                <span className="text-[11px] text-[#5c6068] flex items-center gap-1">
+                <span className="text-[11px] text-slate-500 flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
                   <span>{rep.period}</span>
                 </span>
               </div>
 
-              <h2 className="text-base font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h2 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
                 {rep.title}
               </h2>
 
-              <p className="text-xs text-[#5c6068] max-w-2xl">
+              <p className="text-xs text-slate-500 max-w-2xl">
                 {rep.description}
               </p>
 
               {rep.totalWeightKg > 0 && (
-                <div className="text-[11px] font-semibold text-[#1f4d36] dark:text-[#f7f1e3]">
+                <div className="text-[11px] font-semibold text-slate-900 dark:text-white">
                   Total Verified Food: <strong>{rep.totalWeightKg} kg</strong> ({rep.recordsCount} rescues)
                 </div>
               )}
@@ -165,7 +165,7 @@ export default function NGOReportsPage() {
               <button
                 type="button"
                 onClick={() => handleDownload(rep)}
-                className="px-4 py-2.5 rounded-xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] text-xs font-bold flex items-center gap-1.5 shadow-xs transition-colors"
+                className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition-colors"
               >
                 <Download className="w-4 h-4" />
                 <span>[ DOWNLOAD PDF ]</span>
@@ -178,38 +178,38 @@ export default function NGOReportsPage() {
       {/* Report View Modal */}
       {selectedReport && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="max-w-2xl w-full bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] shadow-2xl p-6 sm:p-7 space-y-5 max-h-[85vh] overflow-y-auto">
+          <div className="max-w-2xl w-full bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 sm:p-7 space-y-5 max-h-[85vh] overflow-y-auto">
             
-            <div className="flex items-start justify-between border-b border-[#e5dec9] pb-3">
+            <div className="flex items-start justify-between border-b border-slate-200 pb-3">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#2d6a4f]">
                   Verified Audit Report Preview
                 </span>
-                <h3 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                   {selectedReport.title}
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedReport(null)}
-                className="p-1 rounded-lg text-[#5c6068] hover:text-[#23262b]"
+                className="p-1 rounded-lg text-slate-500 hover:text-slate-900"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <p className="text-xs text-[#5c6068]">
+            <p className="text-xs text-slate-500">
               {selectedReport.description}
             </p>
 
             {/* Preview table */}
-            <div className="border border-[#e5dec9] rounded-2xl overflow-hidden text-xs">
-              <pre className="p-4 bg-[#fdfbf7] dark:bg-[#14171a] font-mono text-xs overflow-x-auto">
+            <div className="border border-slate-200 rounded-2xl overflow-hidden text-xs">
+              <pre className="p-4 bg-white font-mono text-xs overflow-x-auto">
                 {JSON.stringify(selectedReport.previewData, null, 2)}
               </pre>
             </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-[#e5dec9]">
-              <span className="text-[11px] text-[#5c6068]">
+            <div className="flex items-center justify-between pt-3 border-t border-slate-200">
+              <span className="text-[11px] text-slate-500">
                 Digitally authenticated by AnnaSetu Protocol Engine
               </span>
 
@@ -217,14 +217,14 @@ export default function NGOReportsPage() {
                 <button
                   type="button"
                   onClick={() => setSelectedReport(null)}
-                  className="px-4 py-2 rounded-xl border border-[#e5dec9] text-xs font-bold text-[#5c6068]"
+                  className="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-500"
                 >
                   Close
                 </button>
                 <button
                   type="button"
                   onClick={() => handleDownload(selectedReport)}
-                  className="px-4 py-2 rounded-xl bg-[#2d6a4f] text-[#f7f1e3] text-xs font-bold hover:bg-[#1b4332] flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-xl bg-[#2d6a4f] text-white text-xs font-bold hover:bg-emerald-700 flex items-center gap-1.5"
                 >
                   <Printer className="w-3.5 h-3.5" />
                   <span>Print / Save PDF</span>

@@ -4,7 +4,7 @@ import React from 'react';
 import { NGOHeader } from '../../components/ngo/NGOHeader';
 import { NGOSidebar } from '../../components/ngo/NGOSidebar';
 
-export default function NGOLayout({
+export default function ReceiverLayout({
   children,
 }: {
   children: React.ReactNode;

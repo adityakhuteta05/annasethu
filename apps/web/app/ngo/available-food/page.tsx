@@ -178,23 +178,23 @@ function AvailableFoodContent() {
     <div className="space-y-6 animate-in fade-in duration-300">
       
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 border-slate-200 pb-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2d6a4f]/10 text-[#2d6a4f] text-xs font-bold mb-1">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>Feasible Food Rescue Matches</span>
           </div>
-          <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             Available Surplus Food
           </h1>
-          <p className="text-xs text-[#5c6068]">
+          <p className="text-xs text-slate-500">
             Filtered and ranked deterministically by Rescue Priority Score. Food itself is free — only logistics costs apply.
           </p>
         </div>
 
         <Link
           href="/ngo/dashboard"
-          className="text-xs font-bold text-[#5c6068] hover:text-[#2d6a4f]"
+          className="text-xs font-bold text-slate-500 hover:text-[#2d6a4f]"
         >
           &larr; Operations Dashboard
         </Link>
@@ -205,7 +205,7 @@ function AvailableFoodContent() {
         {donations.map((item) => (
           <div
             key={item.id}
-            className="p-6 rounded-3xl border-2 border-[#e5dec9] dark:border-[#2d3239] hover:border-[#2d6a4f] bg-white dark:bg-[#1c2024] shadow-xs hover:shadow-lg transition-all space-y-5"
+            className="p-6 rounded-3xl border-2 border-slate-200 border-slate-200 hover:border-[#2d6a4f] bg-white shadow-xs hover:shadow-lg transition-all space-y-5"
           >
             {/* Title & Priority Badge */}
             <div className="flex items-start justify-between gap-3">
@@ -213,10 +213,10 @@ function AvailableFoodContent() {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#2d6a4f] bg-[#2d6a4f]/10 px-2 py-0.5 rounded-md inline-block mb-1.5">
                   {item.dietary_type} · {item.quantity_kg} kg Lot
                 </span>
-                <h2 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                   {item.title}
                 </h2>
-                <div className="text-xs text-[#5c6068] mt-1 flex items-center gap-1.5">
+                <div className="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                   <span>Donor: <strong>{item.donor_name}</strong></span>
                 </div>
@@ -224,7 +224,7 @@ function AvailableFoodContent() {
 
               {/* Rescue Priority Score Card */}
               <div className="px-3.5 py-1.5 rounded-2xl bg-[#2d6a4f]/15 border border-[#2d6a4f]/30 text-center shrink-0">
-                <div className="text-xl font-heading font-black text-[#2d6a4f]">
+                <div className="text-xl font-bold tracking-tight text-[#2d6a4f]">
                   {item.rescue_priority_score}
                 </div>
                 <div className="text-[9px] uppercase font-bold text-[#2d6a4f] tracking-wide">
@@ -234,24 +234,24 @@ function AvailableFoodContent() {
             </div>
 
             {/* Logistics & Feasibility Grid */}
-            <div className="grid grid-cols-3 gap-2.5 p-3.5 rounded-2xl bg-[#fdfbf7] dark:bg-[#14171a] border border-[#e5dec9] dark:border-[#2d3239] text-xs">
+            <div className="grid grid-cols-3 gap-2.5 p-3.5 rounded-2xl bg-white border border-slate-200 border-slate-200 text-xs">
               <div>
-                <span className="text-[10px] text-[#5c6068] block">Distance</span>
-                <strong className="text-[#1f4d36] dark:text-[#f7f1e3]">{item.distance_km} km</strong>
+                <span className="text-[10px] text-slate-500 block">Distance</span>
+                <strong className="text-slate-900 dark:text-white">{item.distance_km} km</strong>
               </div>
               <div>
-                <span className="text-[10px] text-[#5c6068] block">ETA</span>
-                <strong className="text-[#1f4d36] dark:text-[#f7f1e3]">{item.eta_minutes} min</strong>
+                <span className="text-[10px] text-slate-500 block">ETA</span>
+                <strong className="text-slate-900 dark:text-white">{item.eta_minutes} min</strong>
               </div>
               <div>
-                <span className="text-[10px] text-[#5c6068] block">Deadline</span>
+                <span className="text-[10px] text-slate-500 block">Deadline</span>
                 <strong className="text-amber-600">{item.deadline_text}</strong>
               </div>
             </div>
 
             {/* Need & Capacity Comparisons */}
-            <div className="flex items-center justify-between text-xs text-[#5c6068] px-1">
-              <span>Your Active Need: <strong className="text-[#1f4d36] dark:text-[#f7f1e3]">{item.your_need_kg} kg</strong></span>
+            <div className="flex items-center justify-between text-xs text-slate-500 px-1">
+              <span>Your Active Need: <strong className="text-slate-900 dark:text-white">{item.your_need_kg} kg</strong></span>
               <span>Your Current Capacity: <strong className="text-[#2d6a4f]">{item.your_capacity_kg} kg</strong></span>
             </div>
 
@@ -268,7 +268,7 @@ function AvailableFoodContent() {
               <button
                 type="button"
                 onClick={() => handleOpenReservation(item)}
-                className="w-full sm:w-1/2 py-2.5 rounded-xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] text-xs font-bold shadow-xs transition-colors"
+                className="w-full sm:w-1/2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs transition-colors"
               >
                 [ RESERVE FOOD ]
               </button>
@@ -280,20 +280,20 @@ function AvailableFoodContent() {
       {/* MODAL 1: WHY THIS MATCH? (PRD Section 16) */}
       {selectedMatch && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
-          <div className="max-w-lg w-full bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-2xl p-6 sm:p-7 space-y-5 animate-in zoom-in-95">
+          <div className="max-w-lg w-full bg-white rounded-3xl border border-slate-200 border-slate-200 shadow-2xl p-6 sm:p-7 space-y-5 animate-in zoom-in-95">
             
-            <div className="flex items-start justify-between border-b border-[#e5dec9] pb-3">
+            <div className="flex items-start justify-between border-b border-slate-200 pb-3">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#2d6a4f]">
                   Algorithmic Compatibility Breakdown
                 </span>
-                <h3 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                   Why This Match?
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedMatch(null)}
-                className="p-1 rounded-lg text-[#5c6068] hover:text-[#23262b]"
+                className="p-1 rounded-lg text-slate-500 hover:text-slate-900"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -301,10 +301,10 @@ function AvailableFoodContent() {
 
             {/* Criteria Checklist */}
             <div className="space-y-2">
-              <span className="text-xs font-bold text-[#5c6068] block">Validated Rescue Compatibility:</span>
+              <span className="text-xs font-bold text-slate-500 block">Validated Rescue Compatibility:</span>
               <div className="space-y-1.5">
                 {selectedMatch.reasons.map((r: string, idx: number) => (
-                  <div key={idx} className="flex items-center gap-2 text-xs text-[#23262b] dark:text-[#f7f1e3]">
+                  <div key={idx} className="flex items-center gap-2 text-xs text-slate-900 dark:text-white">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                     <span>{r}</span>
                   </div>
@@ -313,9 +313,9 @@ function AvailableFoodContent() {
             </div>
 
             {/* Rescue Priority Score Breakdown (PRD Section 16) */}
-            <div className="p-4 rounded-2xl bg-[#fdfbf7] dark:bg-[#14171a] border border-[#e5dec9] dark:border-[#2d3239] space-y-3">
+            <div className="p-4 rounded-2xl bg-white border border-slate-200 border-slate-200 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                <span className="text-xs font-bold text-slate-900 dark:text-white">
                   Rescue Priority Score Breakdown
                 </span>
                 <span className="text-sm font-bold text-[#2d6a4f]">
@@ -324,32 +324,32 @@ function AvailableFoodContent() {
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="flex justify-between p-2 rounded-lg bg-white dark:bg-[#1c2024] border border-[#e5dec9]">
-                  <span className="text-[#5c6068]">Distance</span>
+                <div className="flex justify-between p-2 rounded-lg bg-white border border-slate-200">
+                  <span className="text-slate-500">Distance</span>
                   <strong>{selectedMatch.score_breakdown.distance}</strong>
                 </div>
-                <div className="flex justify-between p-2 rounded-lg bg-white dark:bg-[#1c2024] border border-[#e5dec9]">
-                  <span className="text-[#5c6068]">Transit ETA</span>
+                <div className="flex justify-between p-2 rounded-lg bg-white border border-slate-200">
+                  <span className="text-slate-500">Transit ETA</span>
                   <strong>{selectedMatch.score_breakdown.eta}</strong>
                 </div>
-                <div className="flex justify-between p-2 rounded-lg bg-white dark:bg-[#1c2024] border border-[#e5dec9]">
-                  <span className="text-[#5c6068]">Expiry Buffer</span>
+                <div className="flex justify-between p-2 rounded-lg bg-white border border-slate-200">
+                  <span className="text-slate-500">Expiry Buffer</span>
                   <strong>{selectedMatch.score_breakdown.expiry_buffer}</strong>
                 </div>
-                <div className="flex justify-between p-2 rounded-lg bg-white dark:bg-[#1c2024] border border-[#e5dec9]">
-                  <span className="text-[#5c6068]">Need Fulfillment</span>
+                <div className="flex justify-between p-2 rounded-lg bg-white border border-slate-200">
+                  <span className="text-slate-500">Need Fulfillment</span>
                   <strong>{selectedMatch.score_breakdown.need_fulfillment}</strong>
                 </div>
-                <div className="flex justify-between p-2 rounded-lg bg-white dark:bg-[#1c2024] border border-[#e5dec9]">
-                  <span className="text-[#5c6068]">Route Efficiency</span>
+                <div className="flex justify-between p-2 rounded-lg bg-white border border-slate-200">
+                  <span className="text-slate-500">Route Efficiency</span>
                   <strong>{selectedMatch.score_breakdown.route_efficiency}</strong>
                 </div>
-                <div className="flex justify-between p-2 rounded-lg bg-white dark:bg-[#1c2024] border border-[#e5dec9]">
-                  <span className="text-[#5c6068]">Driver Availability</span>
+                <div className="flex justify-between p-2 rounded-lg bg-white border border-slate-200">
+                  <span className="text-slate-500">Driver Availability</span>
                   <strong>{selectedMatch.score_breakdown.driver_availability}</strong>
                 </div>
-                <div className="col-span-2 flex justify-between p-2 rounded-lg bg-white dark:bg-[#1c2024] border border-[#e5dec9]">
-                  <span className="text-[#5c6068]">Deadline Urgency</span>
+                <div className="col-span-2 flex justify-between p-2 rounded-lg bg-white border border-slate-200">
+                  <span className="text-slate-500">Deadline Urgency</span>
                   <strong className="text-amber-600">{selectedMatch.score_breakdown.deadline_urgency}</strong>
                 </div>
               </div>
@@ -361,7 +361,7 @@ function AvailableFoodContent() {
                 setSelectedMatch(null);
                 handleOpenReservation(item);
               }}
-              className="w-full py-3 rounded-2xl bg-[#2d6a4f] text-[#f7f1e3] text-xs font-bold hover:bg-[#1b4332] shadow-xs"
+              className="w-full py-3 rounded-2xl bg-[#2d6a4f] text-white text-xs font-bold hover:bg-emerald-700 shadow-xs"
             >
               PROCEED TO RESERVE FOOD &rarr;
             </button>
@@ -372,20 +372,20 @@ function AvailableFoodContent() {
       {/* MODAL 2: NGO RESERVATION & PARTIAL ALLOCATION (PRD Section 17 & 18) */}
       {reservationModal && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
-          <div className="max-w-md w-full bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-2xl p-6 sm:p-7 space-y-5 animate-in zoom-in-95">
+          <div className="max-w-md w-full bg-white rounded-3xl border border-slate-200 border-slate-200 shadow-2xl p-6 sm:p-7 space-y-5 animate-in zoom-in-95">
             
-            <div className="flex items-start justify-between border-b border-[#e5dec9] pb-3">
+            <div className="flex items-start justify-between border-b border-slate-200 pb-3">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#2d6a4f]">
                   Reserve Surplus Allocation
                 </span>
-                <h3 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                   Confirm Food Reservation
                 </h3>
               </div>
               <button
                 onClick={() => setReservationModal(null)}
-                className="p-1 rounded-lg text-[#5c6068] hover:text-[#23262b]"
+                className="p-1 rounded-lg text-slate-500 hover:text-slate-900"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -400,15 +400,15 @@ function AvailableFoodContent() {
 
             {/* Allocation Details */}
             <div className="space-y-3 text-xs">
-              <div className="flex justify-between py-1 border-b border-[#e5dec9]/60">
-                <span className="text-[#5c6068]">Donation Available:</span>
+              <div className="flex justify-between py-1 border-b border-slate-200/60">
+                <span className="text-slate-500">Donation Available:</span>
                 <strong>{reservationModal.quantity_kg} kg</strong>
               </div>
 
               {/* Partial Allocation Input */}
-              <div className="p-3.5 rounded-2xl bg-[#fdfbf7] dark:bg-[#14171a] border border-[#e5dec9] space-y-2">
+              <div className="p-3.5 rounded-2xl bg-white border border-slate-200 space-y-2">
                 <div className="flex justify-between items-center">
-                  <label className="font-bold text-[#1f4d36]">
+                  <label className="font-bold text-slate-900">
                     Requested Allocation (kg):
                   </label>
                   <span className="font-mono font-bold text-sm text-[#2d6a4f]">
@@ -423,37 +423,37 @@ function AvailableFoodContent() {
                   onChange={(e) => setRequestedAllocKg(Number(e.target.value))}
                   className="w-full accent-[#2d6a4f]"
                 />
-                <span className="text-[10px] text-[#5c6068] block">
+                <span className="text-[10px] text-slate-500 block">
                   Support partial batch rescues: reserve what you can immediately absorb.
                 </span>
               </div>
 
-              <div className="flex justify-between py-1 border-b border-[#e5dec9]/60">
-                <span className="text-[#5c6068]">Target Need:</span>
+              <div className="flex justify-between py-1 border-b border-slate-200/60">
+                <span className="text-slate-500">Target Need:</span>
                 <strong>Dinner Shift</strong>
               </div>
 
-              <div className="flex justify-between py-1 border-b border-[#e5dec9]/60">
-                <span className="text-[#5c6068]">Deadline:</span>
+              <div className="flex justify-between py-1 border-b border-slate-200/60">
+                <span className="text-slate-500">Deadline:</span>
                 <strong className="text-amber-600">{reservationModal.deadline_clock}</strong>
               </div>
 
-              <div className="flex justify-between py-1 border-b border-[#e5dec9]/60">
-                <span className="text-[#5c6068]">Estimated Delivery:</span>
+              <div className="flex justify-between py-1 border-b border-slate-200/60">
+                <span className="text-slate-500">Estimated Delivery:</span>
                 <strong>{reservationModal.estimated_delivery}</strong>
               </div>
 
               {/* Fare & Platform Economics */}
-              <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-zinc-800/40 border border-[#e5dec9] space-y-1.5">
+              <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-zinc-800/40 border border-slate-200 space-y-1.5">
                 <div className="flex justify-between">
-                  <span className="text-[#5c6068]">Delivery logistics charge:</span>
+                  <span className="text-slate-500">Delivery logistics charge:</span>
                   <span>₹{reservationModal.fare_estimate.delivery_charge_inr}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#5c6068]">Platform service fee:</span>
+                  <span className="text-slate-500">Platform service fee:</span>
                   <span>₹{reservationModal.fare_estimate.platform_fee_inr}</span>
                 </div>
-                <div className="flex justify-between pt-1 border-t border-[#e5dec9] font-bold text-sm text-[#1f4d36] dark:text-[#f7f1e3]">
+                <div className="flex justify-between pt-1 border-t border-slate-200 font-bold text-sm text-slate-900 dark:text-white">
                   <span>Total (Wallet Hold):</span>
                   <span>₹{reservationModal.fare_estimate.total_inr}</span>
                 </div>
@@ -468,7 +468,7 @@ function AvailableFoodContent() {
             <button
               onClick={handleConfirmReservation}
               disabled={reserving}
-              className="w-full py-3 rounded-2xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] text-xs font-bold shadow-xs transition-all disabled:opacity-50"
+              className="w-full py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs transition-all disabled:opacity-50"
             >
               {reserving ? 'Committing Reservation...' : `CONFIRM RESERVATION (${requestedAllocKg} kg)`}
             </button>
@@ -483,7 +483,7 @@ function AvailableFoodContent() {
 export default function AvailableFoodPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-[#fdfbf7]">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#2d6a4f]"></div>
       </div>
     }>

@@ -145,7 +145,7 @@ export default function DriverVehiclesPage() {
   return (
     <div className="space-y-6 max-w-4xl mx-auto pb-16">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 dark:bg-orange-950 text-orange-800 dark:text-orange-300">
@@ -185,8 +185,8 @@ export default function DriverVehiclesPage() {
             key={v.id}
             className={`p-6 rounded-3xl border transition space-y-4 ${
               v.is_active
-                ? 'bg-white dark:bg-[#1c2024] border-2 border-orange-500/60 shadow-md'
-                : 'bg-white dark:bg-[#1c2024] border-stone-200 dark:border-stone-800 shadow-xs'
+                ? 'bg-white border-2 border-orange-500/60 shadow-md'
+                : 'bg-white border-slate-200 shadow-xs'
             }`}
           >
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-stone-100 dark:border-stone-800 pb-3">
@@ -269,7 +269,7 @@ export default function DriverVehiclesPage() {
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
           <form
             onSubmit={handleAddVehicle}
-            className="bg-white dark:bg-[#1c2024] rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-stone-200 dark:border-stone-800 space-y-4 animate-in fade-in"
+            className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-200 space-y-4 animate-in fade-in"
           >
             <div className="flex items-center justify-between border-b border-stone-100 dark:border-stone-800 pb-3">
               <h2 className="text-lg font-bold text-stone-900 dark:text-white">

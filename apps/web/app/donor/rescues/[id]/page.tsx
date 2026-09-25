@@ -15,6 +15,7 @@ import {
   User,
   Phone,
   RefreshCw,
+  Building2,
 } from 'lucide-react';
 import { UrgencyBadge } from '../../../../components/donor/UrgencyBadge';
 import { RescueCountdown } from '../../../../components/donor/RescueCountdown';
@@ -107,33 +108,33 @@ export default function LiveRescueMissionPage() {
   return (
     <div className="max-w-5xl mx-auto space-y-6 pb-16">
       {/* Top Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 border-slate-200 pb-4">
         <div>
           <a
             href="/donor/dashboard"
-            className="text-xs font-semibold text-[#5c6068] hover:text-[#1f4d36] flex items-center gap-1 inline-flex mb-1"
+            className="text-xs font-semibold text-slate-500 hover:text-slate-900 flex items-center gap-1 inline-flex mb-1"
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Dashboard
           </a>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
               Mission #{d.rescue_id}
             </h1>
             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-orange-800 animate-pulse">
               ● IN TRANSIT
             </span>
           </div>
-          <span className="text-xs text-[#5c6068]">{d.food_title} · {d.quantity_kg} kg</span>
+          <span className="text-xs text-slate-500">{d.food_title} · {d.quantity_kg} kg</span>
         </div>
 
         <div className="flex items-center gap-3">
           <div className="text-right">
-            <span className="text-[10px] uppercase font-bold text-[#5c6068] block">Safe Window Remaining:</span>
+            <span className="text-[10px] uppercase font-bold text-slate-500 block">Safe Window Remaining:</span>
             <RescueCountdown initialSeconds={d.time_remaining_seconds} size="md" />
           </div>
           <button
             onClick={simulateDriverFailure}
-            className="px-3 py-1.5 rounded-xl border border-gray-300 hover:bg-gray-100 text-[11px] font-semibold text-[#5c6068]"
+            className="px-3 py-1.5 rounded-xl border border-gray-300 hover:bg-gray-100 text-[11px] font-semibold text-slate-500"
             title="Simulate driver cancellation and re-dispatch logic"
           >
             Test Reassignment
@@ -143,7 +144,7 @@ export default function LiveRescueMissionPage() {
 
       {/* Driver Reassignment Alert Banner (If simulated or active) */}
       {driverCancelledSim && (
-        <div className="p-5 rounded-3xl bg-amber-50 border-2 border-amber-300 text-amber-900 space-y-3 animate-fade-in">
+        <div className="p-5 rounded-2xl bg-amber-50 border-2 border-amber-300 text-amber-900 space-y-3 animate-fade-in">
           <div className="flex items-center gap-2 font-bold text-sm">
             <AlertTriangle className="w-5 h-5 text-amber-600 animate-bounce" />
             <span>⚠ DRIVER REASSIGNMENT IN PROGRESS</span>
@@ -172,11 +173,11 @@ export default function LiveRescueMissionPage() {
         
         {/* Left: Map & Route View */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs overflow-hidden">
+          <div className="bg-white rounded-2xl border border-slate-200 border-slate-200 shadow-xs overflow-hidden">
             {/* Visual Route Simulator / Map Frame */}
             <div className="h-72 bg-linear-to-b from-[#eaf2ea] to-[#d8e6d8] dark:from-[#162118] dark:to-[#101912] p-6 relative flex flex-col justify-between">
               
-              <div className="flex items-center justify-between text-xs font-semibold text-[#1f4d36] dark:text-emerald-400">
+              <div className="flex items-center justify-between text-xs font-semibold text-slate-900 dark:text-emerald-400">
                 <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 dark:bg-black/40 backdrop-blur-xs border border-emerald-300">
                   <Radio className="w-3.5 h-3.5 animate-pulse text-emerald-600" />
                   Live GPS Proximity Tracking Active
@@ -195,13 +196,13 @@ export default function LiveRescueMissionPage() {
 
                 {/* Point 1: Donor */}
                 <div className="z-10 text-center space-y-1">
-                  <div className="w-12 h-12 rounded-2xl bg-[#1f4d36] text-white flex items-center justify-center shadow-md mx-auto">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-md mx-auto">
                     <MapPin className="w-6 h-6" />
                   </div>
-                  <span className="text-[11px] font-bold text-[#1f4d36] dark:text-emerald-300 block">
+                  <span className="text-[11px] font-bold text-slate-900 dark:text-emerald-300 block">
                     Oberoi Banquet
                   </span>
-                  <span className="text-[9px] text-[#5c6068] block">Origin (Sealed)</span>
+                  <span className="text-[9px] text-slate-500 block">Origin (Sealed)</span>
                 </div>
 
                 {/* Point 2: Driver Transit */}
@@ -219,25 +220,25 @@ export default function LiveRescueMissionPage() {
 
                 {/* Point 3: Receiver Destination */}
                 <div className="z-10 text-center space-y-1">
-                  <div className="w-12 h-12 rounded-2xl bg-white dark:bg-gray-800 text-[#1f4d36] border-2 border-[#1f4d36] flex items-center justify-center shadow-md mx-auto">
+                  <div className="w-12 h-12 rounded-2xl bg-white dark:bg-gray-800 text-slate-900 border-2 border-[#1f4d36] flex items-center justify-center shadow-md mx-auto">
                     <Building2 className="w-6 h-6" />
                   </div>
-                  <span className="text-[11px] font-bold text-[#23262b] dark:text-[#f7f1e3] block">
+                  <span className="text-[11px] font-bold text-slate-900 dark:text-white block">
                     Asha Deep Shelter
                   </span>
-                  <span className="text-[9px] text-[#5c6068] block">Destination</span>
+                  <span className="text-[9px] text-slate-500 block">Destination</span>
                 </div>
               </div>
 
               {/* Transit Note */}
-              <div className="text-[11px] text-[#5c6068] text-center bg-white/70 dark:bg-black/30 py-1.5 rounded-xl backdrop-blur-xs">
+              <div className="text-[11px] text-slate-500 text-center bg-white/70 dark:bg-black/30 py-1.5 rounded-xl backdrop-blur-xs">
                 Turn-by-turn route optimized via OSRM/Google Maps engine. Driver is 2.8 km away from final shelter handoff.
               </div>
             </div>
 
             {/* Delivery Evidence Card */}
-            <div className="p-6 space-y-4 border-t border-[#e5dec9] dark:border-[#2d3239]">
-              <h3 className="text-sm font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+            <div className="p-6 space-y-4 border-t border-slate-200 border-slate-200">
+              <h3 className="text-sm font-bold tracking-tight text-slate-900 dark:text-white">
                 Dual-OTP & Package Chain of Custody
               </h3>
 
@@ -247,17 +248,17 @@ export default function LiveRescueMissionPage() {
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                     <span>Pickup Verified</span>
                   </div>
-                  <p className="text-[11px] text-[#5c6068] dark:text-emerald-300">
+                  <p className="text-[11px] text-slate-500 dark:text-emerald-300">
                     Driver authenticated at loading dock via OTP. Seal ID <strong>{d.pickup_evidence.seal_id}</strong> registered. GPS proximity verified at 18 meters.
                   </p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/40 border border-gray-200 dark:border-gray-800 space-y-1">
-                  <div className="flex items-center gap-1.5 font-bold text-[#23262b] dark:text-[#f7f1e3]">
-                    <Clock className="w-4 h-4 text-[#5c6068]" />
+                  <div className="flex items-center gap-1.5 font-bold text-slate-900 dark:text-white">
+                    <Clock className="w-4 h-4 text-slate-500" />
                     <span>Delivery Verification Pending</span>
                   </div>
-                  <p className="text-[11px] text-[#5c6068]">
+                  <p className="text-[11px] text-slate-500">
                     Shelter manager will inspect thermal container integrity and provide receiving OTP at arrival.
                   </p>
                 </div>
@@ -270,8 +271,8 @@ export default function LiveRescueMissionPage() {
         <div className="space-y-6">
           
           {/* Driver Card */}
-          <div className="bg-white dark:bg-[#1c2024] p-5 rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#5c6068]">
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 border-slate-200 shadow-xs space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
               Assigned Logistics Partner
             </h3>
 
@@ -280,10 +281,10 @@ export default function LiveRescueMissionPage() {
                 <User className="w-6 h-6" />
               </div>
               <div className="min-w-0 flex-1">
-                <span className="font-bold text-sm text-[#23262b] dark:text-[#f7f1e3] block truncate">
+                <span className="font-bold text-sm text-slate-900 dark:text-white block truncate">
                   {d.driver_info.name}
                 </span>
-                <span className="text-xs text-[#5c6068] block">
+                <span className="text-xs text-slate-500 block">
                   {d.driver_info.vehicle_type} · {d.driver_info.vehicle_reg_masked}
                 </span>
                 <span className="text-[11px] text-emerald-700 font-semibold">
@@ -293,14 +294,14 @@ export default function LiveRescueMissionPage() {
             </div>
 
             <div className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-xs flex justify-between">
-              <span className="text-[#5c6068]">Direct Handoff Contact:</span>
-              <span className="font-semibold text-[#1f4d36] dark:text-[#4f9d3a]">{d.driver_info.phone}</span>
+              <span className="text-slate-500">Direct Handoff Contact:</span>
+              <span className="font-semibold text-slate-900 dark:text-[#4f9d3a]">{d.driver_info.phone}</span>
             </div>
           </div>
 
           {/* Rescue Timeline (8-10 steps) */}
-          <div className="bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#5c6068]">
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 border-slate-200 shadow-xs space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
               Mission Protocol Timeline
             </h3>
 
@@ -322,13 +323,13 @@ export default function LiveRescueMissionPage() {
                         item.status === 'ACTIVE'
                           ? 'text-[#e0662b] font-bold'
                           : item.status === 'COMPLETED'
-                          ? 'text-[#23262b] dark:text-[#f7f1e3]'
-                          : 'text-[#5c6068]'
+                          ? 'text-slate-900 dark:text-white'
+                          : 'text-slate-500'
                       }`}
                     >
                       {item.step}
                     </span>
-                    <span className="text-[10px] text-[#5c6068] font-mono">{item.time}</span>
+                    <span className="text-[10px] text-slate-500 font-mono">{item.time}</span>
                   </div>
                 </div>
               ))}

@@ -59,7 +59,7 @@ export function RescueCountdown({
     ? 'text-rose-600 dark:text-rose-400'
     : isUrgent
     ? 'text-[#e0662b] dark:text-[#ff8a50]'
-    : 'text-[#1f4d36] dark:text-[#4f9d3a]';
+    : 'text-slate-900 dark:text-[#4f9d3a]';
 
   return (
     <div className={`inline-flex items-center gap-1.5 ${className}`}>

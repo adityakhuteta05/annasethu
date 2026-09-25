@@ -119,7 +119,7 @@ export default function DriverProfilePage() {
   return (
     <div className="space-y-6 max-w-4xl mx-auto pb-16">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
@@ -153,7 +153,7 @@ export default function DriverProfilePage() {
       )}
 
       {/* Tabs */}
-      <div className="flex border-b border-stone-200 dark:border-stone-800 gap-2 overflow-x-auto pb-px">
+      <div className="flex border-b border-slate-200 gap-2 overflow-x-auto pb-px">
         {[
           { id: 'PERSONAL', label: 'Personal & Licence', icon: UserCheck },
           { id: 'PREFS', label: 'Operating Zones & Radius', icon: MapPin },
@@ -180,7 +180,7 @@ export default function DriverProfilePage() {
       </div>
 
       {/* Form Content */}
-      <form onSubmit={handleSave} className="bg-white dark:bg-[#1c2024] p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs space-y-6">
+      <form onSubmit={handleSave} className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xs space-y-6">
         {activeTab === 'PERSONAL' && (
           <div className="space-y-4">
             <h2 className="text-sm font-bold text-stone-900 dark:text-white uppercase tracking-wider border-b border-stone-100 dark:border-stone-800 pb-2">
@@ -230,7 +230,7 @@ export default function DriverProfilePage() {
                   type="email"
                   disabled
                   value={profile.personal.email}
-                  className="w-full px-3.5 py-2.5 border border-stone-200 dark:border-stone-800 bg-stone-100 dark:bg-stone-900 rounded-xl text-stone-500 cursor-not-allowed"
+                  className="w-full px-3.5 py-2.5 border border-slate-200 bg-stone-100 dark:bg-stone-900 rounded-xl text-stone-500 cursor-not-allowed"
                 />
               </div>
 
@@ -242,7 +242,7 @@ export default function DriverProfilePage() {
                   type="text"
                   disabled
                   value={profile.personal.driving_license_no}
-                  className="w-full px-3.5 py-2.5 border border-stone-200 dark:border-stone-800 bg-stone-100 dark:bg-stone-900 rounded-xl font-mono text-stone-600 cursor-not-allowed"
+                  className="w-full px-3.5 py-2.5 border border-slate-200 bg-stone-100 dark:bg-stone-900 rounded-xl font-mono text-stone-600 cursor-not-allowed"
                 />
               </div>
             </div>
@@ -379,7 +379,7 @@ export default function DriverProfilePage() {
               Authentication Credentials & Device Session
             </h2>
 
-            <div className="p-4 rounded-2xl bg-stone-50 dark:bg-stone-800/40 border border-stone-200 dark:border-stone-800 flex items-center justify-between text-xs">
+            <div className="p-4 rounded-2xl bg-stone-50 dark:bg-stone-800/40 border border-slate-200 flex items-center justify-between text-xs">
               <div>
                 <span className="font-bold text-stone-900 dark:text-white block">Supabase Auth Session</span>
                 <span className="text-stone-500">Logged in as {profile.personal.email} (Role: DRIVER)</span>

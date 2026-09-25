@@ -85,23 +85,23 @@ export default function CreateNeedPage() {
   return (
     <div className="max-w-3xl mx-auto space-y-6 animate-in fade-in duration-300">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+      <div className="flex items-center justify-between border-b border-slate-200 border-slate-200 pb-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2d6a4f]/10 text-[#2d6a4f] text-xs font-bold mb-1">
             <PlusCircle className="w-3.5 h-3.5" />
             <span>Operational Requirement Form</span>
           </div>
-          <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             Publish Food Need
           </h1>
-          <p className="text-xs text-[#5c6068]">
+          <p className="text-xs text-slate-500">
             Surplus food opportunities will be ranked against this need in real-time.
           </p>
         </div>
 
         <Link
           href="/ngo/needs"
-          className="text-xs font-bold text-[#5c6068] hover:text-[#2d6a4f]"
+          className="text-xs font-bold text-slate-500 hover:text-[#2d6a4f]"
         >
           &larr; Back to Needs
         </Link>
@@ -122,7 +122,7 @@ export default function CreateNeedPage() {
       )}
 
       {/* Form Container */}
-      <form onSubmit={handleSubmit} className="bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs p-6 sm:p-8 space-y-6">
+      <form onSubmit={handleSubmit} className="bg-white rounded-3xl border border-slate-200 border-slate-200 shadow-xs p-6 sm:p-8 space-y-6">
         
         {/* Section 1: Meal Period & Category */}
         <div className="space-y-4">
@@ -132,14 +132,14 @@ export default function CreateNeedPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+              <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                 Meal Period *
               </label>
               <select
                 name="meal_period"
                 value={formData.meal_period}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans bg-white dark:bg-[#14171a] font-bold"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans bg-white font-bold"
               >
                 <option value="BREAKFAST">BREAKFAST</option>
                 <option value="LUNCH">LUNCH</option>
@@ -149,14 +149,14 @@ export default function CreateNeedPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+              <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                 Food Category *
               </label>
               <select
                 name="food_category"
                 value={formData.food_category}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans bg-white dark:bg-[#14171a]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans bg-white"
               >
                 <option value="Prepared Meal">Prepared Meal (Thali / Combo)</option>
                 <option value="Rice">Rice & Grains</option>
@@ -169,14 +169,14 @@ export default function CreateNeedPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+              <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                 Dietary Protocol *
               </label>
               <select
                 name="dietary_type"
                 value={formData.dietary_type}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans bg-white dark:bg-[#14171a] font-bold"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans bg-white font-bold"
               >
                 <option value="Vegetarian">Strictly Vegetarian (100% Veg)</option>
                 <option value="Non-Vegetarian">Non-Vegetarian Accepted</option>
@@ -186,14 +186,14 @@ export default function CreateNeedPage() {
         </div>
 
         {/* Section 2: Quantities & Deadlines */}
-        <div className="space-y-4 pt-4 border-t border-[#e5dec9] dark:border-[#2d3239]">
+        <div className="space-y-4 pt-4 border-t border-slate-200 border-slate-200">
           <h2 className="text-xs font-bold uppercase tracking-wider text-[#2d6a4f]">
             2. Quantity & Time Constraints
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+              <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                 Required Quantity (kg) *
               </label>
               <input
@@ -203,12 +203,12 @@ export default function CreateNeedPage() {
                 onChange={handleChange}
                 min={5}
                 required
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-bold"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-bold"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+              <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                 Min. Acceptable Quantity (kg) *
               </label>
               <input
@@ -218,12 +218,12 @@ export default function CreateNeedPage() {
                 onChange={handleChange}
                 min={1}
                 required
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+              <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                 Required-By Time *
               </label>
               <input
@@ -232,21 +232,21 @@ export default function CreateNeedPage() {
                 value={formData.required_by_time}
                 onChange={handleChange}
                 required
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
               />
             </div>
           </div>
         </div>
 
         {/* Section 3: Capacity & Facility */}
-        <div className="space-y-4 pt-4 border-t border-[#e5dec9] dark:border-[#2d3239]">
+        <div className="space-y-4 pt-4 border-t border-slate-200 border-slate-200">
           <h2 className="text-xs font-bold uppercase tracking-wider text-[#2d6a4f]">
             3. Receiving Dock & Space Capacity
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+              <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                 Current Available Capacity Today (kg) *
               </label>
               <input
@@ -256,13 +256,13 @@ export default function CreateNeedPage() {
                 onChange={handleChange}
                 min={5}
                 required
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-bold text-[#2d6a4f]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-bold text-[#2d6a4f]"
               />
-              <span className="text-[10px] text-[#5c6068]">Must have available shelf/cooler space</span>
+              <span className="text-[10px] text-slate-500">Must have available shelf/cooler space</span>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+              <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                 Receiving Hours Window *
               </label>
               <input
@@ -272,13 +272,13 @@ export default function CreateNeedPage() {
                 onChange={handleChange}
                 required
                 placeholder="e.g. 18:00 – 21:30"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+            <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
               Receiving Address / Unloading Gate *
             </label>
             <textarea
@@ -287,20 +287,20 @@ export default function CreateNeedPage() {
               value={formData.receiving_address}
               onChange={handleChange}
               required
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
             />
           </div>
         </div>
 
         {/* Section 4: Storage & Special Requirements */}
-        <div className="space-y-4 pt-4 border-t border-[#e5dec9] dark:border-[#2d3239]">
+        <div className="space-y-4 pt-4 border-t border-slate-200 border-slate-200">
           <h2 className="text-xs font-bold uppercase tracking-wider text-[#2d6a4f]">
             4. Storage Protocols
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+              <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                 Storage Capability
               </label>
               <input
@@ -308,12 +308,12 @@ export default function CreateNeedPage() {
                 name="storage_requirements"
                 value={formData.storage_requirements}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+              <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                 Special Handling Instructions
               </label>
               <input
@@ -321,17 +321,17 @@ export default function CreateNeedPage() {
                 name="special_requirements"
                 value={formData.special_requirements}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
               />
             </div>
           </div>
         </div>
 
         {/* Submit */}
-        <div className="pt-4 border-t border-[#e5dec9] dark:border-[#2d3239] flex items-center justify-between">
+        <div className="pt-4 border-t border-slate-200 border-slate-200 flex items-center justify-between">
           <Link
             href="/ngo/dashboard"
-            className="text-xs font-bold text-[#5c6068] hover:text-[#2d6a4f]"
+            className="text-xs font-bold text-slate-500 hover:text-[#2d6a4f]"
           >
             Cancel
           </Link>
@@ -339,7 +339,7 @@ export default function CreateNeedPage() {
           <button
             type="submit"
             disabled={loading}
-            className="px-6 py-3 rounded-2xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] text-xs font-bold flex items-center gap-2 shadow-xs transition-all disabled:opacity-50"
+            className="px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-2 shadow-xs transition-all disabled:opacity-50"
           >
             {loading ? 'Publishing to Matching Network...' : 'PUBLISH FOOD NEED'}
             <ArrowRight className="w-4 h-4" />

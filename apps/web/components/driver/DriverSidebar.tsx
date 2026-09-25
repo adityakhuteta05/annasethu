@@ -43,10 +43,10 @@ export function DriverSidebar() {
   ];
 
   return (
-    <aside className="w-64 shrink-0 hidden lg:block border-r border-[#e5dec9] dark:border-[#2d3239] bg-[#f7f1e3]/40 dark:bg-[#14171a]/40 min-h-[calc(100vh-4rem)] p-4 space-y-6">
+    <aside className="w-64 shrink-0 hidden lg:block border-r border-slate-200 bg-white min-h-[calc(100vh-4rem)] p-4 space-y-6">
       {/* Group 1: Operations */}
       <div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] px-3 block mb-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-3 block mb-2">
           Rescue Missions
         </span>
         <nav className="space-y-1">
@@ -57,15 +57,15 @@ export function DriverSidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   item.isHighlight && isActive
-                    ? 'bg-orange-600 text-white shadow-xs'
+                    ? 'bg-orange-600 text-white font-semibold shadow-xs'
                     : isActive
-                    ? 'bg-white dark:bg-[#1c2024] text-orange-600 dark:text-orange-400 shadow-xs border border-[#e5dec9] dark:border-[#2d3239]'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-orange-600 hover:bg-white/60 dark:hover:bg-[#1c2024]/60'
+                    ? 'bg-orange-50 text-orange-800 font-semibold border border-orange-100'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                <Icon className={`w-4 h-4 shrink-0 ${item.isHighlight ? 'text-orange-500' : ''}`} />
+                <Icon className={`w-4 h-4 shrink-0 ${item.isHighlight && isActive ? 'text-white' : isActive ? 'text-orange-600' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </Link>
             );
@@ -75,7 +75,7 @@ export function DriverSidebar() {
 
       {/* Group 2: Fleet & Finance */}
       <div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] px-3 block mb-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-3 block mb-2">
           Fleet & Earnings
         </span>
         <nav className="space-y-1">
@@ -86,13 +86,13 @@ export function DriverSidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-white dark:bg-[#1c2024] text-orange-600 dark:text-orange-400 shadow-xs border border-[#e5dec9] dark:border-[#2d3239]'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-orange-600 hover:bg-white/60 dark:hover:bg-[#1c2024]/60'
+                    ? 'bg-orange-50 text-orange-800 font-semibold border border-orange-100'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                <Icon className="w-4 h-4 shrink-0" />
+                <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-orange-600' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </Link>
             );
@@ -102,7 +102,7 @@ export function DriverSidebar() {
 
       {/* Group 3: Compliance & Desk */}
       <div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] px-3 block mb-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-3 block mb-2">
           Compliance & Support
         </span>
         <nav className="space-y-1">
@@ -113,13 +113,13 @@ export function DriverSidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-white dark:bg-[#1c2024] text-orange-600 dark:text-orange-400 shadow-xs border border-[#e5dec9] dark:border-[#2d3239]'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-orange-600 hover:bg-white/60 dark:hover:bg-[#1c2024]/60'
+                    ? 'bg-orange-50 text-orange-800 font-semibold border border-orange-100'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                <Icon className="w-4 h-4 shrink-0" />
+                <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-orange-600' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </Link>
             );
@@ -128,23 +128,22 @@ export function DriverSidebar() {
       </div>
 
       {/* Switch Role & Sign Out */}
-      <div className="pt-3 border-t border-[#e5dec9] dark:border-[#2d3239] space-y-1">
+      <div className="pt-3 border-t border-slate-100 space-y-1">
         <Link
           href="/login"
-          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-[#5c6068] dark:text-[#a0a5ad] hover:text-orange-600 dark:hover:text-[#f7f1e3] hover:bg-white/60 dark:hover:bg-[#1c2024]/60 transition"
+          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Switch Operational Role</span>
+          <span>Switch Account Role</span>
         </Link>
         <Link
           href="/logout"
-          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition"
+          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 hover:bg-rose-50 transition"
         >
-          <LogOut className="w-3.5 h-3.5" />
+          <LogOut className="w-3.5 h-3.5 text-rose-500" />
           <span>Sign Out</span>
         </Link>
       </div>
     </aside>
   );
 }
-

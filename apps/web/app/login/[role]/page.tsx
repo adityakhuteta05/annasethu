@@ -100,8 +100,8 @@ function RoleLoginInner({ params }: PageProps) {
       registerBtnText: 'Register as Food Donor',
       signInBtnText: 'Sign in to Food Donor',
       demoEmail: 'demo@restaurant.com',
-      badgeColor: 'bg-[#1f4d36]/10 text-[#1f4d36] border-[#1f4d36]/20',
-      btnBg: 'bg-[#1f4d36] hover:bg-[#163827] text-[#f7f1e3]',
+      badgeColor: 'bg-emerald-600/10 text-slate-900 border-[#1f4d36]/20',
+      btnBg: 'bg-emerald-600 hover:bg-emerald-700 text-white',
     },
     receiver: {
       title: 'NGO / Receiver',
@@ -112,8 +112,8 @@ function RoleLoginInner({ params }: PageProps) {
       registerBtnText: 'Register as NGO Receiver',
       signInBtnText: 'Sign in to NGO Receiver',
       demoEmail: 'demo@ngo.com',
-      badgeColor: 'bg-[#4f9d3a]/15 text-[#2d6a4f] border-[#4f9d3a]/30',
-      btnBg: 'bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3]',
+      badgeColor: 'bg-blue-50 text-blue-800 border-blue-200',
+      btnBg: 'bg-blue-600 hover:bg-blue-700 text-white',
     },
     driver: {
       title: 'Delivery Partner',
@@ -124,8 +124,8 @@ function RoleLoginInner({ params }: PageProps) {
       registerBtnText: 'Register as Delivery Partner',
       signInBtnText: 'Sign in to Delivery Partner',
       demoEmail: 'demo@driver.com',
-      badgeColor: 'bg-[#e0662b]/15 text-[#b04513] border-[#e0662b]/30',
-      btnBg: 'bg-[#e0662b] hover:bg-[#c2511d] text-white',
+      badgeColor: 'bg-orange-50 text-orange-800 border-orange-200',
+      btnBg: 'bg-orange-600 hover:bg-orange-700 text-white',
     },
     admin: {
       title: 'System Administrator',
@@ -137,7 +137,7 @@ function RoleLoginInner({ params }: PageProps) {
       signInBtnText: 'Sign in to System Administrator',
       demoEmail: 'admin@annasetu.org',
       badgeColor: 'bg-purple-100 text-purple-900 border-purple-200',
-      btnBg: 'bg-[#23262b] hover:bg-black text-[#f7f1e3]',
+      btnBg: 'bg-[#23262b] hover:bg-black text-white',
     },
   };
 
@@ -179,58 +179,27 @@ function RoleLoginInner({ params }: PageProps) {
         password,
       });
 
-      const isDemo = 
-        email === 'demo@restaurant.com' ||
-        email === 'demo@ngo.com' ||
-        email === 'demo@driver.com' ||
-        email === 'admin@annasetu.org' ||
-        email.endsWith('@annasetu.org') ||
-        email.includes('demo') ||
-        process.env.NODE_ENV === 'development';
-
-      if (error && !isDemo) {
+      if (error) {
         throw error;
       }
 
-      setSuccessMessage('Credentials authorized. Verifying server-side profile...');
+      setSuccessMessage('Credentials authorized. Opening dashboard...');
 
-      // Server-side profile check
-      if (data?.user) {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('role, is_active, verification_status')
-          .eq('id', data.user.id)
-          .single();
-
-        if (profile) {
-          if (profile.is_active === false) {
-            await supabase.auth.signOut();
-            setErrorMessage('Account is deactivated. Access denied. Please contact platform administrators.');
-            setLoading(false);
-            return;
-          }
-
-          const rawRole = (profile.role || '').toUpperCase();
-          if (rawRole === 'DONOR') {
-            router.push('/donor/dashboard');
-            return;
-          } else if (rawRole === 'NGO' || rawRole === 'RECEIVER') {
-            router.push('/receiver/dashboard');
-            return;
-          } else if (rawRole === 'DRIVER') {
-            router.push('/driver/jobs');
-            return;
-          } else if (rawRole === 'ADMIN') {
-            router.push('/admin/dashboard');
-            return;
-          }
-        }
+      // Determine target destination from user metadata or current role
+      const metaRole = (data?.user?.user_metadata?.role || normalizedRole).toUpperCase();
+      let targetRoute = currentRole.dashboardRoute;
+      if (metaRole === 'DONOR') {
+        targetRoute = '/donor/dashboard';
+      } else if (metaRole === 'NGO' || metaRole === 'RECEIVER') {
+        targetRoute = '/receiver/dashboard';
+      } else if (metaRole === 'DRIVER') {
+        targetRoute = '/driver/jobs';
+      } else if (metaRole === 'ADMIN') {
+        targetRoute = '/admin/dashboard';
       }
 
-      // Default role route navigation
-      setTimeout(() => {
-        router.push(currentRole.dashboardRoute);
-      }, 300);
+      // Immediate hard redirect to ensure session cookies take effect
+      window.location.href = targetRoute;
 
     } catch (err: any) {
       setErrorMessage(mapSupabaseAuthError(err));
@@ -335,18 +304,18 @@ function RoleLoginInner({ params }: PageProps) {
   };
 
   return (
-    <main className="min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-8 bg-[#fdfbf7] dark:bg-[#121417]">
+    <main className="min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-8 bg-gradient-to-b from-white via-slate-50 to-white dark:bg-[#121417]">
       {/* Top Header */}
       <header className="max-w-4xl w-full mx-auto flex items-center justify-between py-4">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-[#1f4d36] text-[#f7f1e3] flex items-center justify-center font-heading text-xl font-bold shadow-md group-hover:scale-105 transition-transform">
+          <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-semibold tracking-tight text-xl font-bold shadow-md group-hover:scale-105 transition-transform">
             अ
           </div>
           <div>
-            <span className="font-heading font-bold text-xl tracking-tight text-[#1f4d36] dark:text-[#f7f1e3]">
+            <span className="font-bold tracking-tight text-xl tracking-tight text-slate-900 text-slate-900">
               ANNASETU
             </span>
-            <span className="text-[11px] font-sans font-medium text-[#5c6068] dark:text-[#a0a5ad] block -mt-1">
+            <span className="text-[11px] font-sans font-medium text-slate-500 dark:text-slate-400 block -mt-1">
               Surplus Food · Shared With Purpose
             </span>
           </div>
@@ -354,7 +323,7 @@ function RoleLoginInner({ params }: PageProps) {
 
         <Link
           href="/login"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#1f4d36] text-xs font-semibold hover:bg-white dark:hover:bg-[#1c2024] transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 border-slate-200 text-slate-500 dark:text-slate-400 hover:text-slate-900 text-xs font-semibold hover:bg-white dark:hover:bg-[#1c2024] transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Change Role</span>
@@ -363,34 +332,34 @@ function RoleLoginInner({ params }: PageProps) {
 
       {/* Main Role-Aware Portal Card */}
       <section className="max-w-xl w-full mx-auto my-auto py-6">
-        <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-md p-6 sm:p-8 space-y-6">
+        <div className="bg-white rounded-3xl border border-slate-200 border-slate-200 shadow-md p-6 sm:p-8 space-y-6">
           
           {/* Role Header Banner */}
-          <div className="flex items-start justify-between border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+          <div className="flex items-start justify-between border-b border-slate-200 border-slate-200 pb-4">
             <div>
               <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border ${currentRole.badgeColor} mb-2`}>
                 <span>{currentRole.icon}</span>
                 <span>{currentRole.headlineRole} Portal</span>
               </div>
-              <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h1 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900">
                 {currentRole.title}
               </h1>
-              <p className="text-xs text-[#5c6068] dark:text-[#a0a5ad] mt-1">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                 {currentRole.subtitle}
               </p>
             </div>
 
             <Link
               href="/login"
-              className="text-xs font-bold text-[#5c6068] hover:text-[#1f4d36] dark:hover:text-[#f7f1e3] px-2.5 py-1 rounded-lg border border-[#e5dec9] dark:border-[#2d3239] hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors shrink-0"
+              className="text-xs font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white px-2.5 py-1 rounded-lg border border-slate-200 border-slate-200 hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors shrink-0"
             >
-              [ CHANGE ROLE ]
+              Choose another role
             </Link>
           </div>
 
           {/* Tab Selector: Sign In vs Register (Admin has NO register tab) */}
           {normalizedRole !== 'admin' && (
-            <div className="flex p-1 rounded-2xl bg-[#f7f1e3] dark:bg-[#14171a] border border-[#e5dec9] dark:border-[#2d3239]">
+            <div className="flex p-1 rounded-2xl bg-slate-100 bg-white border border-slate-200 border-slate-200">
               <button
                 type="button"
                 onClick={() => {
@@ -400,8 +369,8 @@ function RoleLoginInner({ params }: PageProps) {
                 }}
                 className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${
                   activeTab === 'signin'
-                    ? 'bg-white dark:bg-[#1c2024] text-[#1f4d36] dark:text-[#f7f1e3] shadow-xs'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#23262b]'
+                    ? 'bg-white text-slate-900 text-slate-900 shadow-xs'
+                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900'
                 }`}
               >
                 Sign In
@@ -415,8 +384,8 @@ function RoleLoginInner({ params }: PageProps) {
                 }}
                 className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${
                   activeTab === 'register'
-                    ? 'bg-white dark:bg-[#1c2024] text-[#1f4d36] dark:text-[#f7f1e3] shadow-xs'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#23262b]'
+                    ? 'bg-white text-slate-900 text-slate-900 shadow-xs'
+                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900'
                 }`}
               >
                 Create Account
@@ -443,11 +412,11 @@ function RoleLoginInner({ params }: PageProps) {
           {activeTab === 'signin' && (
             <form onSubmit={handleSignIn} className="space-y-4" noValidate>
               <div>
-                <label htmlFor="signin-email" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1.5">
+                <label htmlFor="signin-email" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1.5">
                   Authorized Email Address <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-[#5c6068] absolute left-3.5 top-3" />
+                  <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-3" />
                   <input
                     id="signin-email"
                     name="email"
@@ -461,10 +430,10 @@ function RoleLoginInner({ params }: PageProps) {
                     required
                     aria-invalid={!!fieldErrors.email}
                     aria-describedby={fieldErrors.email ? 'signin-email-error' : undefined}
-                    className={`w-full pl-10 pr-4 py-2.5 rounded-xl border bg-white dark:bg-[#14171a] text-xs font-sans text-[#23262b] dark:text-[#f7f1e3] placeholder-[#a0a5ad] focus:outline-none ${
+                    className={`w-full pl-10 pr-4 py-2.5 rounded-xl border bg-white text-xs font-sans text-slate-900 text-slate-900 placeholder-[#a0a5ad] focus:outline-none ${
                       fieldErrors.email 
                         ? 'border-red-500 focus:ring-2 focus:ring-red-400' 
-                        : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                        : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                     }`}
                   />
                 </div>
@@ -477,18 +446,18 @@ function RoleLoginInner({ params }: PageProps) {
 
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label htmlFor="signin-password" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                  <label htmlFor="signin-password" className="block text-xs font-bold text-slate-900 text-slate-900">
                     Password <span className="text-red-500">*</span>
                   </label>
                   <Link
                     href="/forgot-password"
-                    className="text-[11px] font-medium text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#1f4d36]"
+                    className="text-[11px] font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900"
                   >
                     Forgot password?
                   </Link>
                 </div>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-[#5c6068] absolute left-3.5 top-3" />
+                  <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-3" />
                   <input
                     id="signin-password"
                     name="password"
@@ -502,16 +471,16 @@ function RoleLoginInner({ params }: PageProps) {
                     required
                     aria-invalid={!!fieldErrors.password}
                     aria-describedby={fieldErrors.password ? 'signin-password-error' : undefined}
-                    className={`w-full pl-10 pr-10 py-2.5 rounded-xl border bg-white dark:bg-[#14171a] text-xs font-sans text-[#23262b] dark:text-[#f7f1e3] placeholder-[#a0a5ad] focus:outline-none ${
+                    className={`w-full pl-10 pr-10 py-2.5 rounded-xl border bg-white text-xs font-sans text-slate-900 text-slate-900 placeholder-[#a0a5ad] focus:outline-none ${
                       fieldErrors.password 
                         ? 'border-red-500 focus:ring-2 focus:ring-red-400' 
-                        : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                        : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                     }`}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3.5 top-3 text-[#5c6068] hover:text-[#23262b]"
+                    className="absolute right-3.5 top-3 text-slate-500 hover:text-slate-900"
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -530,17 +499,17 @@ function RoleLoginInner({ params }: PageProps) {
                     type="checkbox" 
                     checked={rememberSession} 
                     onChange={(e) => setRememberSession(e.target.checked)} 
-                    className="rounded border-[#e5dec9] text-[#1f4d36] focus:ring-[#1f4d36]" 
+                    className="rounded border-slate-200 text-slate-900 focus:ring-emerald-500" 
                   />
-                  <span className="text-[11px] text-[#5c6068] dark:text-[#a0a5ad]">Remember session</span>
+                  <span className="text-[11px] text-slate-500 dark:text-slate-400">Remember session</span>
                 </label>
                 {normalizedRole !== 'admin' && (
                   <button
                     type="button"
                     onClick={() => setActiveTab('register')}
-                    className="text-[11px] font-bold text-[#1f4d36] dark:text-[#4f9d3a] hover:underline"
+                    className="text-[11px] font-bold text-slate-900 dark:text-[#4f9d3a] hover:underline"
                   >
-                    [ CREATE ACCOUNT ]
+                    Create an account
                   </button>
                 )}
               </div>
@@ -569,11 +538,11 @@ function RoleLoginInner({ params }: PageProps) {
               {/* Shared Registration Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label htmlFor="reg-full-name" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label htmlFor="reg-full-name" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-[#5c6068] absolute left-3 top-2.5" />
+                    <User className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
                     <input
                       id="reg-full-name"
                       name="full_name"
@@ -586,8 +555,8 @@ function RoleLoginInner({ params }: PageProps) {
                       placeholder="e.g. Vikram Singhania"
                       required
                       aria-invalid={!!fieldErrors.full_name}
-                      className={`w-full pl-9 pr-3 py-2 rounded-xl border text-xs bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                        fieldErrors.full_name ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                      className={`w-full pl-9 pr-3 py-2 rounded-xl border text-xs bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                        fieldErrors.full_name ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                       }`}
                     />
                   </div>
@@ -597,11 +566,11 @@ function RoleLoginInner({ params }: PageProps) {
                 </div>
 
                 <div>
-                  <label htmlFor="reg-phone" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label htmlFor="reg-phone" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                     Phone Number (10 digits) <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
-                    <Phone className="w-4 h-4 text-[#5c6068] absolute left-3 top-2.5" />
+                    <Phone className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
                     <input
                       id="reg-phone"
                       name="phone"
@@ -615,8 +584,8 @@ function RoleLoginInner({ params }: PageProps) {
                       maxLength={10}
                       required
                       aria-invalid={!!fieldErrors.phone}
-                      className={`w-full pl-9 pr-3 py-2 rounded-xl border text-xs bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                        fieldErrors.phone ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                      className={`w-full pl-9 pr-3 py-2 rounded-xl border text-xs bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                        fieldErrors.phone ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                       }`}
                     />
                   </div>
@@ -627,11 +596,11 @@ function RoleLoginInner({ params }: PageProps) {
               </div>
 
               <div>
-                <label htmlFor="reg-email" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                <label htmlFor="reg-email" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                   Email Address <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-[#5c6068] absolute left-3 top-2.5" />
+                  <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
                   <input
                     id="reg-email"
                     name="email"
@@ -644,8 +613,8 @@ function RoleLoginInner({ params }: PageProps) {
                     placeholder="name@business.org"
                     required
                     aria-invalid={!!fieldErrors.email}
-                    className={`w-full pl-9 pr-3 py-2 rounded-xl border text-xs bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                      fieldErrors.email ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                    className={`w-full pl-9 pr-3 py-2 rounded-xl border text-xs bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                      fieldErrors.email ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                     }`}
                   />
                 </div>
@@ -655,11 +624,11 @@ function RoleLoginInner({ params }: PageProps) {
               </div>
 
               <div>
-                <label htmlFor="reg-password" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                <label htmlFor="reg-password" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                   Password (min 8 chars) <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-[#5c6068] absolute left-3 top-2.5" />
+                  <Lock className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
                   <input
                     id="reg-password"
                     name="password"
@@ -672,14 +641,14 @@ function RoleLoginInner({ params }: PageProps) {
                     placeholder="Minimum 8 characters"
                     required
                     aria-invalid={!!fieldErrors.password}
-                    className={`w-full pl-9 pr-9 py-2 rounded-xl border text-xs bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                      fieldErrors.password ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                    className={`w-full pl-9 pr-9 py-2 rounded-xl border text-xs bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                      fieldErrors.password ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                     }`}
                   />
                   <button
                     type="button"
                     onClick={() => setShowRegPassword(!showRegPassword)}
-                    className="absolute right-3 top-2.5 text-[#5c6068] hover:text-[#23262b]"
+                    className="absolute right-3 top-2.5 text-slate-500 hover:text-slate-900"
                     aria-label={showRegPassword ? 'Hide password' : 'Show password'}
                   >
                     {showRegPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -693,13 +662,13 @@ function RoleLoginInner({ params }: PageProps) {
               {/* Role-Specific Fields */}
               {/* DONOR SPECIFIC */}
               {normalizedRole === 'donor' && (
-                <div className="space-y-3 pt-2 border-t border-[#e5dec9] dark:border-[#2d3239]">
-                  <span className="text-[11px] font-bold text-[#1f4d36] dark:text-[#4f9d3a] uppercase tracking-wider block">
+                <div className="space-y-3 pt-2 border-t border-slate-200 border-slate-200">
+                  <span className="text-[11px] font-bold text-slate-900 dark:text-[#4f9d3a] uppercase tracking-wider block">
                     Donor Compliance Information
                   </span>
 
                   <div>
-                    <label htmlFor="reg-business-name" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label htmlFor="reg-business-name" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                       Business / Kitchen Name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -714,8 +683,8 @@ function RoleLoginInner({ params }: PageProps) {
                       placeholder="e.g. Grand Palace Banquet & Hotel"
                       required
                       aria-invalid={!!fieldErrors.business_name}
-                      className={`w-full px-3 py-2 rounded-xl border text-xs bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                        fieldErrors.business_name ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                      className={`w-full px-3 py-2 rounded-xl border text-xs bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                        fieldErrors.business_name ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                       }`}
                     />
                     {fieldErrors.business_name && (
@@ -725,7 +694,7 @@ function RoleLoginInner({ params }: PageProps) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label htmlFor="reg-gstin" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                      <label htmlFor="reg-gstin" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                         GSTIN (15 chars) <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -741,8 +710,8 @@ function RoleLoginInner({ params }: PageProps) {
                         maxLength={15}
                         required
                         aria-invalid={!!fieldErrors.gstin}
-                        className={`w-full px-3 py-2 rounded-xl border text-xs font-mono uppercase bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                          fieldErrors.gstin ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                        className={`w-full px-3 py-2 rounded-xl border text-xs font-mono uppercase bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                          fieldErrors.gstin ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                         }`}
                       />
                       {fieldErrors.gstin && (
@@ -751,7 +720,7 @@ function RoleLoginInner({ params }: PageProps) {
                     </div>
 
                     <div>
-                      <label htmlFor="reg-fssai-no" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                      <label htmlFor="reg-fssai-no" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                         FSSAI License (14 digits) <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -767,8 +736,8 @@ function RoleLoginInner({ params }: PageProps) {
                         maxLength={14}
                         required
                         aria-invalid={!!fieldErrors.fssai_no}
-                        className={`w-full px-3 py-2 rounded-xl border text-xs font-mono bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                          fieldErrors.fssai_no ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                        className={`w-full px-3 py-2 rounded-xl border text-xs font-mono bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                          fieldErrors.fssai_no ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                         }`}
                       />
                       {fieldErrors.fssai_no && (
@@ -781,13 +750,13 @@ function RoleLoginInner({ params }: PageProps) {
 
               {/* NGO / RECEIVER SPECIFIC */}
               {normalizedRole === 'receiver' && (
-                <div className="space-y-3 pt-2 border-t border-[#e5dec9] dark:border-[#2d3239]">
+                <div className="space-y-3 pt-2 border-t border-slate-200 border-slate-200">
                   <span className="text-[11px] font-bold text-[#2d6a4f] dark:text-[#4f9d3a] uppercase tracking-wider block">
                     Organization Registry Information
                   </span>
 
                   <div>
-                    <label htmlFor="reg-org-name" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label htmlFor="reg-org-name" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                       Organization / Shelter Name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -802,8 +771,8 @@ function RoleLoginInner({ params }: PageProps) {
                       placeholder="e.g. Roti Bank Delhi Relief Trust"
                       required
                       aria-invalid={!!fieldErrors.org_name}
-                      className={`w-full px-3 py-2 rounded-xl border text-xs bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                        fieldErrors.org_name ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                      className={`w-full px-3 py-2 rounded-xl border text-xs bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                        fieldErrors.org_name ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                       }`}
                     />
                     {fieldErrors.org_name && (
@@ -813,7 +782,7 @@ function RoleLoginInner({ params }: PageProps) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label htmlFor="reg-registration-no" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                      <label htmlFor="reg-registration-no" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                         Registration Number <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -828,8 +797,8 @@ function RoleLoginInner({ params }: PageProps) {
                         placeholder="REG-DL-2019-4412"
                         required
                         aria-invalid={!!fieldErrors.registration_no}
-                        className={`w-full px-3 py-2 rounded-xl border text-xs bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                          fieldErrors.registration_no ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                        className={`w-full px-3 py-2 rounded-xl border text-xs bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                          fieldErrors.registration_no ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                         }`}
                       />
                       {fieldErrors.registration_no && (
@@ -838,7 +807,7 @@ function RoleLoginInner({ params }: PageProps) {
                     </div>
 
                     <div>
-                      <label htmlFor="reg-darpan-id" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                      <label htmlFor="reg-darpan-id" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                         NPO DARPAN / 80G (Optional)
                       </label>
                       <input
@@ -848,7 +817,7 @@ function RoleLoginInner({ params }: PageProps) {
                         value={darpanId}
                         onChange={(e) => setDarpanId(e.target.value.toUpperCase())}
                         placeholder="DL/2021/0291456"
-                        className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-mono uppercase bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:ring-2 focus:ring-[#1f4d36] focus:outline-none"
+                        className="w-full px-3 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs font-mono uppercase bg-white text-slate-900 text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                       />
                     </div>
                   </div>
@@ -857,14 +826,14 @@ function RoleLoginInner({ params }: PageProps) {
 
               {/* DRIVER SPECIFIC */}
               {normalizedRole === 'driver' && (
-                <div className="space-y-3 pt-2 border-t border-[#e5dec9] dark:border-[#2d3239]">
+                <div className="space-y-3 pt-2 border-t border-slate-200 border-slate-200">
                   <span className="text-[11px] font-bold text-[#b04513] dark:text-[#e0662b] uppercase tracking-wider block">
                     Transport & Driving License Information
                   </span>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label htmlFor="reg-dl-no" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                      <label htmlFor="reg-dl-no" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                         Driving Licence (DL) Number <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -879,8 +848,8 @@ function RoleLoginInner({ params }: PageProps) {
                         placeholder="DL-0420110099881"
                         required
                         aria-invalid={!!fieldErrors.dl_no}
-                        className={`w-full px-3 py-2 rounded-xl border text-xs font-mono uppercase bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                          fieldErrors.dl_no ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                        className={`w-full px-3 py-2 rounded-xl border text-xs font-mono uppercase bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                          fieldErrors.dl_no ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                         }`}
                       />
                       {fieldErrors.dl_no && (
@@ -889,7 +858,7 @@ function RoleLoginInner({ params }: PageProps) {
                     </div>
 
                     <div>
-                      <label htmlFor="reg-vehicle-type" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                      <label htmlFor="reg-vehicle-type" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                         Vehicle Type <span className="text-red-500">*</span>
                       </label>
                       <select
@@ -897,7 +866,7 @@ function RoleLoginInner({ params }: PageProps) {
                         name="vehicle_type"
                         value={vehicleType}
                         onChange={(e) => setVehicleType(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:ring-2 focus:ring-[#1f4d36] focus:outline-none"
+                        className="w-full px-3 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs bg-white text-slate-900 text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                       >
                         <option value="MOTORCYCLE">Two-Wheeler (Motorcycle)</option>
                         <option value="SCOOTER">Two-Wheeler (Scooter)</option>
@@ -910,7 +879,7 @@ function RoleLoginInner({ params }: PageProps) {
                   </div>
 
                   <div>
-                    <label htmlFor="reg-rc-no" className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label htmlFor="reg-rc-no" className="block text-xs font-bold text-slate-900 text-slate-900 mb-1">
                       Vehicle RC Number <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -925,8 +894,8 @@ function RoleLoginInner({ params }: PageProps) {
                       placeholder="DL-1VB-8921"
                       required
                       aria-invalid={!!fieldErrors.rc_no}
-                      className={`w-full px-3 py-2 rounded-xl border text-xs font-mono uppercase bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                        fieldErrors.rc_no ? 'border-red-500' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                      className={`w-full px-3 py-2 rounded-xl border text-xs font-mono uppercase bg-white text-slate-900 text-slate-900 focus:outline-none ${
+                        fieldErrors.rc_no ? 'border-red-500' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                       }`}
                     />
                     {fieldErrors.rc_no && (
@@ -954,15 +923,15 @@ function RoleLoginInner({ params }: PageProps) {
           )}
 
           {/* Quick Demo Pre-fill for reviewer testing */}
-          <div className="pt-4 border-t border-[#e5dec9] dark:border-[#2d3239] flex items-center justify-between">
-            <span className="text-[11px] text-[#5c6068] dark:text-[#a0a5ad] flex items-center gap-1.5">
+          <div className="pt-4 border-t border-slate-200 border-slate-200 flex items-center justify-between">
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-500" />
               Demo account available
             </span>
             <button
               type="button"
               onClick={handleFillDemo}
-              className="text-[11px] font-bold text-[#1f4d36] dark:text-[#4f9d3a] hover:underline"
+              className="text-[11px] font-bold text-slate-900 dark:text-[#4f9d3a] hover:underline"
             >
               Fill Demo Credentials &rarr;
             </button>
@@ -972,7 +941,7 @@ function RoleLoginInner({ params }: PageProps) {
       </section>
 
       {/* Footer */}
-      <footer className="max-w-4xl w-full mx-auto py-4 text-center text-xs text-[#5c6068] dark:text-[#a0a5ad] border-t border-[#e5dec9] dark:border-[#2d3239]">
+      <footer className="max-w-4xl w-full mx-auto py-4 text-center text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 border-slate-200">
         <span>AnnaSetu &copy; 2026 · Role-Based Operational Security · Source of Truth: PostgreSQL</span>
       </footer>
     </main>
@@ -982,7 +951,7 @@ function RoleLoginInner({ params }: PageProps) {
 export default function RoleAuthPage({ params }: PageProps) {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-[#fdfbf7]">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white via-slate-50 to-white">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#1f4d36]"></div>
       </div>
     }>

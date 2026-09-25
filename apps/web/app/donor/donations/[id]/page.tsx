@@ -105,25 +105,25 @@ export default function DonationDetailPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-16">
       {/* Top Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 border-slate-200 pb-4">
         <div>
           <a
             href="/donor/donations"
-            className="text-xs font-semibold text-[#5c6068] hover:text-[#1f4d36] flex items-center gap-1 inline-flex mb-1"
+            className="text-xs font-semibold text-slate-500 hover:text-slate-900 flex items-center gap-1 inline-flex mb-1"
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Back to My Donations
           </a>
-          <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             Donation #{d.id}
           </h1>
-          <span className="text-xs text-[#5c6068]">{d.title}</span>
+          <span className="text-xs text-slate-500">{d.title}</span>
         </div>
 
         <div className="flex items-center gap-3">
           <UrgencyBadge level="URGENT" />
           <a
             href={`/donor/rescues/${d.id}`}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1f4d36] hover:bg-[#163827] text-white text-xs font-bold shadow-xs transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs transition-all"
           >
             <Truck className="w-4 h-4" />
             <span>TRACK RESCUE MISSION</span>
@@ -147,62 +147,62 @@ export default function DonationDetailPage() {
             </div>
 
             <div className="text-right text-xs">
-              <span className="text-[#5c6068] block">Status</span>
-              <span className="font-bold text-[#1f4d36] dark:text-[#4f9d3a]">{d.status}</span>
+              <span className="text-slate-500 block">Status</span>
+              <span className="font-bold text-slate-900 dark:text-[#4f9d3a]">{d.status}</span>
             </div>
           </div>
 
           {/* Food Specifications */}
-          <div className="bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-4">
-            <h2 className="text-base font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 border-slate-200 shadow-xs space-y-4">
+            <h2 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
               Declared Food Specifications
             </h2>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
               <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-800/40">
-                <span className="text-[#5c6068] block">Total Quantity</span>
-                <span className="font-bold text-sm text-[#1f4d36] dark:text-[#4f9d3a]">{d.quantity_kg} kg</span>
+                <span className="text-slate-500 block">Total Quantity</span>
+                <span className="font-bold text-sm text-slate-900 dark:text-[#4f9d3a]">{d.quantity_kg} kg</span>
               </div>
               <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-800/40">
-                <span className="text-[#5c6068] block">Dietary Class</span>
+                <span className="text-slate-500 block">Dietary Class</span>
                 <span className="font-bold text-sm text-emerald-700">Vegetarian</span>
               </div>
               <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-800/40">
-                <span className="text-[#5c6068] block">Seal Barcode ID</span>
+                <span className="text-slate-500 block">Seal Barcode ID</span>
                 <span className="font-mono font-bold text-xs">{d.seal_id}</span>
               </div>
               <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-800/40 sm:col-span-2">
-                <span className="text-[#5c6068] block">Storage Method</span>
+                <span className="text-slate-500 block">Storage Method</span>
                 <span className="font-semibold">{d.storage_condition}</span>
               </div>
               <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-800/40">
-                <span className="text-[#5c6068] block">Packaging</span>
+                <span className="text-slate-500 block">Packaging</span>
                 <span className="font-semibold">{d.packaging_type}</span>
               </div>
             </div>
 
             <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-800/40 text-xs space-y-1">
-              <span className="text-[#5c6068] font-semibold flex items-center gap-1">
+              <span className="text-slate-500 font-semibold flex items-center gap-1">
                 <MapPin className="w-3.5 h-3.5 text-emerald-600" />
                 Pickup Location Dock:
               </span>
-              <p className="font-medium text-[#23262b] dark:text-[#f7f1e3]">
+              <p className="font-medium text-slate-900 dark:text-white">
                 {d.pickup_location?.address}
               </p>
-              <span className="text-[11px] text-[#5c6068]">
+              <span className="text-[11px] text-slate-500">
                 Contact: {d.pickup_location?.contact_person} ({d.pickup_location?.contact_phone})
               </span>
             </div>
           </div>
 
           {/* Partial Allocation Plan */}
-          <div className="bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-4">
-            <div className="flex items-center justify-between border-b border-[#e5dec9] dark:border-[#2d3239] pb-3">
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 border-slate-200 shadow-xs space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-200 border-slate-200 pb-3">
               <div>
-                <h2 className="text-base font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                <h2 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
                   Atomic Allocation Plan
                 </h2>
-                <span className="text-xs text-[#5c6068]">
+                <span className="text-xs text-slate-500">
                   Traceable breakdown across matched verified shelters
                 </span>
               </div>
@@ -218,19 +218,19 @@ export default function DonationDetailPage() {
                   className="p-4 rounded-2xl border border-gray-100 dark:border-gray-800 flex items-center justify-between gap-4 text-xs"
                 >
                   <div className="space-y-0.5">
-                    <span className="font-bold text-[#23262b] dark:text-[#f7f1e3]">
+                    <span className="font-bold text-slate-900 dark:text-white">
                       Receiver #{idx + 1}: {alloc.receiver_name}
                     </span>
-                    <span className="text-[11px] text-[#5c6068] block">
+                    <span className="text-[11px] text-slate-500 block">
                       Rep: {alloc.contact_person} · Status: {alloc.status}
                     </span>
                   </div>
 
                   <div className="text-right">
-                    <span className="font-bold text-base text-[#1f4d36] dark:text-[#4f9d3a]">
+                    <span className="font-bold text-base text-slate-900 dark:text-[#4f9d3a]">
                       {alloc.allocated_kg} kg
                     </span>
-                    <span className="text-[10px] text-[#5c6068] block">Reserved Capacity</span>
+                    <span className="text-[10px] text-slate-500 block">Reserved Capacity</span>
                   </div>
                 </div>
               ))}
@@ -240,22 +240,22 @@ export default function DonationDetailPage() {
 
         {/* Right Column: Explainable Match & Priority Score Breakdown */}
         <div className="space-y-6">
-          <div className="bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-5">
-            <div className="border-b border-[#e5dec9] dark:border-[#2d3239] pb-3">
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 border-slate-200 shadow-xs space-y-5">
+            <div className="border-b border-slate-200 border-slate-200 pb-3">
               <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block">
                 Explainable Matching Engine
               </span>
-              <h3 className="text-base font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h3 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
                 Why this Match was Selected
               </h3>
             </div>
 
             {/* Score Display */}
-            <div className="p-4 rounded-2xl bg-[#1f4d36] text-[#f7f1e3] text-center space-y-1">
+            <div className="p-4 rounded-2xl bg-emerald-600 text-white text-center space-y-1">
               <span className="text-[11px] uppercase tracking-wider opacity-80 font-semibold block">
                 Deterministic Rescue Priority Score
               </span>
-              <div className="text-4xl font-heading font-black text-emerald-300">
+              <div className="text-4xl font-bold tracking-tight text-emerald-300">
                 {d.match_info?.rescue_priority_score || 91.4}
                 <span className="text-base font-normal text-white/80"> / 100</span>
               </div>
@@ -266,7 +266,7 @@ export default function DonationDetailPage() {
 
             {/* Breakdown Bars */}
             <div className="space-y-2.5 text-xs">
-              <span className="font-bold text-[#23262b] dark:text-[#f7f1e3] block">
+              <span className="font-bold text-slate-900 dark:text-white block">
                 Factor Breakdown:
               </span>
 
@@ -281,8 +281,8 @@ export default function DonationDetailPage() {
               ].map((f) => (
                 <div key={f.label} className="space-y-1">
                   <div className="flex justify-between text-[11px]">
-                    <span className="text-[#5c6068]">{f.label}</span>
-                    <span className="font-mono font-bold text-[#1f4d36] dark:text-[#4f9d3a]">{f.val}</span>
+                    <span className="text-slate-500">{f.label}</span>
+                    <span className="font-mono font-bold text-slate-900 dark:text-[#4f9d3a]">{f.val}</span>
                   </div>
                   <div className="h-1.5 w-full bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
                     <div
@@ -296,17 +296,17 @@ export default function DonationDetailPage() {
 
             {/* Qualitative Match Rationale */}
             <div className="space-y-2 pt-2 border-t border-gray-100 dark:border-gray-800">
-              <span className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block">
+              <span className="text-xs font-bold text-slate-900 dark:text-white block">
                 Algorithmic Rationale:
               </span>
-              <ul className="space-y-1.5 text-xs text-[#5c6068] list-disc pl-4 leading-relaxed">
+              <ul className="space-y-1.5 text-xs text-slate-500 list-disc pl-4 leading-relaxed">
                 {d.match_info?.why_matched?.map((r: string, idx: number) => (
                   <li key={idx}>{r}</li>
                 ))}
               </ul>
             </div>
 
-            <div className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-[10px] text-[#5c6068] leading-tight">
+            <div className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-[10px] text-slate-500 leading-tight">
               Rule: Match scoring is calculated deterministically by server weights (PRD Section 41). No opaque AI override.
             </div>
           </div>

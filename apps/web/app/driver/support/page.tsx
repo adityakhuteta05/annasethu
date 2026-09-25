@@ -73,7 +73,7 @@ export default function DriverSupportPage() {
   return (
     <div className="space-y-6 max-w-3xl mx-auto pb-16">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300">
@@ -123,7 +123,7 @@ export default function DriverSupportPage() {
       {/* Incident Form */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white dark:bg-[#1c2024] p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs space-y-5"
+        className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xs space-y-5"
       >
         <h2 className="text-sm font-bold text-stone-900 dark:text-white uppercase tracking-wider border-b border-stone-100 dark:border-stone-800 pb-3">
           Create Auditable Logistics Incident

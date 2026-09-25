@@ -60,23 +60,23 @@ export default function NGOReservationsPage() {
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 border-slate-200 pb-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2d6a4f]/10 text-[#2d6a4f] text-xs font-bold mb-1">
             <BookmarkCheck className="w-3.5 h-3.5" />
             <span>Allocation Ledger</span>
           </div>
-          <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             Food Reservations
           </h1>
-          <p className="text-xs text-[#5c6068]">
+          <p className="text-xs text-slate-500">
             Statuses: HELD · CONFIRMED · RELEASED · EXPIRED. Auto-released if driver dispatch timeout occurs.
           </p>
         </div>
 
         <Link
           href="/ngo/available-food"
-          className="px-4 py-2.5 rounded-xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] font-bold text-xs flex items-center gap-1.5 shadow-xs"
+          className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs"
         >
           <span>Reserve More Food &rarr;</span>
         </Link>
@@ -87,7 +87,7 @@ export default function NGOReservationsPage() {
         {reservations.map((res) => (
           <div
             key={res.id}
-            className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4"
+            className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-200 border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4"
           >
             <div className="space-y-2">
               <div className="flex items-center gap-2">
@@ -103,18 +103,18 @@ export default function NGOReservationsPage() {
                   {res.status}
                 </span>
                 {res.remaining_min > 0 && (
-                  <span className="text-[11px] text-[#5c6068] flex items-center gap-1">
+                  <span className="text-[11px] text-slate-500 flex items-center gap-1">
                     <Clock className="w-3 h-3 text-amber-600" />
                     <span>{res.remaining_min} min remaining</span>
                   </span>
                 )}
               </div>
 
-              <h2 className="text-base font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h2 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
                 {res.food_title}
               </h2>
 
-              <div className="flex flex-wrap items-center gap-4 text-xs text-[#5c6068]">
+              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
                 <span>Donor: <strong>{res.donor_name}</strong></span>
                 <span>Allocated: <strong>{res.reserved_kg} kg</strong></span>
                 <span>Logistics Hold: <strong>₹{res.delivery_charge}</strong></span>
@@ -125,7 +125,7 @@ export default function NGOReservationsPage() {
               {res.delivery_id ? (
                 <Link
                   href={`/ngo/deliveries/${res.delivery_id}`}
-                  className="px-4 py-2.5 rounded-xl bg-[#2d6a4f] text-[#f7f1e3] text-xs font-bold hover:bg-[#1b4332] flex items-center gap-1.5 shadow-xs"
+                  className="px-4 py-2.5 rounded-xl bg-[#2d6a4f] text-white text-xs font-bold hover:bg-emerald-700 flex items-center gap-1.5 shadow-xs"
                 >
                   <Truck className="w-4 h-4" />
                   <span>TRACK DELIVERY</span>

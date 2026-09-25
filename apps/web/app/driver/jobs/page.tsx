@@ -123,7 +123,7 @@ export default function DriverJobsPage() {
   return (
     <div className="space-y-6 max-w-4xl mx-auto pb-12">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 dark:bg-orange-950 text-orange-800 dark:text-orange-300">
@@ -163,7 +163,7 @@ export default function DriverJobsPage() {
             className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition ${
               filterCategory === cat.id
                 ? 'bg-orange-600 text-white shadow-xs'
-                : 'bg-white dark:bg-[#1c2024] text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-800 hover:bg-stone-50'
+                : 'bg-white text-stone-600 dark:text-stone-400 border border-slate-200 hover:bg-stone-50'
             }`}
           >
             {cat.label}
@@ -174,7 +174,7 @@ export default function DriverJobsPage() {
       {/* Job Cards List */}
       <div className="space-y-4">
         {filteredJobs.length === 0 ? (
-          <div className="p-12 text-center bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 space-y-2">
+          <div className="p-12 text-center bg-white rounded-2xl border border-slate-200 space-y-2">
             <Compass className="w-10 h-10 mx-auto text-stone-300" />
             <h3 className="font-bold text-stone-800 dark:text-stone-200">No rescue missions available nearby</h3>
             <p className="text-xs text-stone-500 max-w-sm mx-auto">
@@ -185,7 +185,7 @@ export default function DriverJobsPage() {
           filteredJobs.map(job => (
             <div
               key={job.id}
-              className="bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 p-6 shadow-xs hover:border-orange-500/60 transition group space-y-4"
+              className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs hover:border-orange-500/60 transition group space-y-4"
             >
               {/* Card Header: Urgency + Quantity + Earnings */}
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-stone-100 dark:border-stone-800 pb-3">

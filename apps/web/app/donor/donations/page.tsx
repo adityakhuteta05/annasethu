@@ -110,19 +110,19 @@ export default function MyDonationsPage() {
   return (
     <div className="space-y-6 pb-16">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 border-slate-200 pb-4">
         <div>
-          <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             My Surplus Food Donations
           </h1>
-          <p className="text-xs text-[#5c6068]">
+          <p className="text-xs text-slate-500">
             Full historical audit ledger of declared surplus, receiver allocations, and handoff certificates
           </p>
         </div>
 
         <a
           href="/donor/donations/new"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1f4d36] hover:bg-[#163827] text-white text-xs font-bold shadow-xs transition-all"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs transition-all"
         >
           <PlusCircle className="w-4 h-4" />
           <span>Post Surplus Food</span>
@@ -130,7 +130,7 @@ export default function MyDonationsPage() {
       </div>
 
       {/* Filters & Search */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white dark:bg-[#1c2024] p-4 rounded-2xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-4 rounded-2xl border border-slate-200 border-slate-200 shadow-xs">
         
         {/* Status Tabs */}
         <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 text-xs font-semibold">
@@ -140,8 +140,8 @@ export default function MyDonationsPage() {
               onClick={() => setFilterStatus(s)}
               className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
                 filterStatus === s
-                  ? 'bg-[#1f4d36] text-white font-bold'
-                  : 'text-[#5c6068] hover:bg-gray-100 dark:hover:bg-gray-800'
+                  ? 'bg-emerald-600 text-white font-bold'
+                  : 'text-slate-500 hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
             >
               {s.replace('_', ' ')}
@@ -151,23 +151,23 @@ export default function MyDonationsPage() {
 
         {/* Search Input */}
         <div className="relative w-full sm:w-64">
-          <Search className="w-4 h-4 text-[#5c6068] absolute left-3 top-2.5" />
+          <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
           <input
             type="text"
             placeholder="Search by ID, food, or shelter..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-xs focus:outline-none focus:ring-2 focus:ring-[#1f4d36]"
+            className="w-full pl-9 pr-3 py-1.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500"
           />
         </div>
       </div>
 
       {/* Donations List / Table */}
-      <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs overflow-hidden">
+      <div className="bg-white rounded-2xl border border-slate-200 border-slate-200 shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-gray-100 dark:border-gray-800 text-[#5c6068] uppercase text-[10px] tracking-wider">
+              <tr className="border-b border-gray-100 dark:border-gray-800 text-slate-500 uppercase text-[10px] tracking-wider">
                 <th className="py-3 px-4">Donation ID</th>
                 <th className="py-3 px-4">Food & Category</th>
                 <th className="py-3 px-4">Net Quantity</th>
@@ -182,22 +182,22 @@ export default function MyDonationsPage() {
             <tbody className="divide-y divide-gray-100 dark:divide-gray-800 font-medium">
               {filtered.map((item) => (
                 <tr key={item.id} className="hover:bg-gray-50/70 dark:hover:bg-gray-800/40 transition-colors">
-                  <td className="py-3.5 px-4 font-mono font-bold text-[#1f4d36] dark:text-[#4f9d3a]">
+                  <td className="py-3.5 px-4 font-mono font-bold text-slate-900 dark:text-[#4f9d3a]">
                     {item.id}
                   </td>
                   <td className="py-3.5 px-4">
-                    <span className="font-bold text-[#23262b] dark:text-[#f7f1e3] block">{item.title}</span>
-                    <span className="text-[10px] text-[#5c6068]">{item.category}</span>
+                    <span className="font-bold text-slate-900 dark:text-white block">{item.title}</span>
+                    <span className="text-[10px] text-slate-500">{item.category}</span>
                   </td>
-                  <td className="py-3.5 px-4 font-bold text-sm text-[#23262b] dark:text-[#f7f1e3]">
+                  <td className="py-3.5 px-4 font-bold text-sm text-slate-900 dark:text-white">
                     {item.quantity_kg} kg
                   </td>
-                  <td className="py-3.5 px-4 text-[#5c6068]">{item.created}</td>
-                  <td className="py-3.5 px-4 text-[#23262b] dark:text-[#f7f1e3]">{item.deadline}</td>
-                  <td className="py-3.5 px-4 font-semibold text-[#1f4d36] dark:text-[#4f9d3a]">
+                  <td className="py-3.5 px-4 text-slate-500">{item.created}</td>
+                  <td className="py-3.5 px-4 text-slate-900 dark:text-white">{item.deadline}</td>
+                  <td className="py-3.5 px-4 font-semibold text-slate-900 dark:text-[#4f9d3a]">
                     {item.receiver}
                   </td>
-                  <td className="py-3.5 px-4 text-[#5c6068]">{item.driver}</td>
+                  <td className="py-3.5 px-4 text-slate-500">{item.driver}</td>
                   <td className="py-3.5 px-4">
                     <span
                       className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
@@ -216,7 +216,7 @@ export default function MyDonationsPage() {
                   <td className="py-3.5 px-4 text-right space-x-1.5 whitespace-nowrap">
                     <a
                       href={`/donor/donations/${item.id}`}
-                      className="px-2.5 py-1 rounded-lg border border-[#e5dec9] text-[11px] font-semibold text-[#1f4d36] hover:bg-[#f7f1e3]"
+                      className="px-2.5 py-1 rounded-lg border border-slate-200 text-[11px] font-semibold text-slate-900 hover:bg-slate-100"
                     >
                       View
                     </a>

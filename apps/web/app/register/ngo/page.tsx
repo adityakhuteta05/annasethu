@@ -190,18 +190,18 @@ export default function NGORegistrationWizard() {
   ];
 
   return (
-    <main className="min-h-screen p-4 sm:p-6 lg:p-8 bg-[#fdfbf7] dark:bg-[#121417]">
+    <main className="min-h-screen p-4 sm:p-6 lg:p-8 bg-white dark:bg-[#121417]">
       {/* Top Header */}
-      <header className="max-w-4xl w-full mx-auto flex items-center justify-between pb-6 border-b border-[#e5dec9] dark:border-[#2d3239]">
+      <header className="max-w-4xl w-full mx-auto flex items-center justify-between pb-6 border-b border-slate-200 border-slate-200">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-[#2d6a4f] text-[#f7f1e3] flex items-center justify-center font-heading text-xl font-bold shadow-md">
+          <div className="w-10 h-10 rounded-xl bg-[#2d6a4f] text-white flex items-center justify-center font-semibold tracking-tight text-xl font-bold shadow-md">
             अ
           </div>
           <div>
-            <span className="font-heading font-bold text-xl tracking-tight text-[#1f4d36] dark:text-[#f7f1e3]">
+            <span className="font-bold tracking-tight text-xl tracking-tight text-slate-900 dark:text-white">
               ANNASETU
             </span>
-            <span className="text-[10px] font-sans font-semibold text-[#5c6068] block -mt-1">
+            <span className="text-[10px] font-sans font-semibold text-slate-500 block -mt-1">
               NGO / Receiver Onboarding
             </span>
           </div>
@@ -218,7 +218,7 @@ export default function NGORegistrationWizard() {
       <div className="max-w-3xl w-full mx-auto py-8 space-y-6">
         
         {/* Step Progress Bar */}
-        <div className="bg-white dark:bg-[#1c2024] p-4 sm:p-5 rounded-2xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs">
+        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 border-slate-200 shadow-xs">
           <div className="flex items-center justify-between">
             {steps.map((s) => (
               <div key={s.num} className="flex flex-col items-center flex-1">
@@ -233,7 +233,7 @@ export default function NGORegistrationWizard() {
                 >
                   {currentStep > s.num ? '✓' : s.num}
                 </div>
-                <span className="text-[10px] font-semibold text-center mt-1.5 hidden sm:block text-[#5c6068]">
+                <span className="text-[10px] font-semibold text-center mt-1.5 hidden sm:block text-slate-500">
                   {s.title}
                 </span>
               </div>
@@ -242,15 +242,15 @@ export default function NGORegistrationWizard() {
         </div>
 
         {/* Wizard Form Container */}
-        <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-md p-6 sm:p-8 space-y-6">
+        <div className="bg-white rounded-3xl border border-slate-200 border-slate-200 shadow-md p-6 sm:p-8 space-y-6">
           
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+          <div className="flex items-center justify-between border-b border-slate-200 border-slate-200 pb-4">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4f9d3a]/15 text-[#2d6a4f] text-xs font-bold mb-1">
                 <span>Step {currentStep} of 6</span>
               </div>
-              <h1 className="text-xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
                 {currentStep === 1 && 'STEP 1: Organization Information'}
                 {currentStep === 2 && 'STEP 2: Authorized Representative'}
                 {currentStep === 3 && 'STEP 3: Verification Information (80G / DARPAN)'}
@@ -283,7 +283,7 @@ export default function NGORegistrationWizard() {
             {currentStep === 1 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                     NGO / Organization Legal Name *
                   </label>
                   <input
@@ -293,20 +293,20 @@ export default function NGORegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="e.g. Delhi Roti Bank Relief Foundation"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Organization Type *
                     </label>
                     <select
                       name="orgType"
                       value={formData.orgType}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans bg-white dark:bg-[#14171a]"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans bg-white"
                     >
                       <option value="SOCIETY_TRUST">Registered Trust / Society</option>
                       <option value="SECTION_8">Section 8 Non-Profit Company</option>
@@ -317,7 +317,7 @@ export default function NGORegistrationWizard() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Institutional Email Address *
                     </label>
                     <input
@@ -327,14 +327,14 @@ export default function NGORegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="e.g. contact@ngo.org"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Official Contact Phone *
                     </label>
                     <input
@@ -344,12 +344,12 @@ export default function NGORegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="10-digit mobile or landline"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Website / Social Link
                     </label>
                     <input
@@ -358,13 +358,13 @@ export default function NGORegistrationWizard() {
                       value={formData.website}
                       onChange={handleChange}
                       placeholder="https://..."
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                     Registered Headquarters Address *
                   </label>
                   <textarea
@@ -374,42 +374,42 @@ export default function NGORegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="Physical street address..."
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                   />
                 </div>
 
                 <div className="grid grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">City *</label>
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">City *</label>
                     <input
                       type="text"
                       name="city"
                       value={formData.city}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">State *</label>
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">State *</label>
                     <input
                       type="text"
                       name="state"
                       value={formData.state}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">PIN Code *</label>
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">PIN Code *</label>
                     <input
                       type="text"
                       name="pincode"
                       value={formData.pincode}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
@@ -425,7 +425,7 @@ export default function NGORegistrationWizard() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                     Authorized Representative Full Name *
                   </label>
                   <input
@@ -435,12 +435,12 @@ export default function NGORegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="e.g. Dr. Arvind Swaminathan"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                     Official Designation / Title *
                   </label>
                   <input
@@ -450,13 +450,13 @@ export default function NGORegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="e.g. General Secretary / Managing Trustee"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Direct Mobile Phone *
                     </label>
                     <input
@@ -466,12 +466,12 @@ export default function NGORegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="Representative direct number"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Direct Email Address *
                     </label>
                     <input
@@ -481,7 +481,7 @@ export default function NGORegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="representative@ngo.org"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
@@ -493,7 +493,7 @@ export default function NGORegistrationWizard() {
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Organization PAN *
                     </label>
                     <input
@@ -503,12 +503,12 @@ export default function NGORegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="e.g. AAATD1234C"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-mono uppercase"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-mono uppercase"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Registration Number *
                     </label>
                     <input
@@ -518,13 +518,13 @@ export default function NGORegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="Trust / Society Registration Number"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                     NITI Aayog NGO-DARPAN ID (Recommended)
                   </label>
                   <input
@@ -533,20 +533,20 @@ export default function NGORegistrationWizard() {
                     value={formData.darpanId}
                     onChange={handleChange}
                     placeholder="e.g. DL/2021/0291456"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-mono uppercase"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-mono uppercase"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 p-4 rounded-xl bg-gray-50 dark:bg-zinc-800/40 border border-[#e5dec9] dark:border-[#2d3239]">
+                <div className="grid grid-cols-2 gap-4 p-4 rounded-xl bg-gray-50 dark:bg-zinc-800/40 border border-slate-200 border-slate-200">
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="checkbox"
                       name="is80g"
                       checked={formData.is80g}
                       onChange={handleChange}
-                      className="rounded border-[#e5dec9] text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                      className="rounded border-slate-200 text-[#2d6a4f] focus:ring-[#2d6a4f]"
                     />
-                    <span className="text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                    <span className="text-xs font-bold text-slate-900 dark:text-white">
                       Section 80G Certified
                     </span>
                   </label>
@@ -557,9 +557,9 @@ export default function NGORegistrationWizard() {
                       name="is12a"
                       checked={formData.is12a}
                       onChange={handleChange}
-                      className="rounded border-[#e5dec9] text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                      className="rounded border-slate-200 text-[#2d6a4f] focus:ring-[#2d6a4f]"
                     />
-                    <span className="text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                    <span className="text-xs font-bold text-slate-900 dark:text-white">
                       Section 12A Registered
                     </span>
                   </label>
@@ -567,15 +567,15 @@ export default function NGORegistrationWizard() {
 
                 {/* Document Upload Area */}
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                     Supporting Documents (PDF / Images)
                   </label>
-                  <div className="border-2 border-dashed border-[#e5dec9] dark:border-[#2d3239] rounded-2xl p-4 text-center space-y-2 bg-[#fdfbf7] dark:bg-[#14171a]">
+                  <div className="border-2 border-dashed border-slate-200 border-slate-200 rounded-2xl p-4 text-center space-y-2 bg-white">
                     <Upload className="w-8 h-8 mx-auto text-[#4f9d3a]" />
-                    <div className="text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                    <div className="text-xs font-bold text-slate-900 dark:text-white">
                       {formData.uploadedDocName || 'Click or drag files to upload certification docs'}
                     </div>
-                    <span className="text-[10px] text-[#5c6068]">
+                    <span className="text-[10px] text-slate-500">
                       Trust deed, registration certificate, or PAN card copy (Max 10 MB)
                     </span>
                   </div>
@@ -587,7 +587,7 @@ export default function NGORegistrationWizard() {
             {currentStep === 4 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                     Food Receiving / Drop-off Facility Address *
                   </label>
                   <textarea
@@ -597,13 +597,13 @@ export default function NGORegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="Accurate drop gate, dock or landmark..."
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Receiving Hours (Start) *
                     </label>
                     <input
@@ -611,11 +611,11 @@ export default function NGORegistrationWizard() {
                       name="receivingHoursStart"
                       value={formData.receivingHoursStart}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3.5 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Receiving Hours (End) *
                     </label>
                     <input
@@ -623,21 +623,21 @@ export default function NGORegistrationWizard() {
                       name="receivingHoursEnd"
                       value={formData.receivingHoursEnd}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                      className="w-full px-3.5 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Dietary Policy *
                     </label>
                     <select
                       name="dietaryPreference"
                       value={formData.dietaryPreference}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans bg-white dark:bg-[#14171a]"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans bg-white"
                     >
                       <option value="VEG_ONLY">Strictly Vegetarian Only</option>
                       <option value="ALL_ACCEPTED">Both Vegetarian & Non-Vegetarian (Segregated)</option>
@@ -645,14 +645,14 @@ export default function NGORegistrationWizard() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Storage & Facility Equipment *
                     </label>
                     <select
                       name="storageCapability"
                       value={formData.storageCapability}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans bg-white dark:bg-[#14171a]"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans bg-white"
                     >
                       <option value="REFRIGERATED_AND_HOT_HOLDING">Commercial Refrigerator & Thermal Warmers</option>
                       <option value="STANDARD_CHILLER">Standard Kitchen Refrigeration</option>
@@ -661,9 +661,9 @@ export default function NGORegistrationWizard() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-[#f7f1e3]/60 dark:bg-[#14171a] border border-[#e5dec9] dark:border-[#2d3239]">
+                <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-slate-50 bg-white border border-slate-200 border-slate-200">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Normal Daily Capacity (kg/day) *
                     </label>
                     <input
@@ -672,13 +672,13 @@ export default function NGORegistrationWizard() {
                       value={formData.normalDailyCapacityKg}
                       onChange={handleChange}
                       min={10}
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans font-bold"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans font-bold"
                     />
-                    <span className="text-[10px] text-[#5c6068]">Overall shelter service capacity</span>
+                    <span className="text-[10px] text-slate-500">Overall shelter service capacity</span>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                    <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                       Current Receiving Capacity (kg) *
                     </label>
                     <input
@@ -687,9 +687,9 @@ export default function NGORegistrationWizard() {
                       value={formData.currentReceivingCapacityKg}
                       onChange={handleChange}
                       min={5}
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans font-bold text-[#2d6a4f]"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans font-bold text-[#2d6a4f]"
                     />
-                    <span className="text-[10px] text-[#5c6068]">Immediately available space today</span>
+                    <span className="text-[10px] text-slate-500">Immediately available space today</span>
                   </div>
                 </div>
               </div>
@@ -698,24 +698,24 @@ export default function NGORegistrationWizard() {
             {/* STEP 5: Account Credentials */}
             {currentStep === 5 && (
               <div className="space-y-4">
-                <div className="p-3.5 rounded-xl bg-gray-50 dark:bg-zinc-800/40 border border-[#e5dec9] dark:border-[#2d3239] text-xs text-[#5c6068]">
+                <div className="p-3.5 rounded-xl bg-gray-50 dark:bg-zinc-800/40 border border-slate-200 border-slate-200 text-xs text-slate-500">
                   <span>Create authorized credentials for your organization. Passwords are securely hashed with bcrypt via Supabase Auth and never stored in plain text.</span>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                     Login Email Address (Pre-filled)
                   </label>
                   <input
                     type="email"
                     value={formData.email}
                     disabled
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans bg-gray-100 dark:bg-zinc-800 text-gray-600"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans bg-gray-100 dark:bg-zinc-800 text-gray-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                     Set Secret Password *
                   </label>
                   <input
@@ -725,12 +725,12 @@ export default function NGORegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="Minimum 8 characters"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] dark:text-[#f7f1e3] mb-1">
+                  <label className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                     Confirm Secret Password *
                   </label>
                   <input
@@ -740,7 +740,7 @@ export default function NGORegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="Repeat password"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-sans"
                   />
                 </div>
               </div>
@@ -760,9 +760,9 @@ export default function NGORegistrationWizard() {
                       name="agreeTerms"
                       checked={formData.agreeTerms}
                       onChange={handleChange}
-                      className="mt-0.5 rounded border-[#e5dec9] text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                      className="mt-0.5 rounded border-slate-200 text-[#2d6a4f] focus:ring-[#2d6a4f]"
                     />
-                    <span className="text-xs text-[#23262b] dark:text-[#f7f1e3]">
+                    <span className="text-xs text-slate-900 dark:text-white">
                       I agree to the <Link href="/terms" className="underline font-bold">Terms of Service</Link> and food safety operating protocols.
                     </span>
                   </label>
@@ -773,9 +773,9 @@ export default function NGORegistrationWizard() {
                       name="agreePrivacy"
                       checked={formData.agreePrivacy}
                       onChange={handleChange}
-                      className="mt-0.5 rounded border-[#e5dec9] text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                      className="mt-0.5 rounded border-slate-200 text-[#2d6a4f] focus:ring-[#2d6a4f]"
                     />
-                    <span className="text-xs text-[#23262b] dark:text-[#f7f1e3]">
+                    <span className="text-xs text-slate-900 dark:text-white">
                       I accept the <Link href="/privacy" className="underline font-bold">Privacy Policy</Link> and institutional data governance charter.
                     </span>
                   </label>
@@ -786,9 +786,9 @@ export default function NGORegistrationWizard() {
                       name="agreeDataProcessing"
                       checked={formData.agreeDataProcessing}
                       onChange={handleChange}
-                      className="mt-0.5 rounded border-[#e5dec9] text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                      className="mt-0.5 rounded border-slate-200 text-[#2d6a4f] focus:ring-[#2d6a4f]"
                     />
-                    <span className="text-xs text-[#23262b] dark:text-[#f7f1e3]">
+                    <span className="text-xs text-slate-900 dark:text-white">
                       I consent to government public-record verification against NGO-DARPAN and MCA databases.
                     </span>
                   </label>
@@ -799,9 +799,9 @@ export default function NGORegistrationWizard() {
                       name="certifyAuthorized"
                       checked={formData.certifyAuthorized}
                       onChange={handleChange}
-                      className="mt-0.5 rounded border-[#e5dec9] text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                      className="mt-0.5 rounded border-slate-200 text-[#2d6a4f] focus:ring-[#2d6a4f]"
                     />
-                    <span className="text-xs text-[#23262b] dark:text-[#f7f1e3]">
+                    <span className="text-xs text-slate-900 dark:text-white">
                       I certify that I am the authorized representative of {formData.orgName} legally authorized to bind this entity.
                     </span>
                   </label>
@@ -811,12 +811,12 @@ export default function NGORegistrationWizard() {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex items-center justify-between pt-6 border-t border-[#e5dec9] dark:border-[#2d3239]">
+          <div className="flex items-center justify-between pt-6 border-t border-slate-200 border-slate-200">
             {currentStep > 1 ? (
               <button
                 type="button"
                 onClick={handlePrevStep}
-                className="px-4 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs font-bold text-[#5c6068] hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors flex items-center gap-1.5"
+                className="px-4 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs font-bold text-slate-500 hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors flex items-center gap-1.5"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back</span>
@@ -824,7 +824,7 @@ export default function NGORegistrationWizard() {
             ) : (
               <Link
                 href="/register"
-                className="text-xs font-bold text-[#5c6068] hover:text-[#1f4d36]"
+                className="text-xs font-bold text-slate-500 hover:text-slate-900"
               >
                 &larr; Choose Different Role
               </Link>
@@ -834,7 +834,7 @@ export default function NGORegistrationWizard() {
               <button
                 type="button"
                 onClick={handleNextStep}
-                className="px-6 py-2.5 rounded-xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
+                className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
               >
                 <span>Continue &rarr;</span>
               </button>
@@ -843,7 +843,7 @@ export default function NGORegistrationWizard() {
                 type="button"
                 onClick={handleSubmitOnboarding}
                 disabled={loading}
-                className="px-6 py-2.5 rounded-xl bg-[#2d6a4f] hover:bg-[#1b4332] text-[#f7f1e3] text-xs font-bold flex items-center gap-2 shadow-sm transition-all disabled:opacity-50"
+                className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-2 shadow-sm transition-all disabled:opacity-50"
               >
                 {loading ? (
                   <span>Submitting Verification Package...</span>

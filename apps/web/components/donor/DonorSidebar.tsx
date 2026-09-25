@@ -32,13 +32,13 @@ export function DonorSidebar() {
     { label: 'Subscription', href: '/donor/subscription', icon: CreditCard },
     { label: 'Notifications', href: '/donor/notifications', icon: Bell },
     { label: 'Profile & Locations', href: '/donor/profile', icon: Building },
-    { label: 'Support & Incidents', href: '/donor/support', icon: HelpCircle },
+    { label: 'Support & Help', href: '/donor/support', icon: HelpCircle },
   ];
 
   return (
-    <aside className="w-64 shrink-0 hidden lg:block border-r border-[#e5dec9] dark:border-[#2d3239] bg-[#f7f1e3]/40 dark:bg-[#14171a]/40 min-h-[calc(100vh-4rem)] p-4 space-y-6">
+    <aside className="w-64 shrink-0 hidden lg:block border-r border-slate-200 bg-white min-h-[calc(100vh-4rem)] p-4 space-y-6">
       <div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] px-3 block mb-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-3 block mb-2">
           Rescue Management
         </span>
         <nav className="space-y-1">
@@ -49,15 +49,15 @@ export function DonorSidebar() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   item.isPrimary
-                    ? 'bg-[#1f4d36] text-[#f7f1e3] shadow-xs hover:bg-[#163827]'
+                    ? 'bg-emerald-600 text-white shadow-xs hover:bg-emerald-700 font-semibold'
                     : isActive
-                    ? 'bg-white dark:bg-[#1c2024] text-[#1f4d36] dark:text-[#4f9d3a] shadow-xs border border-[#e5dec9] dark:border-[#2d3239]'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#1f4d36] dark:hover:text-[#f7f1e3] hover:bg-white/60 dark:hover:bg-[#1c2024]/60'
+                    ? 'bg-emerald-50 text-emerald-800 font-semibold border border-emerald-100'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                <Icon className={`w-4 h-4 shrink-0 ${item.isPrimary ? 'text-emerald-300' : ''}`} />
+                <Icon className={`w-4 h-4 shrink-0 ${item.isPrimary ? 'text-white' : isActive ? 'text-emerald-700' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </a>
             );
@@ -66,7 +66,7 @@ export function DonorSidebar() {
       </div>
 
       <div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] px-3 block mb-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-3 block mb-2">
           Compliance & Impact
         </span>
         <nav className="space-y-1">
@@ -77,13 +77,13 @@ export function DonorSidebar() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-white dark:bg-[#1c2024] text-[#1f4d36] dark:text-[#4f9d3a] shadow-xs border border-[#e5dec9] dark:border-[#2d3239]'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#1f4d36] dark:hover:text-[#f7f1e3] hover:bg-white/60 dark:hover:bg-[#1c2024]/60'
+                    ? 'bg-emerald-50 text-emerald-800 font-semibold border border-emerald-100'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                <Icon className="w-4 h-4 shrink-0" />
+                <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-emerald-700' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </a>
             );
@@ -92,7 +92,7 @@ export function DonorSidebar() {
       </div>
 
       <div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] px-3 block mb-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-3 block mb-2">
           Administration
         </span>
         <nav className="space-y-1">
@@ -103,13 +103,13 @@ export function DonorSidebar() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-white dark:bg-[#1c2024] text-[#1f4d36] dark:text-[#4f9d3a] shadow-xs border border-[#e5dec9] dark:border-[#2d3239]'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#1f4d36] dark:hover:text-[#f7f1e3] hover:bg-white/60 dark:hover:bg-[#1c2024]/60'
+                    ? 'bg-emerald-50 text-emerald-800 font-semibold border border-emerald-100'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                <Icon className="w-4 h-4 shrink-0" />
+                <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-emerald-700' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </a>
             );
@@ -117,32 +117,23 @@ export function DonorSidebar() {
         </nav>
       </div>
 
-      {/* Safety & Protocol Banner */}
-      <div className="p-3 rounded-2xl bg-[#1f4d36]/10 dark:bg-[#1f4d36]/20 border border-[#1f4d36]/20 text-[11px] text-[#1f4d36] dark:text-[#4f9d3a] space-y-1">
-        <span className="font-bold block">Zero-Landfill Protocol</span>
-        <p className="text-[10px] opacity-80 leading-relaxed">
-          Surplus declared here is reserved atomically. Food thermal buffers are monitored by the matching engine.
-        </p>
-      </div>
-
-      {/* Switch Role & Sign Out */}
-      <div className="pt-3 border-t border-[#e5dec9] dark:border-[#2d3239] space-y-1">
+      {/* Switch Portal & Sign Out Quick Links */}
+      <div className="pt-4 border-t border-slate-100 space-y-1">
         <a
           href="/login"
-          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#1f4d36] dark:hover:text-[#f7f1e3] hover:bg-white/60 dark:hover:bg-[#1c2024]/60 transition"
+          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-medium transition"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Switch Operational Role</span>
+          <span>Switch Account Role</span>
         </a>
         <a
           href="/logout"
-          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition"
+          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-rose-600 hover:bg-rose-50 font-semibold transition"
         >
-          <LogOut className="w-3.5 h-3.5" />
+          <LogOut className="w-3.5 h-3.5 text-rose-500" />
           <span>Sign Out</span>
         </a>
       </div>
     </aside>
   );
 }
-

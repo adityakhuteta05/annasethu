@@ -122,7 +122,7 @@ export default function DriverHistoryPage() {
   return (
     <div className="space-y-6 max-w-4xl mx-auto pb-16">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 dark:bg-orange-950 text-orange-800 dark:text-orange-300">
@@ -141,7 +141,7 @@ export default function DriverHistoryPage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white dark:bg-[#1c2024] p-4 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-xs flex flex-col sm:flex-row gap-3">
+      <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
           <Search className="w-4 h-4 absolute left-3 top-3 text-stone-400" />
           <input
@@ -173,7 +173,7 @@ export default function DriverHistoryPage() {
       {/* History Items List */}
       <div className="space-y-3">
         {filteredHistory.length === 0 ? (
-          <div className="p-12 text-center bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 text-stone-500 space-y-1">
+          <div className="p-12 text-center bg-white rounded-3xl border border-slate-200 text-stone-500 space-y-1">
             <History className="w-8 h-8 mx-auto text-stone-300" />
             <p className="font-bold text-stone-800 dark:text-stone-200 text-sm">No historical deliveries found</p>
             <p className="text-xs">Adjust your search filters.</p>
@@ -182,7 +182,7 @@ export default function DriverHistoryPage() {
           filteredHistory.map(item => (
             <div
               key={item.id}
-              className="bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 p-5 shadow-xs hover:border-stone-300 transition space-y-3"
+              className="bg-white rounded-3xl border border-slate-200 p-5 shadow-xs hover:border-stone-300 transition space-y-3"
             >
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 dark:border-stone-800 pb-3">
                 <div className="flex items-center gap-2">

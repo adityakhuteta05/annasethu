@@ -110,7 +110,7 @@ export default function DriverAchievementsPage() {
   return (
     <div className="space-y-6 max-w-4xl mx-auto pb-16">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300">
@@ -151,8 +151,8 @@ export default function DriverAchievementsPage() {
               key={ach.id}
               className={`p-6 rounded-3xl border transition space-y-4 ${
                 ach.unlocked
-                  ? 'bg-white dark:bg-[#1c2024] border-amber-300 dark:border-amber-800/80 shadow-xs'
-                  : 'bg-stone-50 dark:bg-stone-900/40 border-stone-200 dark:border-stone-800 opacity-80'
+                  ? 'bg-white border-amber-300 dark:border-amber-800/80 shadow-xs'
+                  : 'bg-stone-50 dark:bg-stone-900/40 border-slate-200 opacity-80'
               }`}
             >
               <div className="flex items-start justify-between">

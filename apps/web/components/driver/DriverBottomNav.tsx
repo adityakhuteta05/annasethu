@@ -24,7 +24,7 @@ export function DriverBottomNav() {
   ];
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#14171a]/95 backdrop-blur-md border-t border-[#e5dec9] dark:border-[#2d3239] pb-safe px-2 py-1 shadow-lg">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 bg-white/95 backdrop-blur-md border-t border-slate-200 border-slate-200 pb-safe px-2 py-1 shadow-lg">
       <div className="flex items-center justify-around">
         {navItems.map((item) => {
           const Icon = item.icon;

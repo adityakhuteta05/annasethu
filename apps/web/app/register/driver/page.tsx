@@ -192,18 +192,18 @@ export default function DriverRegistrationWizard() {
   ];
 
   return (
-    <main className="min-h-screen p-4 sm:p-6 lg:p-8 bg-[#fdfbf7] dark:bg-[#121417]">
+    <main className="min-h-screen p-4 sm:p-6 lg:p-8 bg-white dark:bg-[#121417]">
       {/* Top Header */}
-      <header className="max-w-3xl w-full mx-auto flex items-center justify-between pb-4 border-b border-[#e5dec9] dark:border-[#2d3239]">
+      <header className="max-w-3xl w-full mx-auto flex items-center justify-between pb-4 border-b border-slate-200 border-slate-200">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-xl bg-[#e0662b] text-white flex items-center justify-center font-heading text-lg font-bold shadow-sm">
+          <div className="w-9 h-9 rounded-xl bg-[#e0662b] text-white flex items-center justify-center font-semibold tracking-tight text-lg font-bold shadow-sm">
             अ
           </div>
           <div>
-            <span className="font-heading font-bold text-lg text-[#1f4d36] dark:text-[#f7f1e3]">
+            <span className="font-bold tracking-tight text-lg text-slate-900 dark:text-white">
               ANNASETU
             </span>
-            <span className="text-[10px] text-[#5c6068] block -mt-1 font-semibold">
+            <span className="text-[10px] text-slate-500 block -mt-1 font-semibold">
               Delivery Partner Onboarding
             </span>
           </div>
@@ -220,7 +220,7 @@ export default function DriverRegistrationWizard() {
       <div className="max-w-2xl w-full mx-auto py-6 space-y-6">
         
         {/* Step Indicator */}
-        <div className="bg-white dark:bg-[#1c2024] p-3.5 rounded-2xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs">
+        <div className="bg-white p-3.5 rounded-2xl border border-slate-200 border-slate-200 shadow-xs">
           <div className="flex items-center justify-between overflow-x-auto pb-1 gap-1">
             {steps.map((title, i) => {
               const num = i + 1;
@@ -234,7 +234,7 @@ export default function DriverRegistrationWizard() {
                   }`}>
                     {isDone ? '✓' : num}
                   </div>
-                  <span className="text-[9px] font-semibold text-[#5c6068] mt-1 truncate max-w-[56px] text-center">
+                  <span className="text-[9px] font-semibold text-slate-500 mt-1 truncate max-w-[56px] text-center">
                     {title}
                   </span>
                 </div>
@@ -244,14 +244,14 @@ export default function DriverRegistrationWizard() {
         </div>
 
         {/* Wizard Card */}
-        <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-md p-6 sm:p-8 space-y-5">
+        <div className="bg-white rounded-3xl border border-slate-200 border-slate-200 shadow-md p-6 sm:p-8 space-y-5">
           
-          <div className="flex items-center justify-between border-b border-[#e5dec9] dark:border-[#2d3239] pb-3">
+          <div className="flex items-center justify-between border-b border-slate-200 border-slate-200 pb-3">
             <div>
               <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#e0662b]/15 text-[#b04513] text-xs font-bold mb-1">
                 <span>Step {currentStep} of 8</span>
               </div>
-              <h1 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h1 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                 {currentStep === 1 && 'STEP 1: Personal & Emergency Contact'}
                 {currentStep === 2 && 'STEP 2: Identity & Residence'}
                 {currentStep === 3 && 'STEP 3: Driving Licence Information'}
@@ -285,7 +285,7 @@ export default function DriverRegistrationWizard() {
             {currentStep === 1 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Full Legal Name *</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Full Legal Name *</label>
                   <input
                     type="text"
                     name="fullName"
@@ -293,13 +293,13 @@ export default function DriverRegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="As shown on Driving Licence"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-sans"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Email *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Email *</label>
                     <input
                       type="email"
                       name="email"
@@ -307,11 +307,11 @@ export default function DriverRegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="driver@example.com"
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Mobile Phone *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Mobile Phone *</label>
                     <input
                       type="tel"
                       name="phone"
@@ -319,25 +319,25 @@ export default function DriverRegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="10-digit number"
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Date of Birth *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Date of Birth *</label>
                     <input
                       type="date"
                       name="dob"
                       value={formData.dob}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Emergency Contact Phone *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Emergency Contact Phone *</label>
                     <input
                       type="tel"
                       name="emergencyContactPhone"
@@ -345,7 +345,7 @@ export default function DriverRegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="Family / Friend contact"
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
@@ -357,12 +357,12 @@ export default function DriverRegistrationWizard() {
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Identity Document Type *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Identity Document Type *</label>
                     <select
                       name="idDocType"
                       value={formData.idDocType}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans bg-white"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans bg-white"
                     >
                       <option value="AADHAAR">Aadhaar Card</option>
                       <option value="VOTER_ID">Voter ID Card</option>
@@ -370,7 +370,7 @@ export default function DriverRegistrationWizard() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Document Number *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Document Number *</label>
                     <input
                       type="text"
                       name="idNumber"
@@ -378,13 +378,13 @@ export default function DriverRegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="e.g. 8841 9920 1145"
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Current Residential Address *</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Current Residential Address *</label>
                   <textarea
                     name="address"
                     rows={2}
@@ -392,31 +392,31 @@ export default function DriverRegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="Full street address..."
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">City *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">City *</label>
                     <input
                       type="text"
                       name="city"
                       value={formData.city}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">PIN Code *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">PIN Code *</label>
                     <input
                       type="text"
                       name="pincode"
                       value={formData.pincode}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
@@ -427,7 +427,7 @@ export default function DriverRegistrationWizard() {
             {currentStep === 3 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Driving Licence Number (DL) *</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Driving Licence Number (DL) *</label>
                   <input
                     type="text"
                     name="dlNumber"
@@ -435,32 +435,32 @@ export default function DriverRegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="e.g. DL-1420110098412"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] text-xs font-mono uppercase"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-mono uppercase"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Licence Expiry Date *</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Licence Expiry Date *</label>
                   <input
                     type="date"
                     name="dlExpiry"
                     value={formData.dlExpiry}
                     onChange={handleChange}
                     required
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                   />
                 </div>
 
-                <div className="p-3 rounded-xl bg-gray-50 border border-[#e5dec9] text-xs">
+                <div className="p-3 rounded-xl bg-gray-50 border border-slate-200 text-xs">
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="checkbox"
                       name="hasCommercialBadge"
                       checked={formData.hasCommercialBadge}
                       onChange={handleChange}
-                      className="rounded border-[#e5dec9] text-[#e0662b] focus:ring-[#e0662b]"
+                      className="rounded border-slate-200 text-[#e0662b] focus:ring-[#e0662b]"
                     />
-                    <span className="font-bold text-[#1f4d36]">Commercial Transport Endorsement / Badge Present</span>
+                    <span className="font-bold text-slate-900">Commercial Transport Endorsement / Badge Present</span>
                   </label>
                 </div>
               </div>
@@ -470,12 +470,12 @@ export default function DriverRegistrationWizard() {
             {currentStep === 4 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Vehicle Classification *</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Vehicle Classification *</label>
                   <select
                     name="vehicleType"
                     value={formData.vehicleType}
                     onChange={handleChange}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] text-xs font-sans bg-white font-bold"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-sans bg-white font-bold"
                   >
                     <option value="MOTORCYCLE">Motorcycle with Delivery Bag (Up to 15 kg)</option>
                     <option value="SCOOTER">Electric / Petrol Scooter (Up to 25 kg)</option>
@@ -488,7 +488,7 @@ export default function DriverRegistrationWizard() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Vehicle Registration (RC) *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Vehicle Registration (RC) *</label>
                     <input
                       type="text"
                       name="vehicleRegistration"
@@ -496,29 +496,29 @@ export default function DriverRegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="e.g. DL 1V AC 8412"
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-mono uppercase font-bold"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-mono uppercase font-bold"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Rated Payload Capacity (kg) *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Rated Payload Capacity (kg) *</label>
                     <input
                       type="number"
                       name="payloadCapacityKg"
                       value={formData.payloadCapacityKg}
                       onChange={handleChange}
                       min={10}
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans font-bold"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans font-bold"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Vehicle Ownership Status *</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Vehicle Ownership Status *</label>
                   <select
                     name="vehicleOwnership"
                     value={formData.vehicleOwnership}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans bg-white"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans bg-white"
                   >
                     <option value="OWNED">Directly Owned by Driver</option>
                     <option value="COMPANY_AUTHORIZED">Authorized by Fleet Company / Lease</option>
@@ -532,7 +532,7 @@ export default function DriverRegistrationWizard() {
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Insurance Policy Number *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Insurance Policy Number *</label>
                     <input
                       type="text"
                       name="insurancePolicyNo"
@@ -540,25 +540,25 @@ export default function DriverRegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="Commercial vehicle policy"
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Insurance Expiry Date *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Insurance Expiry Date *</label>
                     <input
                       type="date"
                       name="insuranceExpiry"
                       value={formData.insuranceExpiry}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Pollution (PUC) Number *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Pollution (PUC) Number *</label>
                     <input
                       type="text"
                       name="pucNumber"
@@ -566,30 +566,30 @@ export default function DriverRegistrationWizard() {
                       onChange={handleChange}
                       required
                       placeholder="PUC certificate number"
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">PUC Valid Until *</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">PUC Valid Until *</label>
                     <input
                       type="date"
                       name="pucExpiry"
                       value={formData.pucExpiry}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Vehicle Fitness Expiry Date</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Vehicle Fitness Expiry Date</label>
                   <input
                     type="date"
                     name="fitnessExpiry"
                     value={formData.fitnessExpiry}
                     onChange={handleChange}
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                   />
                 </div>
               </div>
@@ -599,12 +599,12 @@ export default function DriverRegistrationWizard() {
             {currentStep === 6 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Preferred Operating Zone *</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Preferred Operating Zone *</label>
                   <select
                     name="operatingArea"
                     value={formData.operatingArea}
                     onChange={handleChange}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] text-xs font-sans bg-white font-bold"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-sans bg-white font-bold"
                   >
                     <option value="CENTRAL_DELHI">Central Delhi (CP, Barakhamba, Paharganj)</option>
                     <option value="SOUTH_DELHI">South Delhi (Lajpat Nagar, Saket, Okhla)</option>
@@ -615,7 +615,7 @@ export default function DriverRegistrationWizard() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Max Operational Radius (km)</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Max Operational Radius (km)</label>
                     <input
                       type="number"
                       name="maxOperationalRangeKm"
@@ -623,16 +623,16 @@ export default function DriverRegistrationWizard() {
                       onChange={handleChange}
                       min={5}
                       max={50}
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans font-bold"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans font-bold"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#1f4d36] mb-1">Preferred Duty Shift</label>
+                    <label className="block text-xs font-bold text-slate-900 mb-1">Preferred Duty Shift</label>
                     <select
                       name="preferredShift"
                       value={formData.preferredShift}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans bg-white"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans bg-white"
                     >
                       <option value="FLEXIBLE_DAY_NIGHT">Any Time (High Surge Offers)</option>
                       <option value="DAY_ONLY">Day Only (08:00 AM – 06:00 PM)</option>
@@ -647,17 +647,17 @@ export default function DriverRegistrationWizard() {
             {currentStep === 7 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Driver Login Email</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Driver Login Email</label>
                   <input
                     type="email"
                     value={formData.email}
                     disabled
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans bg-gray-100 text-gray-600"
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-sans bg-gray-100 text-gray-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Create Secret Password *</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Create Secret Password *</label>
                   <input
                     type="password"
                     name="password"
@@ -665,12 +665,12 @@ export default function DriverRegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="Minimum 8 characters"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-sans"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#1f4d36] mb-1">Confirm Secret Password *</label>
+                  <label className="block text-xs font-bold text-slate-900 mb-1">Confirm Secret Password *</label>
                   <input
                     type="password"
                     name="confirmPassword"
@@ -678,7 +678,7 @@ export default function DriverRegistrationWizard() {
                     onChange={handleChange}
                     required
                     placeholder="Repeat password"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-sans"
                   />
                 </div>
               </div>
@@ -698,9 +698,9 @@ export default function DriverRegistrationWizard() {
                       name="agreeCodeOfConduct"
                       checked={formData.agreeCodeOfConduct}
                       onChange={handleChange}
-                      className="mt-0.5 rounded border-[#e5dec9] text-[#e0662b] focus:ring-[#e0662b]"
+                      className="mt-0.5 rounded border-slate-200 text-[#e0662b] focus:ring-[#e0662b]"
                     />
-                    <span className="text-xs text-[#23262b]">
+                    <span className="text-xs text-slate-900">
                       I agree to the AnnaSetu Driver Code of Conduct, including thermal insulation standards and zero-tampering integrity.
                     </span>
                   </label>
@@ -711,9 +711,9 @@ export default function DriverRegistrationWizard() {
                       name="agreeTerms"
                       checked={formData.agreeTerms}
                       onChange={handleChange}
-                      className="mt-0.5 rounded border-[#e5dec9] text-[#e0662b] focus:ring-[#e0662b]"
+                      className="mt-0.5 rounded border-slate-200 text-[#e0662b] focus:ring-[#e0662b]"
                     />
-                    <span className="text-xs text-[#23262b]">
+                    <span className="text-xs text-slate-900">
                       I agree to the Terms of Logistics Partnership and transparent fare structure rules.
                     </span>
                   </label>
@@ -724,9 +724,9 @@ export default function DriverRegistrationWizard() {
                       name="agreeBackgroundCheck"
                       checked={formData.agreeBackgroundCheck}
                       onChange={handleChange}
-                      className="mt-0.5 rounded border-[#e5dec9] text-[#e0662b] focus:ring-[#e0662b]"
+                      className="mt-0.5 rounded border-slate-200 text-[#e0662b] focus:ring-[#e0662b]"
                     />
-                    <span className="text-xs text-[#23262b]">
+                    <span className="text-xs text-slate-900">
                       I consent to identity, licence, and Parivahan vehicle registration checks by platform administrators.
                     </span>
                   </label>
@@ -736,18 +736,18 @@ export default function DriverRegistrationWizard() {
           </div>
 
           {/* Navigation */}
-          <div className="flex items-center justify-between pt-5 border-t border-[#e5dec9]">
+          <div className="flex items-center justify-between pt-5 border-t border-slate-200">
             {currentStep > 1 ? (
               <button
                 type="button"
                 onClick={handlePrev}
-                className="px-4 py-2 rounded-xl border border-[#e5dec9] text-xs font-bold text-[#5c6068] hover:bg-gray-50 flex items-center gap-1.5"
+                className="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-500 hover:bg-gray-50 flex items-center gap-1.5"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back</span>
               </button>
             ) : (
-              <Link href="/register" className="text-xs font-bold text-[#5c6068] hover:text-[#1f4d36]">
+              <Link href="/register" className="text-xs font-bold text-slate-500 hover:text-slate-900">
                 &larr; Roles
               </Link>
             )}

@@ -25,7 +25,7 @@ export function NGOSidebar() {
   const pathname = usePathname();
 
   const operationsNav = [
-    { label: 'Operations Dashboard', href: '/ngo/dashboard', icon: LayoutDashboard },
+    { label: 'Operations Dashboard', href: '/receiver/dashboard', icon: LayoutDashboard },
     { label: '+ Create Food Need', href: '/ngo/needs/create', icon: PlusCircle, isPrimary: true },
     { label: "Today's Needs", href: '/ngo/needs', icon: ListOrdered },
     { label: 'Available Surplus Food', href: '/ngo/available-food', icon: UtensilsCrossed },
@@ -47,29 +47,29 @@ export function NGOSidebar() {
   ];
 
   return (
-    <aside className="w-64 shrink-0 hidden lg:block border-r border-[#e5dec9] dark:border-[#2d3239] bg-[#f7f1e3]/40 dark:bg-[#14171a]/40 min-h-[calc(100vh-4rem)] p-4 space-y-6">
+    <aside className="w-64 shrink-0 hidden lg:block border-r border-slate-200 bg-white min-h-[calc(100vh-4rem)] p-4 space-y-6">
       {/* Group 1: Operations */}
       <div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] px-3 block mb-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-3 block mb-2">
           Daily Operations
         </span>
         <nav className="space-y-1">
           {operationsNav.map((item) => {
             const Icon = item.icon;
-            const isActive = pathname === item.href || (item.href !== '/ngo/dashboard' && pathname.startsWith(item.href));
+            const isActive = pathname === item.href || (item.href !== '/receiver/dashboard' && item.href !== '/ngo/dashboard' && pathname.startsWith(item.href));
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   item.isPrimary
-                    ? 'bg-[#2d6a4f] text-[#f7f1e3] shadow-xs hover:bg-[#1b4332]'
+                    ? 'bg-emerald-600 text-white shadow-xs hover:bg-emerald-700 font-semibold'
                     : isActive
-                    ? 'bg-white dark:bg-[#1c2024] text-[#2d6a4f] shadow-xs border border-[#e5dec9] dark:border-[#2d3239]'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#2d6a4f] hover:bg-white/60 dark:hover:bg-[#1c2024]/60'
+                    ? 'bg-emerald-50 text-emerald-800 font-semibold border border-emerald-100'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                <Icon className={`w-4 h-4 shrink-0 ${item.isPrimary ? 'text-emerald-300' : ''}`} />
+                <Icon className={`w-4 h-4 shrink-0 ${item.isPrimary ? 'text-white' : isActive ? 'text-emerald-700' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </Link>
             );
@@ -79,7 +79,7 @@ export function NGOSidebar() {
 
       {/* Group 2: Logistics & Finance */}
       <div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] px-3 block mb-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-3 block mb-2">
           Logistics & Impact
         </span>
         <nav className="space-y-1">
@@ -90,13 +90,13 @@ export function NGOSidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-white dark:bg-[#1c2024] text-[#2d6a4f] shadow-xs border border-[#e5dec9] dark:border-[#2d3239]'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#2d6a4f] hover:bg-white/60 dark:hover:bg-[#1c2024]/60'
+                    ? 'bg-emerald-50 text-emerald-800 font-semibold border border-emerald-100'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                <Icon className="w-4 h-4 shrink-0" />
+                <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-emerald-700' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </Link>
             );
@@ -106,7 +106,7 @@ export function NGOSidebar() {
 
       {/* Group 3: Administration */}
       <div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] px-3 block mb-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-3 block mb-2">
           Compliance & Desk
         </span>
         <nav className="space-y-1">
@@ -117,13 +117,13 @@ export function NGOSidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-white dark:bg-[#1c2024] text-[#2d6a4f] shadow-xs border border-[#e5dec9] dark:border-[#2d3239]'
-                    : 'text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#2d6a4f] hover:bg-white/60 dark:hover:bg-[#1c2024]/60'
+                    ? 'bg-emerald-50 text-emerald-800 font-semibold border border-emerald-100'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                <Icon className="w-4 h-4 shrink-0" />
+                <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-emerald-700' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </Link>
             );
@@ -132,23 +132,22 @@ export function NGOSidebar() {
       </div>
 
       {/* Switch Role & Sign Out */}
-      <div className="pt-3 border-t border-[#e5dec9] dark:border-[#2d3239] space-y-1">
+      <div className="pt-3 border-t border-slate-100 space-y-1">
         <Link
           href="/login"
-          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#2d6a4f] dark:hover:text-[#f7f1e3] hover:bg-white/60 dark:hover:bg-[#1c2024]/60 transition"
+          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Switch Operational Role</span>
+          <span>Switch Account Role</span>
         </Link>
         <Link
           href="/logout"
-          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition"
+          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 hover:bg-rose-50 transition"
         >
-          <LogOut className="w-3.5 h-3.5" />
+          <LogOut className="w-3.5 h-3.5 text-rose-500" />
           <span>Sign Out</span>
         </Link>
       </div>
     </aside>
   );
 }
-

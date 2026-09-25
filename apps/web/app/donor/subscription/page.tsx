@@ -71,11 +71,11 @@ export default function DonorSubscriptionPage() {
 
   return (
     <div className="space-y-6 pb-16">
-      <div className="border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
-        <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+      <div className="border-b border-slate-200 border-slate-200 pb-4">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Subscription & Location Quotas
         </h1>
-        <p className="text-xs text-[#5c6068]">
+        <p className="text-xs text-slate-500">
           Manage your organizational plan, ESG reporting privileges, and multi-location dispatch settings
         </p>
       </div>
@@ -86,10 +86,10 @@ export default function DonorSubscriptionPage() {
           <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400 block">
             Current Active License
           </span>
-          <h2 className="text-xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
             {currentPlan.name}
           </h2>
-          <div className="flex items-center gap-3 text-xs text-[#5c6068] pt-1">
+          <div className="flex items-center gap-3 text-xs text-slate-500 pt-1">
             <span>Billing Status: <strong className="text-emerald-700">Active</strong></span>
             <span>•</span>
             <span>Next Renewal: {currentPlan.renewal_date}</span>
@@ -98,7 +98,7 @@ export default function DonorSubscriptionPage() {
           </div>
         </div>
 
-        <button className="px-5 py-2.5 rounded-xl bg-[#1f4d36] text-white text-xs font-bold hover:bg-[#163827] shadow-xs shrink-0">
+        <button className="px-5 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 shadow-xs shrink-0">
           Manage Payment Method
         </button>
       </div>
@@ -108,13 +108,13 @@ export default function DonorSubscriptionPage() {
         {plans.map((p: any) => (
           <div
             key={p.tier}
-            className={`p-6 rounded-3xl bg-white dark:bg-[#1c2024] border-2 shadow-xs flex flex-col justify-between space-y-6 ${
-              p.is_current ? 'border-[#1f4d36] dark:border-emerald-500' : 'border-[#e5dec9] dark:border-[#2d3239]'
+            className={`p-6 rounded-3xl bg-white border-2 shadow-xs flex flex-col justify-between space-y-6 ${
+              p.is_current ? 'border-[#1f4d36] dark:border-emerald-500' : 'border-slate-200 border-slate-200'
             }`}
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#5c6068]">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                   {p.tier}
                 </span>
                 {p.is_current && (
@@ -125,15 +125,15 @@ export default function DonorSubscriptionPage() {
               </div>
 
               <div>
-                <h3 className="font-heading font-bold text-lg text-[#23262b] dark:text-[#f7f1e3]">
+                <h3 className="font-bold tracking-tight text-lg text-slate-900 dark:text-white">
                   {p.name}
                 </h3>
-                <div className="text-xl font-bold text-[#1f4d36] dark:text-[#4f9d3a] mt-1">
+                <div className="text-xl font-bold text-slate-900 dark:text-[#4f9d3a] mt-1">
                   {p.price}
                 </div>
               </div>
 
-              <ul className="space-y-2 text-xs text-[#5c6068]">
+              <ul className="space-y-2 text-xs text-slate-500">
                 {p.features.map((f: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
@@ -147,8 +147,8 @@ export default function DonorSubscriptionPage() {
               disabled={p.is_current}
               className={`w-full py-2.5 rounded-xl text-xs font-bold transition-all ${
                 p.is_current
-                  ? 'bg-gray-100 text-[#5c6068] cursor-default'
-                  : 'bg-[#1f4d36] text-white hover:bg-[#163827]'
+                  ? 'bg-gray-100 text-slate-500 cursor-default'
+                  : 'bg-emerald-600 text-white hover:bg-emerald-700'
               }`}
             >
               {p.is_current ? 'Active Subscription' : 'Upgrade Plan'}

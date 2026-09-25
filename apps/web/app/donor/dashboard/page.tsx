@@ -165,7 +165,7 @@ export default function DonorDashboardPage() {
   return (
     <div className="space-y-8 pb-12">
       {/* 1. Header Greeting & Primary Action */}
-      <section className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-[#1c2024] p-6 sm:p-8 rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs">
+      <section className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 border-slate-200 shadow-xs">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold">
@@ -173,10 +173,10 @@ export default function DonorDashboardPage() {
               Verified Food Business
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             Good morning, {d.business_name || 'Chef & Food Operations'}
           </h1>
-          <p className="text-sm text-[#5c6068] dark:text-[#a0a5ad]">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             "Let's rescue today's surplus food." Every meal diverted reduces landfill methane and nourishes verified local shelters.
           </p>
         </div>
@@ -184,7 +184,7 @@ export default function DonorDashboardPage() {
         <div className="flex items-center gap-3 shrink-0">
           <button
             onClick={fetchDashboardData}
-            className="p-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-[#5c6068] hover:text-[#1f4d36] hover:bg-[#f7f1e3] transition-colors"
+            className="p-2.5 rounded-xl border border-slate-200 border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
             title="Refresh Live State"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -192,7 +192,7 @@ export default function DonorDashboardPage() {
 
           <a
             href="/donor/donations/new"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#1f4d36] hover:bg-[#163827] text-[#f7f1e3] font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
           >
             <PlusCircle className="w-4 h-4 text-emerald-300" />
             <span>+ POST SURPLUS FOOD</span>
@@ -202,39 +202,39 @@ export default function DonorDashboardPage() {
 
       {/* 2. Key Metrics Bar */}
       <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-1">
-          <span className="text-xs font-semibold text-[#5c6068] dark:text-[#a0a5ad]">Total Food Rescued</span>
-          <div className="text-2xl sm:text-3xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
-            {d.metrics.food_rescued_kg.toLocaleString()} <span className="text-base font-normal text-[#5c6068]">kg</span>
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 border-slate-200 shadow-xs space-y-1">
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Total Food Rescued</span>
+          <div className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+            {d.metrics.food_rescued_kg.toLocaleString()} <span className="text-base font-normal text-slate-500">kg</span>
           </div>
           <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold flex items-center gap-1">
             <TrendingUp className="w-3.5 h-3.5" /> +18% from last month
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-1">
-          <span className="text-xs font-semibold text-[#5c6068] dark:text-[#a0a5ad]">Active Rescues Today</span>
-          <div className="text-2xl sm:text-3xl font-heading font-bold text-[#e0662b]">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 border-slate-200 shadow-xs space-y-1">
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Active Rescues Today</span>
+          <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#e0662b]">
             {d.metrics.active_rescues_count}
           </div>
-          <span className="text-[11px] text-[#5c6068] dark:text-[#a0a5ad]">
+          <span className="text-[11px] text-slate-500 dark:text-slate-400">
             Live in matching / dispatch
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-1">
-          <span className="text-xs font-semibold text-[#5c6068] dark:text-[#a0a5ad]">Meal Equivalents Served</span>
-          <div className="text-2xl sm:text-3xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 border-slate-200 shadow-xs space-y-1">
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Meal Equivalents Served</span>
+          <div className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             {d.metrics.meals_supported.toLocaleString()}
           </div>
-          <span className="text-[11px] text-[#5c6068] dark:text-[#a0a5ad]">
+          <span className="text-[11px] text-slate-500 dark:text-slate-400">
             2 meals calculated per kg
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-1">
-          <span className="text-xs font-semibold text-[#5c6068] dark:text-[#a0a5ad]">Completed Missions</span>
-          <div className="text-2xl sm:text-3xl font-heading font-bold text-[#4f9d3a]">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 border-slate-200 shadow-xs space-y-1">
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Completed Missions</span>
+          <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#4f9d3a]">
             {d.metrics.completed_rescues_count}
           </div>
           <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold">
@@ -245,7 +245,7 @@ export default function DonorDashboardPage() {
 
       {/* 3. Urgent Rescue Section (Closest to Deadline) */}
       {topUrgent && (
-        <section className="p-6 rounded-3xl bg-linear-to-r from-orange-50/80 via-white to-amber-50/50 dark:from-[#231a14] dark:to-[#1c2024] border-2 border-orange-200 dark:border-orange-950/60 shadow-xs space-y-4">
+        <section className="p-6 rounded-2xl bg-linear-to-r from-orange-50/80 via-white to-amber-50/50 dark:from-[#231a14] dark:to-[#1c2024] border-2 border-orange-200 dark:border-orange-950/60 shadow-xs space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <span className="px-3 py-1 rounded-xl bg-[#e0662b] text-white text-xs font-black tracking-wider uppercase flex items-center gap-1.5 shadow-xs">
@@ -256,29 +256,29 @@ export default function DonorDashboardPage() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-[#5c6068] dark:text-[#a0a5ad]">Rescue Window:</span>
+              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Rescue Window:</span>
               <RescueCountdown initialSeconds={topUrgent.remaining_seconds} size="md" />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2 border-t border-orange-100 dark:border-gray-800">
             <div>
-              <span className="text-[11px] text-[#5c6068] uppercase font-semibold">Surplus Food</span>
-              <p className="font-heading font-bold text-base text-[#23262b] dark:text-[#f7f1e3]">{topUrgent.title}</p>
-              <span className="text-xs text-[#5c6068]">{topUrgent.quantity_kg} kg verified packaging</span>
+              <span className="text-[11px] text-slate-500 uppercase font-semibold">Surplus Food</span>
+              <p className="font-bold tracking-tight text-base text-slate-900 dark:text-white">{topUrgent.title}</p>
+              <span className="text-xs text-slate-500">{topUrgent.quantity_kg} kg verified packaging</span>
             </div>
 
             <div>
-              <span className="text-[11px] text-[#5c6068] uppercase font-semibold">Matched Receiver</span>
-              <p className="font-semibold text-sm text-[#1f4d36] dark:text-[#4f9d3a]">{topUrgent.receiver_name}</p>
-              <span className="text-xs text-[#5c6068]">Verified NGO Shelter</span>
+              <span className="text-[11px] text-slate-500 uppercase font-semibold">Matched Receiver</span>
+              <p className="font-semibold text-sm text-slate-900 dark:text-[#4f9d3a]">{topUrgent.receiver_name}</p>
+              <span className="text-xs text-slate-500">Verified NGO Shelter</span>
             </div>
 
             <div>
-              <span className="text-[11px] text-[#5c6068] uppercase font-semibold">Delivery Transit</span>
+              <span className="text-[11px] text-slate-500 uppercase font-semibold">Delivery Transit</span>
               <div className="flex items-center gap-2">
                 <Truck className="w-4 h-4 text-[#e0662b]" />
-                <span className="text-sm font-bold text-[#23262b] dark:text-[#f7f1e3]">
+                <span className="text-sm font-bold text-slate-900 dark:text-white">
                   {topUrgent.driver_name} · ETA {topUrgent.eta_minutes}m
                 </span>
               </div>
@@ -299,20 +299,20 @@ export default function DonorDashboardPage() {
       )}
 
       {/* 4. Active Donations Table */}
-      <section className="bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs overflow-hidden space-y-4 p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-[#e5dec9] dark:border-[#2d3239]">
+      <section className="bg-white rounded-2xl border border-slate-200 border-slate-200 shadow-xs overflow-hidden space-y-4 p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-200 border-slate-200">
           <div>
-            <h2 className="text-lg font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+            <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
               Active Surplus Postings
             </h2>
-            <p className="text-xs text-[#5c6068] dark:text-[#a0a5ad]">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Real-time operational queue and dispatch states
             </p>
           </div>
 
           <a
             href="/donor/donations"
-            className="text-xs font-bold text-[#1f4d36] dark:text-[#4f9d3a] hover:underline inline-flex items-center gap-1"
+            className="text-xs font-bold text-slate-900 dark:text-[#4f9d3a] hover:underline inline-flex items-center gap-1"
           >
             <span>View All Donations</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -322,7 +322,7 @@ export default function DonorDashboardPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-gray-100 dark:border-gray-800 text-[#5c6068] uppercase text-[10px] tracking-wider">
+              <tr className="border-b border-gray-100 dark:border-gray-800 text-slate-500 uppercase text-[10px] tracking-wider">
                 <th className="py-3 px-3">Food & Category</th>
                 <th className="py-3 px-3">Quantity</th>
                 <th className="py-3 px-3">Available From</th>
@@ -338,18 +338,18 @@ export default function DonorDashboardPage() {
               {d.active_donations.map((item: any) => (
                 <tr key={item.id} className="hover:bg-gray-50/70 dark:hover:bg-gray-800/40 transition-colors">
                   <td className="py-3.5 px-3">
-                    <span className="font-bold text-[#23262b] dark:text-[#f7f1e3] block">{item.title}</span>
-                    <span className="text-[10px] text-[#5c6068] font-mono">ID: {item.id}</span>
+                    <span className="font-bold text-slate-900 dark:text-white block">{item.title}</span>
+                    <span className="text-[10px] text-slate-500 font-mono">ID: {item.id}</span>
                   </td>
-                  <td className="py-3.5 px-3 font-semibold text-[#1f4d36] dark:text-[#4f9d3a]">
+                  <td className="py-3.5 px-3 font-semibold text-slate-900 dark:text-[#4f9d3a]">
                     {item.quantity_kg} kg
                   </td>
-                  <td className="py-3.5 px-3 text-[#5c6068]">{item.available_from}</td>
-                  <td className="py-3.5 px-3 font-medium text-[#23262b] dark:text-[#f7f1e3]">{item.deadline}</td>
-                  <td className="py-3.5 px-3 text-[#5c6068]">{item.receiver_name}</td>
-                  <td className="py-3.5 px-3 text-[#5c6068]">{item.driver_name}</td>
+                  <td className="py-3.5 px-3 text-slate-500">{item.available_from}</td>
+                  <td className="py-3.5 px-3 font-medium text-slate-900 dark:text-white">{item.deadline}</td>
+                  <td className="py-3.5 px-3 text-slate-500">{item.receiver_name}</td>
+                  <td className="py-3.5 px-3 text-slate-500">{item.driver_name}</td>
                   <td className="py-3.5 px-3">
-                    <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-gray-100 dark:bg-gray-800 text-[#23262b] dark:text-[#f7f1e3]">
+                    <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-gray-100 dark:bg-gray-800 text-slate-900 dark:text-white">
                       {item.status}
                     </span>
                   </td>
@@ -359,13 +359,13 @@ export default function DonorDashboardPage() {
                   <td className="py-3.5 px-3 text-right space-x-1 whitespace-nowrap">
                     <a
                       href={`/donor/donations/${item.id}`}
-                      className="px-2.5 py-1 rounded-lg border border-[#e5dec9] dark:border-[#2d3239] text-[11px] font-semibold text-[#1f4d36] dark:text-[#4f9d3a] hover:bg-[#f7f1e3] dark:hover:bg-[#23262b]"
+                      className="px-2.5 py-1 rounded-lg border border-slate-200 border-slate-200 text-[11px] font-semibold text-slate-900 dark:text-[#4f9d3a] hover:bg-slate-100 dark:hover:bg-[#23262b]"
                     >
                       Details
                     </a>
                     <a
                       href={`/donor/rescues/${item.id}`}
-                      className="px-2.5 py-1 rounded-lg bg-[#1f4d36] text-[#f7f1e3] text-[11px] font-semibold hover:bg-[#163827]"
+                      className="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-[11px] font-semibold hover:bg-emerald-700"
                     >
                       Track
                     </a>
@@ -381,17 +381,17 @@ export default function DonorDashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
         {/* Monthly Impact (Factual Records + Derived Estimates Labelled) */}
-        <section className="bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-4">
-          <div className="flex items-center justify-between border-b border-[#e5dec9] dark:border-[#2d3239] pb-3">
+        <section className="bg-white p-6 rounded-2xl border border-slate-200 border-slate-200 shadow-xs space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 border-slate-200 pb-3">
             <div>
-              <h2 className="text-base font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h2 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
                 Monthly Verified Impact
               </h2>
-              <span className="text-[11px] text-[#5c6068]">Recorded ledger facts for CSR compliance</span>
+              <span className="text-[11px] text-slate-500">Recorded ledger facts for CSR compliance</span>
             </div>
             <a
               href="/donor/impact"
-              className="text-xs font-bold text-[#1f4d36] dark:text-[#4f9d3a] hover:underline"
+              className="text-xs font-bold text-slate-900 dark:text-[#4f9d3a] hover:underline"
             >
               Full Impact Ledger →
             </a>
@@ -399,26 +399,26 @@ export default function DonorDashboardPage() {
 
           <div className="grid grid-cols-2 gap-3">
             <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-800">
-              <span className="text-[11px] text-[#5c6068]">Food Rescued</span>
-              <p className="text-xl font-bold font-heading text-[#1f4d36] dark:text-[#f7f1e3]">1,240 kg</p>
+              <span className="text-[11px] text-slate-500">Food Rescued</span>
+              <p className="text-xl font-bold font-semibold tracking-tight text-slate-900 dark:text-white">1,240 kg</p>
               <span className="text-[10px] text-emerald-700">Factual record</span>
             </div>
 
             <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-800">
-              <span className="text-[11px] text-[#5c6068]">Meal Equivalents</span>
-              <p className="text-xl font-bold font-heading text-[#1f4d36] dark:text-[#f7f1e3]">2,480</p>
+              <span className="text-[11px] text-slate-500">Meal Equivalents</span>
+              <p className="text-xl font-bold font-semibold tracking-tight text-slate-900 dark:text-white">2,480</p>
               <span className="text-[10px] text-emerald-700">Factual calculation</span>
             </div>
 
             <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-800">
-              <span className="text-[11px] text-[#5c6068]">Organizations Served</span>
-              <p className="text-xl font-bold font-heading text-[#1f4d36] dark:text-[#f7f1e3]">14</p>
+              <span className="text-[11px] text-slate-500">Organizations Served</span>
+              <p className="text-xl font-bold font-semibold tracking-tight text-slate-900 dark:text-white">14</p>
               <span className="text-[10px] text-emerald-700">Verified shelters</span>
             </div>
 
             <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-800">
-              <span className="text-[11px] text-[#5c6068]">Successful Rescues</span>
-              <p className="text-xl font-bold font-heading text-[#1f4d36] dark:text-[#f7f1e3]">86</p>
+              <span className="text-[11px] text-slate-500">Successful Rescues</span>
+              <p className="text-xl font-bold font-semibold tracking-tight text-slate-900 dark:text-white">86</p>
               <span className="text-[10px] text-emerald-700">Zero cancellations</span>
             </div>
           </div>
@@ -429,34 +429,34 @@ export default function DonorDashboardPage() {
             </span>
             <div className="grid grid-cols-3 gap-2 text-xs pt-1">
               <div>
-                <span className="text-[10px] text-[#5c6068] block">CO₂e Avoided</span>
-                <span className="font-bold text-[#1f4d36] dark:text-[#4f9d3a]">3,100 kg *</span>
+                <span className="text-[10px] text-slate-500 block">CO₂e Avoided</span>
+                <span className="font-bold text-slate-900 dark:text-[#4f9d3a]">3,100 kg *</span>
               </div>
               <div>
-                <span className="text-[10px] text-[#5c6068] block">Water Conserved</span>
-                <span className="font-bold text-[#1f4d36] dark:text-[#4f9d3a]">558,000 L *</span>
+                <span className="text-[10px] text-slate-500 block">Water Conserved</span>
+                <span className="font-bold text-slate-900 dark:text-[#4f9d3a]">558,000 L *</span>
               </div>
               <div>
-                <span className="text-[10px] text-[#5c6068] block">Methane Prevented</span>
-                <span className="font-bold text-[#1f4d36] dark:text-[#4f9d3a]">223.2 kg *</span>
+                <span className="text-[10px] text-slate-500 block">Methane Prevented</span>
+                <span className="font-bold text-slate-900 dark:text-[#4f9d3a]">223.2 kg *</span>
               </div>
             </div>
-            <p className="text-[9px] text-[#5c6068] pt-1">
+            <p className="text-[9px] text-slate-500 pt-1">
               * Note: Environmental numbers are calculated estimates based on 2.5 kg CO₂e / kg and 450 L water / kg food.
             </p>
           </div>
         </section>
 
         {/* Needs Near You (Demand Intelligence) */}
-        <section className="bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-4">
-          <div className="flex items-center justify-between border-b border-[#e5dec9] dark:border-[#2d3239] pb-3">
+        <section className="bg-white p-6 rounded-2xl border border-slate-200 border-slate-200 shadow-xs space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 border-slate-200 pb-3">
             <div>
-              <h2 className="text-base font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+              <h2 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
                 Verified Needs Near You
               </h2>
-              <span className="text-[11px] text-[#5c6068]">Current shelter demand to help optimize prep</span>
+              <span className="text-[11px] text-slate-500">Current shelter demand to help optimize prep</span>
             </div>
-            <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-[#4f9d3a]/15 text-[#1f4d36] dark:text-[#4f9d3a]">
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-[#4f9d3a]/15 text-slate-900 dark:text-[#4f9d3a]">
               Within 5 km
             </span>
           </div>
@@ -469,19 +469,19 @@ export default function DonorDashboardPage() {
               >
                 <div className="space-y-0.5">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-xs text-[#23262b] dark:text-[#f7f1e3]">
+                    <span className="font-bold text-xs text-slate-900 dark:text-white">
                       {need.ngo_name}
                     </span>
-                    <span className="text-[10px] px-1.5 py-0.2 rounded-sm bg-gray-100 dark:bg-gray-800 text-[#5c6068]">
+                    <span className="text-[10px] px-1.5 py-0.2 rounded-sm bg-gray-100 dark:bg-gray-800 text-slate-500">
                       {need.distance_km} km
                     </span>
                   </div>
-                  <p className="text-xs text-[#5c6068]">{need.title}</p>
+                  <p className="text-xs text-slate-500">{need.title}</p>
                 </div>
 
                 <a
                   href="/donor/donations/new"
-                  className="shrink-0 px-3 py-1.5 rounded-xl border border-[#1f4d36] text-[#1f4d36] dark:text-[#4f9d3a] hover:bg-[#1f4d36] hover:text-white text-xs font-semibold transition-all"
+                  className="shrink-0 px-3 py-1.5 rounded-xl border border-[#1f4d36] text-slate-900 dark:text-[#4f9d3a] hover:bg-emerald-600 hover:text-white text-xs font-semibold transition-all"
                 >
                   Fulfill
                 </a>
@@ -497,56 +497,56 @@ export default function DonorDashboardPage() {
       </div>
 
       {/* 6. Quick Action Shortcuts */}
-      <section className="bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-4">
-        <h3 className="text-sm font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+      <section className="bg-white p-6 rounded-2xl border border-slate-200 border-slate-200 shadow-xs space-y-4">
+        <h3 className="text-sm font-bold tracking-tight text-slate-900 dark:text-white">
           Donor Fast Actions
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           <a
             href="/donor/donations/new"
-            className="p-4 rounded-2xl bg-[#f7f1e3]/60 dark:bg-[#23262b] hover:bg-[#1f4d36] hover:text-[#f7f1e3] transition-all group flex flex-col items-center text-center space-y-2"
+            className="p-4 rounded-2xl bg-slate-100/60 dark:bg-[#23262b] hover:bg-emerald-600 hover:text-white transition-all group flex flex-col items-center text-center space-y-2"
           >
-            <PlusCircle className="w-5 h-5 text-[#1f4d36] group-hover:text-emerald-300 transition-colors" />
+            <PlusCircle className="w-5 h-5 text-slate-900 group-hover:text-emerald-300 transition-colors" />
             <span className="text-xs font-bold leading-tight">Post Surplus</span>
           </a>
 
           <a
             href="/donor/donations"
-            className="p-4 rounded-2xl bg-[#f7f1e3]/60 dark:bg-[#23262b] hover:bg-[#1f4d36] hover:text-[#f7f1e3] transition-all group flex flex-col items-center text-center space-y-2"
+            className="p-4 rounded-2xl bg-slate-100/60 dark:bg-[#23262b] hover:bg-emerald-600 hover:text-white transition-all group flex flex-col items-center text-center space-y-2"
           >
-            <Utensils className="w-5 h-5 text-[#1f4d36] group-hover:text-emerald-300 transition-colors" />
+            <Utensils className="w-5 h-5 text-slate-900 group-hover:text-emerald-300 transition-colors" />
             <span className="text-xs font-bold leading-tight">All Donations</span>
           </a>
 
           <a
             href="/donor/rescues"
-            className="p-4 rounded-2xl bg-[#f7f1e3]/60 dark:bg-[#23262b] hover:bg-[#1f4d36] hover:text-[#f7f1e3] transition-all group flex flex-col items-center text-center space-y-2"
+            className="p-4 rounded-2xl bg-slate-100/60 dark:bg-[#23262b] hover:bg-emerald-600 hover:text-white transition-all group flex flex-col items-center text-center space-y-2"
           >
-            <Truck className="w-5 h-5 text-[#1f4d36] group-hover:text-emerald-300 transition-colors" />
+            <Truck className="w-5 h-5 text-slate-900 group-hover:text-emerald-300 transition-colors" />
             <span className="text-xs font-bold leading-tight">Live Rescues</span>
           </a>
 
           <a
             href="/donor/impact"
-            className="p-4 rounded-2xl bg-[#f7f1e3]/60 dark:bg-[#23262b] hover:bg-[#1f4d36] hover:text-[#f7f1e3] transition-all group flex flex-col items-center text-center space-y-2"
+            className="p-4 rounded-2xl bg-slate-100/60 dark:bg-[#23262b] hover:bg-emerald-600 hover:text-white transition-all group flex flex-col items-center text-center space-y-2"
           >
-            <TrendingUp className="w-5 h-5 text-[#1f4d36] group-hover:text-emerald-300 transition-colors" />
+            <TrendingUp className="w-5 h-5 text-slate-900 group-hover:text-emerald-300 transition-colors" />
             <span className="text-xs font-bold leading-tight">CSR Impact</span>
           </a>
 
           <a
             href="/donor/reports"
-            className="p-4 rounded-2xl bg-[#f7f1e3]/60 dark:bg-[#23262b] hover:bg-[#1f4d36] hover:text-[#f7f1e3] transition-all group flex flex-col items-center text-center space-y-2"
+            className="p-4 rounded-2xl bg-slate-100/60 dark:bg-[#23262b] hover:bg-emerald-600 hover:text-white transition-all group flex flex-col items-center text-center space-y-2"
           >
-            <FileText className="w-5 h-5 text-[#1f4d36] group-hover:text-emerald-300 transition-colors" />
+            <FileText className="w-5 h-5 text-slate-900 group-hover:text-emerald-300 transition-colors" />
             <span className="text-xs font-bold leading-tight">Audit Reports</span>
           </a>
 
           <a
             href="/donor/certificates"
-            className="p-4 rounded-2xl bg-[#f7f1e3]/60 dark:bg-[#23262b] hover:bg-[#1f4d36] hover:text-[#f7f1e3] transition-all group flex flex-col items-center text-center space-y-2"
+            className="p-4 rounded-2xl bg-slate-100/60 dark:bg-[#23262b] hover:bg-emerald-600 hover:text-white transition-all group flex flex-col items-center text-center space-y-2"
           >
-            <Award className="w-5 h-5 text-[#1f4d36] group-hover:text-emerald-300 transition-colors" />
+            <Award className="w-5 h-5 text-slate-900 group-hover:text-emerald-300 transition-colors" />
             <span className="text-xs font-bold leading-tight">Certificates</span>
           </a>
         </div>

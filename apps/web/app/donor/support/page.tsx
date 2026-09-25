@@ -55,11 +55,11 @@ export default function DonorSupportPage() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-6 pb-16">
-      <div className="border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
-        <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+      <div className="border-b border-slate-200 border-slate-200 pb-4">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Donor Operations Support & Incident Logging
         </h1>
-        <p className="text-xs text-[#5c6068]">
+        <p className="text-xs text-slate-500">
           Log operational discrepancies, dispatch delays, or request urgent administrative intervention
         </p>
       </div>
@@ -70,7 +70,7 @@ export default function DonorSupportPage() {
             <CheckCircle2 className="w-5 h-5 text-emerald-600" />
             <span>Ticket Registered: {ticketResult.ticket_id}</span>
           </div>
-          <p className="text-xs text-[#5c6068]">
+          <p className="text-xs text-slate-500">
             {ticketResult.message} An AnnaSetu operations supervisor will contact the loading bay dispatcher within 8 minutes.
           </p>
         </div>
@@ -88,20 +88,20 @@ export default function DonorSupportPage() {
       {/* Incident Filing Form */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white dark:bg-[#1c2024] p-6 sm:p-8 rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-xs space-y-5"
+        className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 border-slate-200 shadow-xs space-y-5"
       >
-        <h2 className="text-base font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+        <h2 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
           File an Operational Incident
         </h2>
 
         <div>
-          <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+          <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
             Incident Category *
           </label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-xs"
+            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-xs"
           >
             <option value="driver_did_not_arrive">Assigned driver did not arrive at pickup dock</option>
             <option value="food_quantity_issue">Surplus food volume changed / scaling discrepancy</option>
@@ -114,20 +114,20 @@ export default function DonorSupportPage() {
         </div>
 
         <div>
-          <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+          <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
             Associated Mission / Donation Reference (Optional)
           </label>
           <input
             type="text"
             value={rescueId}
             onChange={(e) => setRescueId(e.target.value)}
-            className="w-full px-4 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-xs font-mono"
+            className="w-full px-4 py-2 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-xs font-mono"
             placeholder="e.g. don-201 or RES-AN-001024"
           />
         </div>
 
         <div>
-          <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+          <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
             Brief Subject *
           </label>
           <input
@@ -135,13 +135,13 @@ export default function DonorSupportPage() {
             required
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full px-4 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-xs"
+            className="w-full px-4 py-2 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-xs"
             placeholder="e.g. Driver Van delayed past loading dock slot"
           />
         </div>
 
         <div>
-          <label className="text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] block mb-1">
+          <label className="text-xs font-bold text-slate-900 dark:text-white block mb-1">
             Detailed Incident Description *
           </label>
           <textarea
@@ -149,7 +149,7 @@ export default function DonorSupportPage() {
             rows={4}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full px-4 py-2 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] bg-transparent text-xs"
+            className="w-full px-4 py-2 rounded-xl border border-slate-200 border-slate-200 bg-transparent text-xs"
             placeholder="Describe what occurred, any safe holding actions taken, and who is on duty..."
           />
         </div>
@@ -157,7 +157,7 @@ export default function DonorSupportPage() {
         <button
           type="submit"
           disabled={submitting}
-          className="px-6 py-2.5 rounded-xl bg-[#1f4d36] hover:bg-[#163827] text-white text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
+          className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
         >
           <Send className="w-3.5 h-3.5" />
           <span>{submitting ? 'Submitting to Operations...' : 'LOG AUDIT INCIDENT'}</span>

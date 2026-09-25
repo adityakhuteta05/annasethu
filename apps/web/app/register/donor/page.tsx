@@ -88,37 +88,37 @@ export default function DonorRegistrationWizard() {
   };
 
   return (
-    <main className="min-h-screen p-4 sm:p-6 lg:p-8 bg-[#fdfbf7] dark:bg-[#121417]">
-      <header className="max-w-2xl w-full mx-auto flex items-center justify-between pb-4 border-b border-[#e5dec9]">
+    <main className="min-h-screen p-4 sm:p-6 lg:p-8 bg-white dark:bg-[#121417]">
+      <header className="max-w-2xl w-full mx-auto flex items-center justify-between pb-4 border-b border-slate-200">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-xl bg-[#1f4d36] text-[#f7f1e3] flex items-center justify-center font-heading text-lg font-bold">
+          <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-semibold tracking-tight text-lg font-bold">
             अ
           </div>
           <div>
-            <span className="font-heading font-bold text-lg text-[#1f4d36] dark:text-[#f7f1e3]">
+            <span className="font-bold tracking-tight text-lg text-slate-900 dark:text-white">
               ANNASETU
             </span>
-            <span className="text-[10px] text-[#5c6068] block -mt-1 font-semibold">
+            <span className="text-[10px] text-slate-500 block -mt-1 font-semibold">
               Food Donor Registration
             </span>
           </div>
         </Link>
-        <Link href="/login?role=donor" className="text-xs font-semibold text-[#1f4d36] hover:underline">
+        <Link href="/login?role=donor" className="text-xs font-semibold text-slate-900 hover:underline">
           Sign In &rarr;
         </Link>
       </header>
 
       <div className="max-w-xl w-full mx-auto py-8">
-        <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-[#e5dec9] dark:border-[#2d3239] shadow-md p-6 sm:p-8 space-y-5">
+        <div className="bg-white rounded-3xl border border-slate-200 border-slate-200 shadow-md p-6 sm:p-8 space-y-5">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1f4d36]/10 text-[#1f4d36] text-xs font-bold mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600/10 text-slate-900 text-xs font-bold mb-2">
               <Building2 className="w-3.5 h-3.5" />
               <span>Food Business Onboarding</span>
             </div>
-            <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
               Register Your Business
             </h1>
-            <p className="text-xs text-[#5c6068] dark:text-[#a0a5ad] mt-1">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Begin scheduling temperature-verified pickups and generating tax exemption certificates.
             </p>
           </div>
@@ -132,25 +132,25 @@ export default function DonorRegistrationWizard() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] mb-1">Business / Brand Name *</label>
+              <label className="block text-xs font-bold text-slate-900 mb-1">Business / Brand Name *</label>
               <input
                 type="text"
                 name="businessName"
                 value={formData.businessName}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2.5 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-sans"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold text-[#1f4d36] mb-1">Business Type *</label>
+                <label className="block text-xs font-bold text-slate-900 mb-1">Business Type *</label>
                 <select
                   name="businessType"
                   value={formData.businessType}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans bg-white"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans bg-white"
                 >
                   <option value="HOTEL_BANQUET">Hotel & Banquets</option>
                   <option value="RESTAURANT">Restaurant / Cafe</option>
@@ -160,7 +160,7 @@ export default function DonorRegistrationWizard() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#1f4d36] mb-1">FSSAI Licence Number *</label>
+                <label className="block text-xs font-bold text-slate-900 mb-1">FSSAI Licence Number *</label>
                 <input
                   type="text"
                   name="fssaiLicence"
@@ -168,14 +168,14 @@ export default function DonorRegistrationWizard() {
                   onChange={handleChange}
                   required
                   placeholder="14-digit FSSAI"
-                  className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-mono"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-mono"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold text-[#1f4d36] mb-1">GSTIN *</label>
+                <label className="block text-xs font-bold text-slate-900 mb-1">GSTIN *</label>
                 <input
                   type="text"
                   name="gstin"
@@ -183,62 +183,62 @@ export default function DonorRegistrationWizard() {
                   onChange={handleChange}
                   required
                   placeholder="15-digit GSTIN"
-                  className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-mono uppercase"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-mono uppercase"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#1f4d36] mb-1">Authorized Head Chef / Manager *</label>
+                <label className="block text-xs font-bold text-slate-900 mb-1">Authorized Head Chef / Manager *</label>
                 <input
                   type="text"
                   name="authorizedPerson"
                   value={formData.authorizedPerson}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold text-[#1f4d36] mb-1">Email Address *</label>
+                <label className="block text-xs font-bold text-slate-900 mb-1">Email Address *</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#1f4d36] mb-1">Contact Phone *</label>
+                <label className="block text-xs font-bold text-slate-900 mb-1">Contact Phone *</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#1f4d36] mb-1">Pickup Dock Address *</label>
+              <label className="block text-xs font-bold text-slate-900 mb-1">Pickup Dock Address *</label>
               <textarea
                 name="address"
                 rows={2}
                 value={formData.address}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold text-[#1f4d36] mb-1">Password *</label>
+                <label className="block text-xs font-bold text-slate-900 mb-1">Password *</label>
                 <input
                   type="password"
                   name="password"
@@ -246,18 +246,18 @@ export default function DonorRegistrationWizard() {
                   onChange={handleChange}
                   required
                   placeholder="Min 8 characters"
-                  className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#1f4d36] mb-1">Confirm Password *</label>
+                <label className="block text-xs font-bold text-slate-900 mb-1">Confirm Password *</label>
                 <input
                   type="password"
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 rounded-xl border border-[#e5dec9] text-xs font-sans"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-sans"
                 />
               </div>
             </div>
@@ -265,7 +265,7 @@ export default function DonorRegistrationWizard() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl bg-[#1f4d36] hover:bg-[#163827] text-[#f7f1e3] font-bold text-xs flex items-center justify-center gap-2 shadow-sm disabled:opacity-50 mt-2"
+              className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm disabled:opacity-50 mt-2"
             >
               {loading ? 'Creating Business Account...' : 'REGISTER & OPEN DONOR DASHBOARD'}
               <ArrowRight className="w-4 h-4" />

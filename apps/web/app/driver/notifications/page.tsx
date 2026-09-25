@@ -140,7 +140,7 @@ export default function DriverNotificationsPage() {
   return (
     <div className="space-y-6 max-w-3xl mx-auto pb-16">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 dark:bg-orange-950 text-orange-800 dark:text-orange-300">
@@ -181,7 +181,7 @@ export default function DriverNotificationsPage() {
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
               filterCategory === c.id
                 ? 'bg-orange-600 text-white shadow-xs'
-                : 'bg-white dark:bg-[#1c2024] text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-800 hover:bg-stone-50'
+                : 'bg-white text-stone-600 dark:text-stone-400 border border-slate-200 hover:bg-stone-50'
             }`}
           >
             {c.label}
@@ -190,7 +190,7 @@ export default function DriverNotificationsPage() {
       </div>
 
       {/* Notifications List */}
-      <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 divide-y divide-stone-100 dark:divide-stone-800 shadow-xs overflow-hidden">
+      <div className="bg-white rounded-3xl border border-slate-200 divide-y divide-stone-100 dark:divide-stone-800 shadow-xs overflow-hidden">
         {filtered.length === 0 ? (
           <div className="p-12 text-center text-stone-500 space-y-1">
             <Bell className="w-8 h-8 mx-auto text-stone-300" />

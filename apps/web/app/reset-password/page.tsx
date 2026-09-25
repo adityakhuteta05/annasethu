@@ -53,12 +53,12 @@ export default function ResetPasswordPage() {
   return (
     <main className="min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-8">
       <div className="max-w-md w-full mx-auto my-auto py-6">
-        <div className="bg-white dark:bg-[#1c2024] rounded-3xl border-2 border-[#e5dec9] dark:border-[#2d3239] shadow-lg p-6 sm:p-8 space-y-6">
+        <div className="bg-white rounded-3xl border-2 border-slate-200 border-slate-200 shadow-lg p-6 sm:p-8 space-y-6">
           <div className="space-y-2">
-            <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
               Set New Password
             </h1>
-            <p className="text-xs text-[#5c6068] dark:text-[#a0a5ad]">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Choose a strong password containing at least 8 characters.
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function ResetPasswordPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div>
-                <label htmlFor="new-pwd" className="block text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] mb-1">
+                <label htmlFor="new-pwd" className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                   New Password <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -95,7 +95,7 @@ export default function ResetPasswordPage() {
                     placeholder="At least 8 characters"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs bg-white dark:bg-[#14171a] focus:ring-2 focus:ring-[#1f4d36] focus:outline-none"
+                    className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                   />
                   <button
                     type="button"
@@ -109,7 +109,7 @@ export default function ResetPasswordPage() {
               </div>
 
               <div>
-                <label htmlFor="confirm-pwd" className="block text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] mb-1">
+                <label htmlFor="confirm-pwd" className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                   Confirm Password <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -123,7 +123,7 @@ export default function ResetPasswordPage() {
                     placeholder="Re-enter password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-[#e5dec9] dark:border-[#2d3239] text-xs bg-white dark:bg-[#14171a] focus:ring-2 focus:ring-[#1f4d36] focus:outline-none"
+                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 border-slate-200 text-xs bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -131,7 +131,7 @@ export default function ResetPasswordPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl bg-[#1f4d36] hover:bg-[#163827] text-white font-heading font-bold text-sm shadow-md transition-all disabled:opacity-50"
+                className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold tracking-tight text-sm shadow-md transition-all disabled:opacity-50"
               >
                 {loading ? 'Updating Password...' : 'Save New Password'}
               </button>
@@ -140,7 +140,7 @@ export default function ResetPasswordPage() {
         </div>
       </div>
 
-      <footer className="max-w-md w-full mx-auto py-3 text-center text-xs text-[#5c6068]">
+      <footer className="max-w-md w-full mx-auto py-3 text-center text-xs text-slate-500">
         AnnaSetu Security Infrastructure
       </footer>
     </main>

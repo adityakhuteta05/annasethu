@@ -145,7 +145,7 @@ export default function AdminServiceHealthPage() {
   };
 
   const getServiceIcon = (name: string) => {
-    if (name.includes('Supabase')) return <Server className="w-5 h-5 text-[#1f4d36] dark:text-[#4f9d3a]" />;
+    if (name.includes('Supabase')) return <Server className="w-5 h-5 text-slate-900 dark:text-[#4f9d3a]" />;
     if (name.includes('Groq')) return <Cpu className="w-5 h-5 text-purple-600 dark:text-purple-400" />;
     if (name.includes('Map')) return <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
     if (name.includes('Payment')) return <CreditCard className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />;
@@ -154,27 +154,27 @@ export default function AdminServiceHealthPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f7f1e3] dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] p-4 sm:p-8">
+    <main className="min-h-screen bg-slate-50 bg-white text-slate-900 dark:text-white p-4 sm:p-8">
       <div className="max-w-6xl mx-auto space-y-6">
         
         {/* Top Header */}
-        <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+        <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 border-slate-200 pb-4">
           <div className="flex items-center gap-3">
             <Link
               href="/admin/dashboard"
-              className="p-2 rounded-xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] text-[#5c6068] hover:text-[#1f4d36] transition-colors"
+              className="p-2 rounded-xl bg-white border border-slate-200 border-slate-200 text-slate-500 hover:text-slate-900 transition-colors"
               aria-label="Back to Admin Dashboard"
             >
               <ArrowLeft className="w-4 h-4" />
             </Link>
             <div>
               <div className="flex items-center gap-2">
-                <Activity className="w-5 h-5 text-[#1f4d36] dark:text-[#4f9d3a]" />
-                <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+                <Activity className="w-5 h-5 text-slate-900 dark:text-[#4f9d3a]" />
+                <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
                   Admin Service Health & Secret Management
                 </h1>
               </div>
-              <p className="text-xs text-[#5c6068] dark:text-[#a0a5ad] mt-0.5">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Real-time operational status, latency, failure counters, and fallback strategies for all 6 external adapter pillars.
               </p>
             </div>
@@ -182,14 +182,14 @@ export default function AdminServiceHealthPage() {
 
           <div className="flex items-center gap-3">
             {lastUpdated && (
-              <span className="text-[11px] text-[#5c6068] dark:text-[#a0a5ad]">
+              <span className="text-[11px] text-slate-500 dark:text-slate-400">
                 Updated: {lastUpdated}
               </span>
             )}
             <button
               onClick={fetchHealth}
               disabled={loading}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1f4d36] text-white text-xs font-bold shadow-sm hover:bg-[#163827] transition-all disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold shadow-sm hover:bg-emerald-700 transition-all disabled:opacity-50"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
               <span>Refresh Status</span>
@@ -198,15 +198,15 @@ export default function AdminServiceHealthPage() {
         </header>
 
         {/* Resilience Overview Banner */}
-        <div className="p-4 rounded-2xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="p-4 rounded-2xl bg-white border border-slate-200 border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
-            <span className="text-[10px] uppercase font-bold tracking-wider text-[#1f4d36] dark:text-[#4f9d3a]">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-900 dark:text-[#4f9d3a]">
               Zero-Downtime Guarantee
             </span>
             <h2 className="text-sm font-bold">
               Core Rescue Marketplace Operates Continuously Across All Failure Modes
             </h2>
-            <p className="text-xs text-[#5c6068] dark:text-[#a0a5ad] max-w-3xl leading-relaxed">
+            <p className="text-xs text-slate-500 dark:text-slate-400 max-w-3xl leading-relaxed">
               AnnaSetu enforces strict adapter decoupling: if Groq, Maps, or Razorpay fail or remain unconfigured, the core rescue loop automatically transitions to deterministic fallbacks (Haversine calculations, structured food declarations, and atomic demo ledgers).
             </p>
           </div>
@@ -221,17 +221,17 @@ export default function AdminServiceHealthPage() {
           {services.map((svc) => (
             <div
               key={svc.name}
-              className="p-5 rounded-2xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-sm flex flex-col justify-between space-y-4"
+              className="p-5 rounded-2xl bg-white border border-slate-200 border-slate-200 shadow-sm flex flex-col justify-between space-y-4"
             >
               <div className="space-y-3">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-2 rounded-xl bg-[#f7f1e3] dark:bg-[#14171a] border border-[#e5dec9] dark:border-[#2d3239]">
+                    <div className="p-2 rounded-xl bg-slate-50 bg-white border border-slate-200 border-slate-200">
                       {getServiceIcon(svc.name)}
                     </div>
                     <div>
-                      <h3 className="text-sm font-heading font-bold">{svc.name}</h3>
-                      <span className="text-[11px] text-[#5c6068] dark:text-[#a0a5ad] block">
+                      <h3 className="text-sm font-bold tracking-tight">{svc.name}</h3>
+                      <span className="text-[11px] text-slate-500 dark:text-slate-400 block">
                         Latency: {svc.latency_ms} ms · Failures: {svc.failure_count}
                       </span>
                     </div>
@@ -239,17 +239,17 @@ export default function AdminServiceHealthPage() {
                   {getStatusBadge(svc.status)}
                 </div>
 
-                <div className="p-3 rounded-xl bg-[#f7f1e3]/60 dark:bg-[#14171a] border border-[#e5dec9] dark:border-[#2d3239] text-xs space-y-1.5">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#5c6068] dark:text-[#a0a5ad]">
+                <div className="p-3 rounded-xl bg-slate-50 bg-white border border-slate-200 border-slate-200 text-xs space-y-1.5">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                     Active Strategy & Fallback:
                   </div>
-                  <p className="text-xs font-medium text-[#1f4d36] dark:text-[#4f9d3a] leading-relaxed">
+                  <p className="text-xs font-medium text-slate-900 dark:text-[#4f9d3a] leading-relaxed">
                     {svc.fallback_mode}
                   </p>
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-[#e5dec9] dark:border-[#2d3239] flex items-center justify-between text-[11px] text-[#5c6068] dark:text-[#a0a5ad]">
+              <div className="pt-2 border-t border-slate-200 border-slate-200 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
                 <span className="truncate pr-2">{svc.details}</span>
                 <span className="shrink-0 font-mono text-[10px]">
                   {svc.last_check ? new Date(svc.last_check).toLocaleTimeString() : 'N/A'}
@@ -260,12 +260,12 @@ export default function AdminServiceHealthPage() {
         </div>
 
         {/* Secret Classification Summary Table */}
-        <div className="p-6 rounded-3xl bg-white dark:bg-[#1c2024] border border-[#e5dec9] dark:border-[#2d3239] shadow-sm space-y-4">
+        <div className="p-6 rounded-3xl bg-white border border-slate-200 border-slate-200 shadow-sm space-y-4">
           <div className="space-y-1">
-            <h2 className="text-base font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+            <h2 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
               Secret Classification & Access Control Boundary
             </h2>
-            <p className="text-xs text-[#5c6068] dark:text-[#a0a5ad]">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Strict segregation ensures secrets never leak into client bundles, browser storage, or unauthenticated logs.
             </p>
           </div>
@@ -273,7 +273,7 @@ export default function AdminServiceHealthPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="border-b border-[#e5dec9] dark:border-[#2d3239] text-[#5c6068] dark:text-[#a0a5ad] uppercase text-[10px] tracking-wider">
+                <tr className="border-b border-slate-200 border-slate-200 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
                   <th className="py-2.5 px-3">Variable Name</th>
                   <th className="py-2.5 px-3">Classification</th>
                   <th className="py-2.5 px-3">Environment Boundary</th>
@@ -283,16 +283,16 @@ export default function AdminServiceHealthPage() {
               </thead>
               <tbody className="divide-y divide-[#e5dec9]/60 dark:divide-[#2d3239]">
                 <tr>
-                  <td className="py-2 px-3 font-mono font-bold text-[#1f4d36] dark:text-[#4f9d3a]">NEXT_PUBLIC_SUPABASE_URL</td>
+                  <td className="py-2 px-3 font-mono font-bold text-slate-900 dark:text-[#4f9d3a]">NEXT_PUBLIC_SUPABASE_URL</td>
                   <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-bold">PUBLIC</span></td>
-                  <td className="py-2 px-3 text-[#5c6068]">Client Browser & Server SSR</td>
+                  <td className="py-2 px-3 text-slate-500">Client Browser & Server SSR</td>
                   <td className="py-2 px-3 font-mono text-[11px]">lib/supabase/client.ts</td>
                   <td className="py-2 px-3">Supabase project endpoint</td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 font-mono font-bold text-[#1f4d36] dark:text-[#4f9d3a]">NEXT_PUBLIC_SUPABASE_ANON_KEY</td>
+                  <td className="py-2 px-3 font-mono font-bold text-slate-900 dark:text-[#4f9d3a]">NEXT_PUBLIC_SUPABASE_ANON_KEY</td>
                   <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-bold">PUBLIC</span></td>
-                  <td className="py-2 px-3 text-[#5c6068]">Client Browser & Server SSR</td>
+                  <td className="py-2 px-3 text-slate-500">Client Browser & Server SSR</td>
                   <td className="py-2 px-3 font-mono text-[11px]">lib/supabase/client.ts</td>
                   <td className="py-2 px-3">Public anon key (guarded by RLS)</td>
                 </tr>
@@ -306,14 +306,14 @@ export default function AdminServiceHealthPage() {
                 <tr>
                   <td className="py-2 px-3 font-mono font-bold text-purple-600 dark:text-purple-400">GROQ_API_KEY</td>
                   <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 text-[10px] font-bold">PRIVATE</span></td>
-                  <td className="py-2 px-3 text-[#5c6068]">Backend Server Only</td>
+                  <td className="py-2 px-3 text-slate-500">Backend Server Only</td>
                   <td className="py-2 px-3 font-mono text-[11px]">apps/api/ai/groq_client.py</td>
                   <td className="py-2 px-3">Assistive vision and copilot</td>
                 </tr>
                 <tr>
                   <td className="py-2 px-3 font-mono font-bold text-emerald-600 dark:text-emerald-400">RAZORPAY_KEY_SECRET</td>
                   <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">PRIVATE</span></td>
-                  <td className="py-2 px-3 text-[#5c6068]">Backend Server Only</td>
+                  <td className="py-2 px-3 text-slate-500">Backend Server Only</td>
                   <td className="py-2 px-3 font-mono text-[11px]">apps/api/adapters/payment_adapter.py</td>
                   <td className="py-2 px-3">HMAC-SHA256 signature verification</td>
                 </tr>

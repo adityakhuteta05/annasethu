@@ -39,14 +39,14 @@ export default function DonorCertificatesPage() {
 
   return (
     <div className="space-y-6 pb-16">
-      <div className="border-b border-[#e5dec9] dark:border-[#2d3239] pb-4">
+      <div className="border-b border-slate-200 border-slate-200 pb-4">
         <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block">
           Audited Sustainability Recognition
         </span>
-        <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Verified Milestone Certificates
         </h1>
-        <p className="text-xs text-[#5c6068]">
+        <p className="text-xs text-slate-500">
           Official certificates awarded exclusively upon cryptographically verified handoff and delivery completion
         </p>
       </div>
@@ -55,7 +55,7 @@ export default function DonorCertificatesPage() {
         {certificates.map((cert) => (
           <div
             key={cert.id}
-            className="p-6 rounded-3xl bg-white dark:bg-[#1c2024] border-2 border-[#e5dec9] dark:border-[#2d3239] shadow-xs flex flex-col justify-between space-y-6 relative overflow-hidden group hover:border-[#1f4d36] transition-all"
+            className="p-6 rounded-3xl bg-white border-2 border-slate-200 border-slate-200 shadow-xs flex flex-col justify-between space-y-6 relative overflow-hidden group hover:border-[#1f4d36] transition-all"
           >
             {/* Top Seal Stamp */}
             <div className="space-y-4">
@@ -63,7 +63,7 @@ export default function DonorCertificatesPage() {
                 <div className={`w-12 h-12 rounded-2xl bg-linear-to-br ${cert.badge_color} text-white flex items-center justify-center shadow-md`}>
                   <Award className="w-6 h-6" />
                 </div>
-                <span className="font-mono text-[10px] font-bold text-[#5c6068]">
+                <span className="font-mono text-[10px] font-bold text-slate-500">
                   {cert.id}
                 </span>
               </div>
@@ -72,10 +72,10 @@ export default function DonorCertificatesPage() {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#e0662b] block">
                   {cert.milestone}
                 </span>
-                <h3 className="font-heading font-bold text-base text-[#1f4d36] dark:text-[#f7f1e3] mt-1">
+                <h3 className="font-bold tracking-tight text-base text-slate-900 dark:text-white mt-1">
                   {cert.title}
                 </h3>
-                <p className="text-xs text-[#5c6068] mt-2 leading-relaxed">
+                <p className="text-xs text-slate-500 mt-2 leading-relaxed">
                   {cert.description}
                 </p>
               </div>
@@ -83,20 +83,20 @@ export default function DonorCertificatesPage() {
 
             <div className="space-y-3 pt-4 border-t border-gray-100 dark:border-gray-800 text-xs">
               <div className="flex justify-between text-[11px]">
-                <span className="text-[#5c6068]">Honoree:</span>
-                <span className="font-semibold text-[#23262b] dark:text-[#f7f1e3]">The Oberoi Grand Kitchens</span>
+                <span className="text-slate-500">Honoree:</span>
+                <span className="font-semibold text-slate-900 dark:text-white">The Oberoi Grand Kitchens</span>
               </div>
               <div className="flex justify-between text-[11px]">
-                <span className="text-[#5c6068]">Awarded Date:</span>
+                <span className="text-slate-500">Awarded Date:</span>
                 <span className="font-semibold">{cert.issued_date}</span>
               </div>
-              <div className="p-2 rounded-xl bg-gray-50 dark:bg-gray-800 text-[9px] font-mono text-[#5c6068] truncate">
+              <div className="p-2 rounded-xl bg-gray-50 dark:bg-gray-800 text-[9px] font-mono text-slate-500 truncate">
                 Hash: {cert.hash}
               </div>
 
               <button
                 onClick={() => window.print()}
-                className="w-full py-2.5 rounded-xl bg-[#1f4d36] hover:bg-[#163827] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs"
+                className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>DOWNLOAD CERTIFICATE</span>

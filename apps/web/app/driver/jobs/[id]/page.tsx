@@ -227,7 +227,7 @@ export default function DriverJobDetailPage({
       )}
 
       {/* Main Job Card */}
-      <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 p-6 sm:p-8 shadow-xs space-y-6">
+      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs space-y-6">
         {/* Header Badges */}
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-stone-100 dark:border-stone-800 pb-4">
           <div className="flex items-center gap-2">

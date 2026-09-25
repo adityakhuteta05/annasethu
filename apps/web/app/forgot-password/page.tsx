@@ -45,7 +45,7 @@ export default function ForgotPasswordPage() {
       <header className="max-w-md w-full mx-auto py-2">
         <Link
           href="/login"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-[#5c6068] dark:text-[#a0a5ad] hover:text-[#1f4d36] transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Sign In</span>
@@ -53,12 +53,12 @@ export default function ForgotPasswordPage() {
       </header>
 
       <div className="max-w-md w-full mx-auto my-auto py-6">
-        <div className="bg-white dark:bg-[#1c2024] rounded-3xl border-2 border-[#e5dec9] dark:border-[#2d3239] shadow-lg p-6 sm:p-8 space-y-6">
+        <div className="bg-white rounded-3xl border-2 border-slate-200 border-slate-200 shadow-lg p-6 sm:p-8 space-y-6">
           <div className="space-y-2">
-            <h1 className="text-2xl font-heading font-bold text-[#1f4d36] dark:text-[#f7f1e3]">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
               Reset Your Password
             </h1>
-            <p className="text-xs text-[#5c6068] dark:text-[#a0a5ad]">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Enter your registered email address to receive secure account recovery instructions.
             </p>
           </div>
@@ -74,7 +74,7 @@ export default function ForgotPasswordPage() {
               </p>
               <Link
                 href="/login"
-                className="inline-block font-bold text-[#1f4d36] dark:text-[#4f9d3a] underline pt-1"
+                className="inline-block font-bold text-slate-900 dark:text-[#4f9d3a] underline pt-1"
               >
                 Return to Login
               </Link>
@@ -82,7 +82,7 @@ export default function ForgotPasswordPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div>
-                <label htmlFor="reset-email" className="block text-xs font-bold text-[#23262b] dark:text-[#f7f1e3] mb-1">
+                <label htmlFor="reset-email" className="block text-xs font-bold text-slate-900 dark:text-white mb-1">
                   Account Email Address <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -100,8 +100,8 @@ export default function ForgotPasswordPage() {
                       setEmail(e.target.value);
                       if (fieldError) setFieldError(null);
                     }}
-                    className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border text-xs bg-white dark:bg-[#14171a] text-[#23262b] dark:text-[#f7f1e3] focus:outline-none ${
-                      fieldError ? 'border-red-400' : 'border-[#e5dec9] dark:border-[#2d3239] focus:ring-2 focus:ring-[#1f4d36]'
+                    className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border text-xs bg-white text-slate-900 dark:text-white focus:outline-none ${
+                      fieldError ? 'border-red-400' : 'border-slate-200 border-slate-200 focus:ring-2 focus:ring-emerald-500'
                     }`}
                   />
                 </div>
@@ -115,7 +115,7 @@ export default function ForgotPasswordPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl bg-[#1f4d36] hover:bg-[#163827] text-white font-heading font-bold text-sm shadow-md transition-all disabled:opacity-50"
+                className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold tracking-tight text-sm shadow-md transition-all disabled:opacity-50"
               >
                 {loading ? 'Sending Instructions...' : 'Send Password Reset Link'}
               </button>
@@ -124,7 +124,7 @@ export default function ForgotPasswordPage() {
         </div>
       </div>
 
-      <footer className="max-w-md w-full mx-auto py-3 text-center text-xs text-[#5c6068]">
+      <footer className="max-w-md w-full mx-auto py-3 text-center text-xs text-slate-500">
         AnnaSetu Security · Never shares account existence status
       </footer>
     </main>

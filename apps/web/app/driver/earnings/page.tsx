@@ -125,7 +125,7 @@ export default function DriverEarningsPage() {
   return (
     <div className="space-y-6 max-w-4xl mx-auto pb-16">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#1c2024] p-6 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
@@ -162,7 +162,7 @@ export default function DriverEarningsPage() {
       {/* 4 Summary Cards (PRD SECTION 45) */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {/* Available for Withdrawal */}
-        <div className="bg-white dark:bg-[#1c2024] p-5 rounded-2xl border-2 border-emerald-500/40 bg-emerald-50/10 shadow-xs">
+        <div className="bg-white p-5 rounded-2xl border-2 border-emerald-500/40 bg-emerald-50/10 shadow-xs">
           <span className="text-xs font-bold text-stone-500 uppercase tracking-wider block">
             Available Balance
           </span>
@@ -175,7 +175,7 @@ export default function DriverEarningsPage() {
         </div>
 
         {/* Pending Settlement */}
-        <div className="bg-white dark:bg-[#1c2024] p-5 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-xs">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
           <span className="text-xs font-bold text-stone-500 uppercase tracking-wider block">
             Pending Settlement
           </span>
@@ -186,7 +186,7 @@ export default function DriverEarningsPage() {
         </div>
 
         {/* This Month */}
-        <div className="bg-white dark:bg-[#1c2024] p-5 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-xs">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
           <span className="text-xs font-bold text-stone-500 uppercase tracking-wider block">
             This Month
           </span>
@@ -197,7 +197,7 @@ export default function DriverEarningsPage() {
         </div>
 
         {/* Total Lifetime Earned */}
-        <div className="bg-white dark:bg-[#1c2024] p-5 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-xs">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
           <span className="text-xs font-bold text-stone-500 uppercase tracking-wider block">
             Lifetime Earned
           </span>
@@ -209,7 +209,7 @@ export default function DriverEarningsPage() {
       </div>
 
       {/* Transparent Compensation Rules */}
-      <div className="bg-stone-50 dark:bg-stone-800/40 p-5 rounded-2xl border border-stone-200 dark:border-stone-800 text-xs text-stone-600 dark:text-stone-400 space-y-2">
+      <div className="bg-stone-50 dark:bg-stone-800/40 p-5 rounded-2xl border border-slate-200 text-xs text-stone-600 dark:text-stone-400 space-y-2">
         <h3 className="font-bold text-stone-900 dark:text-white uppercase tracking-wider text-[11px] flex items-center gap-1.5">
           <ShieldCheck className="w-4 h-4 text-emerald-600" />
           Transparent Fare Calculation Model
@@ -225,7 +225,7 @@ export default function DriverEarningsPage() {
       </div>
 
       {/* Transaction Details Table (PRD SECTION 45) */}
-      <div className="bg-white dark:bg-[#1c2024] rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xs overflow-hidden">
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden">
         <div className="p-5 border-b border-stone-100 dark:border-stone-800 flex items-center justify-between">
           <h2 className="text-sm font-bold text-stone-900 dark:text-white uppercase tracking-wider">
             Verified Rescue Mission Ledger
